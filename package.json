@@ -1,0 +1,15 @@
+{
+  "name": "healthy-horizons-app",
+  "version": "1.0.0",
+  "description": "A website for an EPICS project started in 2019 Spring.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.butler.edu:dpurdum/HealthyHorizonsApp.git"
+  },
+  "author": "",
+  "license": "ISC"
+}
