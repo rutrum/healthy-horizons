@@ -3,13 +3,39 @@
 <head>
     <title>Healthy Horizons</title>
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+    <style>
+        nav {
+            background-color: #449955;
+            display: flex;
+            justify-content: center;
+        }
+        .navButton {
+            background-color: #5bcc71;
+            padding: 10px;
+            margin: 0 10px;
+        }
+        .navButton:hover {
+            background-color: #5bdd71;
+        }
+    </style>
 </head>
 <body>
+    <nav>
+        <!-- This is the navigation bar -->
+        <div class="navButton">Homepage</div>
+        <div class="navButton">Login</div>
+        
+    </nav>
     <h1>Welcome to Healthy Horizons!</h1>
     <form id="login-box">
-        Username <input type="text"> <br>
-        Password <input type="text">
+        Username <input name="username" type="text"> <br>
+        Password <input name="password" type="text"> <br>
+        <button type="submit">Submit</button>
     </form>
+    <h3>About Healthy Horizons</h3>
+    <p>
+        The Healthy Horizons program started in 2004 with the purpose of promoting healthy living by providing a comprehensive and confidential wellness package to Butler University faculty and staff. The program assists employees with improving their health, provides ongoing information and health education programs, and helps identify health risks and ways to reduce those risks. The program is conducted by the Health and Wellness Center, part of the College of Pharmacy and Health Sciences.
+    </p>
     <ul>
         <li>This is a list</li>
         <li>Of things</li>
