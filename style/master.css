@@ -1,3 +1,13 @@
-a:hover {
-    color: black;
+nav {
+    background-color: #449955;
+    display: flex;
+    justify-content: center;
+}
+.navButton {
+    background-color: #5bcc71;
+    padding: 10px;
+    margin: 0 10px;
+}
+.navButton:hover {
+    background-color: #5bdd71;
 }
