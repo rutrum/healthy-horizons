@@ -4,10 +4,10 @@ var fs = require('fs')
 var ip = require('ip')
 
 var server = http.createServer(function (req, res) {
-    var q = url.parse(req.url, true);
+    var q = url.parse(req.url, true)
 
     // Forces path name to start in currect directory
-    var filename = "." + q.pathname;
+    var filename = "." + q.pathname
 
     // If path is empty, send them to the homepage
     if (q.pathname == "/") {
@@ -24,27 +24,31 @@ var server = http.createServer(function (req, res) {
 
                 // If the 404 page doesn't exist, send a sad message.
                 if (err) {
-                    res.writeHead(404, { 'Content-Type': 'text/html' });
-                    return res.end("Literally the 404 page was not found.");
+                    res.writeHead(404, { 'Content-Type': 'text/html' })
+                    return res.end("Literally the 404 page was not found.")
                 }
 
                 // Send 404 page.
-                res.writeHead(200, { 'Content-Type': 'text/html' });
-                res.write(data);
-                return res.end();
+                res.writeHead(200, { 'Content-Type': 'text/html' })
+                res.write(data)
+                return res.end()
 
             })
 
         } else {
 
-            // Send requested page
+            // Determine content type by looking at requested file extension
             if (filename.endsWith("css")) {
-                res.writeHead(200, { 'Content-Type': 'text/css' });
-            } else {
-                res.writeHead(200, { 'Content-Type': 'text/html' });
+                res.writeHead(200, { 'Content-Type': 'text/css' })
+            } else if (filename.endsWith("js")) 
+                res.writeHead(200, { 'Content-Type': 'application/javascript' })
+            else {
+                res.writeHead(200, { 'Content-Type': 'text/html' })
             }
-            res.write(data);
-            return res.end();
+
+            // Send requested page
+            res.write(data)
+            return res.end()
 
         }
     });
