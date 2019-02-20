@@ -38,7 +38,11 @@ var server = http.createServer(function (req, res) {
         } else {
 
             // Send requested page
-            res.writeHead(200, { 'Content-Type': 'text/html' });
+            if (filename.endsWith("css")) {
+                res.writeHead(200, { 'Content-Type': 'text/css' });
+            } else {
+                res.writeHead(200, { 'Content-Type': 'text/html' });
+            }
             res.write(data);
             return res.end();
 
