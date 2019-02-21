@@ -2,6 +2,7 @@ nav {
     background-color: #372c9b;
     display: flex;
     justify-content: center;
+    height: 75px;
 }
 .navButton {
     background-color: rgb(139, 141, 255);

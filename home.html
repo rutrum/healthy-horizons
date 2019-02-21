@@ -1,15 +1,29 @@
 <html>
     <head>
         <title>Homepage</title>
+        <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="./style/master.css">
+        <style>
+            .center{
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                width: 50%;
+                height: 25%;
+            }
+        </style>
     </head>
     <body>
         <nav>
-
+             <!-- This is the navigation bar -->
+        <a href="./index.html">
+            <div class="navButton">Home</div>
+        </a>
+        <a href="./login.html">
+            <div class="navButton">Login</div>
+        </a>
         </nav>
-        <header>
-            <img src="./resources/Healthy-Horizons-Logo.jpg">
-            <h1>Welcome to Healthy Horizons</h1>
-        </header>
+        <div><img src="./resources/Healthy-Horizons-Logo.jpg" class="center"></div>
         <div id="options">
             <button id="submit-points"></button>
         </div>
