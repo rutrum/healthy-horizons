@@ -10,9 +10,7 @@ nav {
 }
 .navButton:hover {
     background-color: rgb(182, 183, 248);
-    transition-duration: .5s;
-    background-color: rgb(139, 141, 255);
-    transition-duration: 4s;
+    transition-duration: .3s;
 }
 a {
     color: white;
