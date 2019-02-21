@@ -12,3 +12,6 @@ nav {
     background-color: rgb(139, 141, 255);
     transition-duration: 4s;
 }
+a {
+    color: white;
+}
