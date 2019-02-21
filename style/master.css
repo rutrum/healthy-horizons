@@ -4,11 +4,13 @@ nav {
     justify-content: center;
 }
 .navButton {
-    background-color: #4734eb;
+    background-color: rgb(139, 141, 255);
     padding: 10px;
     margin: 0 10px;
 }
 .navButton:hover {
+    background-color: rgb(182, 183, 248);
+    transition-duration: .5s;
     background-color: rgb(139, 141, 255);
     transition-duration: 4s;
 }
