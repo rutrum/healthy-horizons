@@ -4,30 +4,92 @@
         <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="./style/master.css">
         <style>
-            .center{
-                display: block;
-                margin-left: auto;
-                margin-right: auto;
+            #submit-points {
+                margin: 30px auto;
+                padding: 20px;
                 width: 50%;
-                height: 25%;
+
+                border: solid rgb(139, 141, 255) 2px;
+                background-color: white;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+            .objective {
+                width: 80%;
+            }
+            .point-divider {
+                font-size: 18pt;
+                font-weight: 600;
+                margin: 5px;
             }
         </style>
     </head>
     <body>
         <nav>
              <!-- This is the navigation bar -->
-        <a href="./index.html">
-            <div class="navButton">Home</div>
-        </a>
-        <a href="./login.html">
-            <div class="navButton">Login</div>
-        </a>
+            <a href="./index.html">
+                <div class="navButton">Home</div>
+            </a>
+            <a href="./login.html">
+                <div class="navButton">Login</div>
+            </a>
         </nav>
-        <div><img src="./resources/Healthy-Horizons-Logo.jpg" class="center"></div>
-        <div id="options">
+        <!-- <div>
+            <img src="./resources/Healthy-Horizons-Logo.jpg" class="center">
+        </div> -->
+        <!-- <div id="options">
             <button id="submit-points"></button>
         </div>
         <div id="progress-bar"></div>
-        <span id="total-points"></span>
+        <span id="total-points"></span> -->
+        <form id="submit-points">
+            <div class="point-divider">
+                Once a day
+            </div>
+            <div class="objective">
+                <input type="checkbox">
+                <label>Participated In Yoga Class</label>
+            </div>
+            <div class="objective">
+                <input type="checkbox">
+                <label>Went to HRC</label>
+            </div>
+            <div class="objective">
+                <input type="checkbox">
+                <label>Wore my seatbelt</label>
+            </div>
+            <div class="point-divider">
+                Once a week
+            </div>
+            <div class="objective">
+                <input type="checkbox">
+                <label>Participated In Yoga Class</label>
+            </div>
+            <div class="objective">
+                <input type="checkbox">
+                <label>Went to HRC</label>
+            </div>
+            </div>
+            <div class="point-divider">
+                Once a semester
+            </div>
+            <div class="objective">
+                <input type="checkbox">
+                <label>Participated In Yoga Class</label>
+            </div>
+            <div class="objective">
+                <input type="checkbox">
+                <label>Went to HRC</label>
+            </div>
+            <div class="objective">
+                <input type="checkbox">
+                <label>Wore my seatbelt</label>
+            <div class="objective">
+                <input type="checkbox">
+                <label>Wore my seatbelt</label>
+            </div>
+        </form>
     </body>
 </html>
