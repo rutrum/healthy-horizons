@@ -15,6 +15,7 @@
                 flex-direction: column;
                 align-items: center;
                 justify-content: center;
+                border-radius: 10px;
             }
             .objective {
                 display: flex;
@@ -33,6 +34,19 @@
                 font-weight: 600;
                 margin: 10px;
                 margin-top: 20px;
+            }
+            button {
+                width: 100%;
+                height: 40px;
+                background-color: var(--secondary-clr);
+                border: solid var(--secondary-clr) 0;
+                color: whitesmoke;
+                font-weight: 600;
+                letter-spacing: 1px;
+                border-radius: 5px;
+                margin-top: 8px;
+                cursor: pointer;
+                margin: 20px 0 0 0;
             }
         </style>
     </head>
@@ -61,7 +75,7 @@
                 Earn 1 Point Each
             </div>
             <div class="objective">
-                <input type="checkbox">
+                <input type="number">
                 <label>Participate in Center for Faith and Vocation guided meditation class</label>
             </div>
             <div class="objective">
@@ -144,6 +158,9 @@
                 <input type="checkbox">
                 <label>Complete annual physical with your Primary Care Provider</label>
             </div>
+            <button>
+                Submit
+            </button>
         </form>
     </body>
 </html>
