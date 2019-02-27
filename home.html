@@ -6,8 +6,8 @@
         <style>
             #submit-points {
                 margin: 30px auto;
-                padding: 20px;
-                width: 50%;
+                padding: 30px;
+                width: 500px;
 
                 border: solid rgb(139, 141, 255) 2px;
                 background-color: white;
@@ -17,12 +17,21 @@
                 justify-content: center;
             }
             .objective {
-                width: 80%;
+                width: 100%;
+            }
+            .objective > input {
+                display: inline-block;
+                text-align: start;
+                width: 10%;
+            }
+            .objective > label {
+                width: 85%;
             }
             .point-divider {
                 font-size: 18pt;
                 font-weight: 600;
-                margin: 5px;
+                margin: 10px;
+                margin-top: 20px;
             }
         </style>
     </head>
@@ -45,50 +54,94 @@
         <div id="progress-bar"></div>
         <span id="total-points"></span> -->
         <form id="submit-points">
+            <h2 style="font-weight: 600">Point Submission</h2>
+
             <div class="point-divider">
-                Once a day
+                Earn 1 Point Each
             </div>
             <div class="objective">
                 <input type="checkbox">
-                <label>Participated In Yoga Class</label>
+                <label>Participate in Center for Faith and Vocation guided meditation class</label>
             </div>
             <div class="objective">
                 <input type="checkbox">
-                <label>Went to HRC</label>
+                <label>Eat 5 servings of fruits/vegetables in one day</label>
             </div>
             <div class="objective">
                 <input type="checkbox">
-                <label>Wore my seatbelt</label>
+                <label>Avoid all sugar-sweetened beverages for one day</label>
             </div>
+            <div class="objective">
+                <input type="checkbox">
+                <label>Participate in an HRC fitness class</label>
+            </div>
+            <div class="objective">
+                <input type="checkbox">
+                <label>Pack a healthy lunch from home</label>
+            </div>
+            <div class="objective">
+                <input type="checkbox">
+                <label>Park far away from work/store and walk</label>
+            </div>
+            <div class="objective">
+                <input type="checkbox">
+                <label>Sleep 7 and a half hours or more in one night</label>
+            </div>
+            <div class="objective">
+                <input type="checkbox">
+                <label>Use the restroom on different floor or building from your office</label>
+            </div>
+            <div class="objective">
+                <input type="checkbox">
+                <label>Wear your seat belt whenever in the car or bike helmet when biking</label>
+            </div>
+
             <div class="point-divider">
-                Once a week
+                Earn 5 Points Each
             </div>
             <div class="objective">
                 <input type="checkbox">
-                <label>Participated In Yoga Class</label>
+                <label>Take prescribed medications for an entire week</label>
             </div>
             <div class="objective">
                 <input type="checkbox">
-                <label>Went to HRC</label>
+                <label>Contribute a healthy meal/snack for office pitch in</label>
             </div>
+            <div class="objective">
+                <input type="checkbox">
+                <label>Increase your weekly step count average by 1000 steps</label>
             </div>
+            <div class="objective">
+                <input type="checkbox">
+                <label>Obtain 150 minutes of exercise in one week</label>
+            </div>
+
             <div class="point-divider">
-                Once a semester
+                Earn 25 Points Each
             </div>
             <div class="objective">
                 <input type="checkbox">
-                <label>Participated In Yoga Class</label>
+                <label>Attend a Healthy Horizons lunch and learn</label>
             </div>
             <div class="objective">
                 <input type="checkbox">
-                <label>Went to HRC</label>
+                <label>Read an entire novel for stress relief</label>
             </div>
             <div class="objective">
                 <input type="checkbox">
-                <label>Wore my seatbelt</label>
+                <label>Register for Healthier BU Blog</label>
+            </div>
+
+            <div class="point-divider">
+                Earn 50 Points Each
+            </div>
             <div class="objective">
                 <input type="checkbox">
-                <label>Wore my seatbelt</label>
+                <label>Complete annual wellness consult with Healthy Horizons</label>
+            </div>
+            <div class="objective">
+                <input type="checkbox">
+                <label>Complete annual physical with your Primary Care Provider</label>
             </div>
         </form>
     </body>

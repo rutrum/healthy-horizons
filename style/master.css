@@ -1,22 +1,22 @@
 /* This is for storing variables...like colors! */
 :root {
-    --main: #372c9b;
-    --secondary: rgb(139, 141, 255);
-    --terciary: rgb(182, 183, 248);
+    --main-clr: #372c9b;
+    --secondary-clr: rgb(139, 141, 255);
+    --terciary-clr: rgb(182, 183, 248);
 }
 
 nav {
-    background-color: var(--main);
+    background-color: var(--main-clr);
     display: flex;
     justify-content: center;
 }
 .navButton {
-    background-color: var(--secondary);
+    background-color: var(--secondary-clr);
     padding: 15px;
     margin: 0 10px;
 }
 .navButton:hover {
-    background-color: var(--terciary);
+    background-color: var(--terciary-clr);
     transition-duration: .3s;
 }
 a {
