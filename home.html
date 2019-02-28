@@ -4,30 +4,170 @@
         <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="./style/master.css">
         <style>
-            .center{
-                display: block;
-                margin-left: auto;
-                margin-right: auto;
-                width: 50%;
-                height: 25%;
+            #submit-points {
+                margin: 30px auto;
+                padding: 30px;
+                width: 500px;
+
+                border: solid var(--secondary-clr) 2px;
+                background-color: white;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                border-radius: 10px;
+            }
+            .objective {
+                display: flex;
+                align-items: baseline;
+                width: 100%;
+            }
+            .objective > input {
+                text-align: start;
+                width: 10%;
+            }
+            .objective > label {
+                width: 85%;
+                padding-left: 10px;
+            }
+            .point-divider {
+                font-size: 18pt;
+                font-weight: 600;
+                margin: 10px;
+                margin-top: 20px;
+            }
+            button {
+                width: 100%;
+                height: 40px;
+                background-color: var(--secondary-clr);
+                border: solid var(--secondary-clr) 0;
+                color: whitesmoke;
+                font-weight: 600;
+                letter-spacing: 1px;
+                border-radius: 5px;
+                margin-top: 8px;
+                cursor: pointer;
+                margin: 20px 0 0 0;
+            }
+            input[type=checkbox]
+            {
+                transform:scale(1.5);
             }
         </style>
     </head>
     <body>
         <nav>
              <!-- This is the navigation bar -->
-        <a href="./index.html">
-            <div class="navButton">Home</div>
-        </a>
-        <a href="./login.html">
-            <div class="navButton">Login</div>
-        </a>
+            <div class="navButton"> 
+                <a href="./home.html">Home</a>
+            </div>
+            
+            <div class="navButton">
+                <a href="./login.html">Login</a>
+            </div>
+            
         </nav>
-        <div><img src="./resources/Healthy-Horizons-Logo.jpg" class="center"></div>
-        <div id="options">
+        <!-- <div>
+            <img src="./resources/Healthy-Horizons-Logo.jpg" class="center">
+        </div> -->
+        <!-- <div id="options">
             <button id="submit-points"></button>
         </div>
         <div id="progress-bar"></div>
-        <span id="total-points"></span>
+        <span id="total-points"></span> -->
+        <form id="submit-points">
+            <h2 style="font-weight: 600">Point Submission</h2>
+
+            <div class="point-divider">
+                Earn 1 Point Each
+            </div>
+            <div class="objective">
+                <input type="number" min="0">
+                <label>Participate in Center for Faith and Vocation guided meditation class</label>
+            </div>
+            <div class="objective">
+                <input type="number" min="0">
+                <label>Eat 5 servings of fruits/vegetables in one day</label>
+            </div>
+            <div class="objective">
+                <input type="number" min="0">
+                <label>Avoid all sugar-sweetened beverages for one day</label>
+            </div>
+            <div class="objective">
+                <input type="number" min="0">
+                <label>Participate in an HRC fitness class</label>
+            </div>
+            <div class="objective">
+                <input type="number" min="0">
+                <label>Pack a healthy lunch from home</label>
+            </div>
+            <div class="objective">
+                <input type="number" min="0">
+                <label>Park far away from work/store and walk</label>
+            </div>
+            <div class="objective">
+                <input type="number" min="0">
+                <label>Sleep 7 and a half hours or more in one night</label>
+            </div>
+            <div class="objective">
+                <input type="number" min="0">
+                <label>Use the restroom on different floor or building from your office</label>
+            </div>
+            <div class="objective">
+                <input type="number" min="0">
+                <label>Wear your seat belt whenever in the car or bike helmet when biking</label>
+            </div>
+
+            <div class="point-divider">
+                Earn 5 Points Each
+            </div>
+            <div class="objective">
+                <input type="number" min="0">
+                <label>Take prescribed medications for an entire week</label>
+            </div>
+            <div class="objective">
+                <input type="number" min="0">
+                <label>Contribute a healthy meal/snack for office pitch in</label>
+            </div>
+            <div class="objective">
+                <input type="number" min="0">
+                <label>Increase your weekly step count average by 1000 steps</label>
+            </div>
+            <div class="objective">
+                <input type="number" min="0">
+                <label>Obtain 150 minutes of exercise in one week</label>
+            </div>
+
+            <div class="point-divider">
+                Earn 25 Points Each
+            </div>
+            <div class="objective">
+                <input type="number" min="0">
+                <label> Attend a Healthy Horizons lunch and learn</label>
+            </div>
+            <div class="objective">
+                <input type="checkbox">
+                <label> Read an entire novel for stress relief</label>
+            </div>
+            <div class="objective">
+                <input type="checkbox">
+                <label> Register for Healthier BU Blog</label>
+            </div>
+
+            <div class="point-divider">
+                Earn 50 Points Each
+            </div>
+            <div class="objective">
+                <input type="checkbox">
+                <label> Complete annual wellness consult with Healthy Horizons</label>
+            </div>
+            <div class="objective">
+                <input type="checkbox">
+                <label> Complete annual physical with your Primary Care Provider</label>
+            </div>
+            <button>
+                Submit
+            </button>
+        </form>
     </body>
 </html>

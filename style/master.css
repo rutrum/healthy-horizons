@@ -1,16 +1,26 @@
+/* This is for storing variables...like colors! */
+:root {
+    --main-clr: #372c9b;
+    --secondary-clr: rgb(139, 141, 255);
+    --terciary-clr: rgb(182, 183, 248);
+}
+
 nav {
-    background-color: #372c9b;
+    background-color: var(--main-clr);
     display: flex;
     justify-content: center;
 }
 .navButton {
-    background-color: rgb(139, 141, 255);
-    padding: 15px;
+    background-color: var(--secondary-clr);
     margin: 0 10px;
 }
 .navButton:hover {
-    background-color: rgb(182, 183, 248);
+    background-color: var(--terciary-clr);
     transition-duration: .3s;
+}
+.navButton > a {
+    display: inline-block;
+    padding: 15px;
 }
 a {
     color: whitesmoke;
@@ -20,5 +30,7 @@ a:hover {
     color: whitesmoke;
 }
 body {
+    margin: 0;
+    padding: 0;
     background-color: whitesmoke;
 }
