@@ -3,6 +3,8 @@ var url = require('url')
 var fs = require('fs')
 var ip = require('ip')
 
+// require('./healthy_db_connection.js')
+
 var server = http.createServer(function (req, res) {
     var q = url.parse(req.url, true)
 

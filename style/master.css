@@ -34,6 +34,10 @@ body {
     padding: 0;
     background-color: whitesmoke;
 }
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #eeecec;
+    opacity: 1; /* Firefox */
+}
 .center {
     margin: 0 auto;
 }
