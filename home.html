@@ -4,7 +4,7 @@
         <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="./style/master.css">
         <style>
-            #submit-points {
+           /* #submit-points {
                 margin: 30px auto;
                 padding: 30px;
                 width: 500px;
@@ -16,11 +16,7 @@
                 align-items: center;
                 justify-content: center;
                 border-radius: 10px;
-            }
-            #name{
-                text-align-last: right;
-            }
-            .
+            }*/
             .objective {
                 display: flex;
                 align-items: baseline;
@@ -83,14 +79,14 @@
         </div>
         <div id="progress-bar"></div>
         <span id="total-points"></span> -->
-        <span id="name">
+        <span style="text-align-last: right">
            <p style="padding: 0 10">Hello, Name Here</p>
         </span>
         <div style="display:flex; flex-direction:row; align-items: flex-start">
             <form class="box" >
                 <h2 style="font-weight: 500">Weeks</h2>
             </form>
-            <form id="submit-points">
+            <form class="box">
                     <img  style="width: 100%; padding: 20px 5px"  src="./resources\transparent-logo.png">
                     <h2 style="font-weight: 500">Point Submission</h2>
     
@@ -181,7 +177,7 @@
                         <input type="checkbox">
                         <label> Complete annual physical with your Primary Care Provider</label>
                     </div>
-                    <button>
+                    <button style="cursor:pointer">
                         Submit
                     </button>
             </form>

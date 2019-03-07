@@ -24,10 +24,12 @@
             button {
                 width: 100%;
                 height: 30px;
-                background-color: aliceblue;
-                border: solid black 0;
+                background-color: var(--secondary-clr);
+                border: solid var(--secondary-clr) 0;
+                color: whitesmoke;
                 border-radius: 5px;
                 margin-top: 8px;
+                cursor: pointer;
             }
             input[type=text],
             input[type=password] {
@@ -36,6 +38,7 @@
                 font-size: 14pt;
                 width: 100%;
             }
+
     
         </style>
     </head>
@@ -58,7 +61,7 @@
                 
                 <label for="password">Password</label>
                 <input type="password" name="password">
-                
+                <div ></div>
                 <button name="submit">Login</input>
             </form>
         </div>
