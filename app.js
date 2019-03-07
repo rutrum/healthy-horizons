@@ -3,6 +3,8 @@ var url = require('url')
 var fs = require('fs')
 var ip = require('ip')
 
+var db = require('./DbHandler')
+
 // require('./healthy_db_connection.js')
 
 var server = http.createServer(function (req, res) {
@@ -57,5 +59,7 @@ var server = http.createServer(function (req, res) {
 })
 
 server.listen(8080);
+
+
 
 console.log("Now serving on " + ip.address() + ":8080.")
