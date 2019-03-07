@@ -1,0 +1,16 @@
+{
+"server":"<garythesnail>.database.windows.net",
+"authentication": {
+"type": "default",
+"options": {
+"userName":"<horizonsadmin>",
+"password":"<Heyswolesister1>"
+}
+},
+"options": {
+"encrypt": true,
+"database": "<horizons>",
+"useColumnNames": true,
+"rowCollectionOnDone": true
+}
+}
