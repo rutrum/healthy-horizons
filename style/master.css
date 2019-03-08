@@ -41,3 +41,16 @@ body {
 .center {
     margin: 0 auto;
 }
+.box{
+    margin: 30px auto;
+    padding: 30px;
+    width: 500px;
+
+    border: solid var(--secondary-clr) 2px;
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
