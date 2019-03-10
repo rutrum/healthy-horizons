@@ -7,12 +7,16 @@
 
 body {
     margin: 0;
+    margin-top: 50px;
     padding: 0;
     background-color: whitesmoke;
 }
 
 nav {
     background-color: var(--main-clr);
+    position: fixed;
+    width: 100%;
+    top: 0;
     display: flex;
     justify-content: center;
 }
@@ -64,7 +68,7 @@ a:hover {
 .sticky {
     position: -webkit-sticky; /* Safari */
     position: sticky;
-    top: 60px;
+    top: 120px;
 }
 
 h2 {
