@@ -3,7 +3,7 @@ var url = require('url')
 var fs = require('fs')
 var ip = require('ip')
 
-var db = require('./DbHandler')
+// var db = require('./DbHandler')
 
 // require('./healthy_db_connection.js')
 
