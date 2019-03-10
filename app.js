@@ -44,9 +44,11 @@ var server = http.createServer(function (req, res) {
             // Determine content type by looking at requested file extension
             if (filename.endsWith("css")) {
                 res.writeHead(200, { 'Content-Type': 'text/css' })
-            } else if (filename.endsWith("js")) 
+            } else if (filename.endsWith("js")) {
                 res.writeHead(200, { 'Content-Type': 'application/javascript' })
-            else {
+            } else if (filename.endsWith("ico")) {
+                res.writeHead(200, { 'Content-Type': 'image/ico' })
+            } else {
                 res.writeHead(200, { 'Content-Type': 'text/html' })
             }
 
