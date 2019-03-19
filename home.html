@@ -42,6 +42,23 @@
                 cursor: pointer;
                 margin: 20px 0 0 0;
             }
+            #progress {
+            background: var(--secondary-clr);
+            border-radius: 13px;
+            height: 20px;
+            width: 100%;
+            padding: 3px;
+            }
+
+            #progress:after {
+            content: '';
+            display: block;
+            background: var(--main-clr);
+            width: 40%;
+            height: 100%;
+            border-radius: 9px;
+            }
+
             input[type=checkbox]
             {
                 transform:scale(1.5);
@@ -177,6 +194,11 @@
 
             <form class="box skinny sticky">
                 <h2>Stats</h2>
+                <p>
+                    Progress to Platinum:
+                </p>
+                <div id="progress">
+                </div>
             </form>
 
         </div>
