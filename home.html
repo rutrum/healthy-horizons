@@ -44,20 +44,20 @@
                 margin: 20px 0 0 0;
             }
             #progress {
-            background: var(--secondary-clr);
-            border-radius: 13px;
-            height: 20px;
-            width: 100%;
-            padding: 3px;
+                background: var(--secondary-clr);
+                border-radius: 13px;
+                height: 20px;
+                width: 100%;
+                padding: 3px;
             }
 
             #progress:after {
-            content: '';
-            display: block;
-            background: var(--main-clr);
-            width: 40%;
-            height: 100%;
-            border-radius: 9px;
+                content: '';
+                display: block;
+                background: var(--main-clr);
+                width: 40%;
+                height: 100%;
+                border-radius: 9px;
             }
 
             input[type=checkbox]
@@ -92,7 +92,7 @@
 
         <div id="point-submission">
 
-            <form class="box skinny sticky" >
+            <form id="week-selection" class="box skinny sticky" >
                 <h2>Spring 2019</h2>
                 <div style="text-align-last: left; padding: 20px 5px">
                     Select your week:
@@ -114,14 +114,14 @@
                     <option value="Week 14">Week 14</option>
                     <option value="Week 15">Week 15</option>
                 </select>
-                <button style="cursor:pointer">
+                <button type="submit" style="cursor:pointer">
                     Show
                 </button>
             </form>
 
             <form class="box">
                 <img  style="width: 100%; padding: 20px 5px"  src="./resources\transparent-logo.png">
-                <h2>Point Submission for week __</h2>
+                <h2>Point Submission for <span id="week-num">Week 1</span></h2>
 
                 <div class="point-divider">
                     Earn 1 Point Each
@@ -225,5 +225,16 @@
             </form>
 
         </div>
+        <script>
+        
+            const weekForm = document.querySelector('#week-selection')
+            weekForm.addEventListener('submit', (event) => {
+                event.preventDefault()
+                const week = weekForm.querySelector('select').value
+                const weekNum = document.querySelector('#week-num')
+                weekNum.textContent = week
+            })
+
+        </script>
     </body>
 </html>

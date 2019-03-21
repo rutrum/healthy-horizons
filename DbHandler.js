@@ -1,31 +1,48 @@
 var Connection = require('tedious').Connection
 var Request = require('tedious').Request
 
-var config = require('./dbCred.json')
+module.exports = class DBHandler {
 
-var connection = new Connection(config)
+    constructor() {
+        
+        // Create connection from credentials file
+        var config = require('./dbCred.json')
+        this.connection = new Connection(config)
 
-connection.on('connect', function (err) {
-    if (err) {
-        console.log(err)
-    } else {
-        console.log("Server connection successful.")
+        // Feedback of connection success or failure
+        this.connection.on('connect', function(err) {
+            if (err) {
+                console.log(err)
+            } else {
+                console.log("Server connection successful.")
+            }
+        })
     }
-})
 
-exports.testRequest = function (callback) {
-    request = new Request("SELECT * FROM ITFacilities", function (err, rowCount) {
-        if (err) {
-            console.log(err)
-            callback("Internal Server Error")
-        }
-    })
+    // Removed metadata from columns and simplifies object structure
+    clean(rows) {
+        var cleanedRows = []
+        rows.forEach(row => {
+            var cleanedRow = {}
+            for (let col in row) {
+                cleanedRow[col] = row[col].value
+            }
+            cleanedRows.push(cleanedRow)
+        })
+        return cleanedRows
+    }
 
-    // Upon completion of query, sends rows into callback function
-    request.on('doneInProc', function (rowCount, more, rows) {
-        callback(rows)
-    })
+    queryDatabase(query, callback) {
+        console.log(query)
+        var request = new Request(query, (err, rowCount, rows) => {
+            if (err) {
+                callback(err.message)
+            } else {
+                callback(this.clean(rows))
+            }
+        })
 
-    connection.execSql(request)
+        this.connection.execSql(request)
+    }
 
 }
