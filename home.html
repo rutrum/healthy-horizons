@@ -43,21 +43,24 @@
                 cursor: pointer;
                 margin: 20px 0 0 0;
             }
+            
             #progress {
                 background: var(--secondary-clr);
                 border-radius: 13px;
                 height: 20px;
                 width: 100%;
-                padding: 3px;
+                padding: 0px;
             }
+            
 
             #progress:after {
                 content: '';
+                text-decoration-color: white;
                 display: block;
                 background: var(--main-clr);
-                width: 40%;
+                width: 55%; /* THIS IS THE ACTUAL PROGRESS */
                 height: 100%;
-                border-radius: 9px;
+                border-radius: 13px;
             }
 
             input[type=checkbox]
@@ -215,7 +218,7 @@
                 </button>
             </form>
 
-            <form class="box skinny sticky">
+            <form class="box skinny sticky" id="Stats-Panel">
                 <h2>Stats</h2>
                 <p>
                     Progress to Platinum:
