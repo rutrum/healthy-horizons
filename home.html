@@ -98,30 +98,30 @@
                     Select your week:
                 </div>
                 <select>
-                    <option value="Week 1">Week 1</option>
-                    <option value="Week 2">Week 2</option>
-                    <option value="Week 3">Week 3</option>
-                    <option value="Week 4">Week 4</option>
-                    <option value="Week 5">Week 5</option>
-                    <option value="Week 6">Week 6</option>
-                    <option value="Week 7">Week 7</option>
-                    <option value="Week 8">Week 8</option>
-                    <option value="Week 9">Week 9</option>
-                    <option value="Week 10">Week 10</option>
-                    <option value="Week 11">Week 11</option>
-                    <option value="Week 12">Week 12</option>
-                    <option value="Week 13">Week 13</option>
-                    <option value="Week 14">Week 14</option>
-                    <option value="Week 15">Week 15</option>
+                    <option value="1">Week 1</option>
+                    <option value="2">Week 2</option>
+                    <option value="3">Week 3</option>
+                    <option value="4">Week 4</option>
+                    <option value="5">Week 5</option>
+                    <option value="6">Week 6</option>
+                    <option value="7">Week 7</option>
+                    <option value="8">Week 8</option>
+                    <option value="9">Week 9</option>
+                    <option value="10">Week 10</option>
+                    <option value="11">Week 11</option>
+                    <option value="12">Week 12</option>
+                    <option value="13">Week 13</option>
+                    <option value="14">Week 14</option>
+                    <option value="15">Week 15</option>
                 </select>
                 <button type="submit" style="cursor:pointer">
                     Show
                 </button>
             </form>
 
-            <form class="box">
+            <form class="box" method="POST">
                 <img  style="width: 100%; padding: 20px 5px"  src="./resources\transparent-logo.png">
-                <h2>Point Submission for <span id="week-num">Week 1</span></h2>
+                <h2>Point Submission for Week <span id="week-num">1</span></h2>
 
                 <div class="point-divider">
                     Earn 1 Point Each
@@ -203,11 +203,11 @@
                     Earn 50 Points Each
                 </div>
                 <div class="objective">
-                    <input type="checkbox">
+                    <input type="checkbox" name="annualConsult">
                     <label> Complete annual wellness consult with Healthy Horizons</label>
                 </div>
                 <div class="objective">
-                    <input type="checkbox">
+                    <input type="checkbox" name="annualPhysical">
                     <label> Complete annual physical with your Primary Care Provider</label>
                 </div>
                 <button style="cursor:pointer">
@@ -227,6 +227,7 @@
         </div>
         <script>
         
+            // Update 
             const weekForm = document.querySelector('#week-selection')
             weekForm.addEventListener('submit', (event) => {
                 event.preventDefault()
