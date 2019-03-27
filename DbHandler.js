@@ -19,6 +19,8 @@ module.exports = class DBHandler {
         })
     }
 
+    
+
     // Removed metadata from columns and simplifies object structure
     clean(rows) {
         var cleanedRows = []
