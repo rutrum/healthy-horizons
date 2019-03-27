@@ -43,21 +43,22 @@
                 cursor: pointer;
                 margin: 20px 0 0 0;
             }
+            
             #progress {
                 background: var(--secondary-clr);
                 border-radius: 13px;
                 height: 20px;
                 width: 100%;
-                padding: 3px;
+                padding: 0px;
             }
 
-            #progress:after {
+            #progress::after {
                 content: '';
                 display: block;
                 background: var(--main-clr);
-                width: 40%;
+                width: 55%; /* THIS IS THE ACTUAL PROGRESS */
                 height: 100%;
-                border-radius: 9px;
+                border-radius: 13px;
             }
 
             input[type=checkbox]
@@ -95,24 +96,24 @@
             <form id="week-selection" class="box skinny sticky" >
                 <h2>Spring 2019</h2>
                 <div style="text-align-last: left; padding: 20px 5px">
-                    Select your week:
+                    Week of:
                 </div>
                 <select>
-                    <option value="1">Week 1</option>
-                    <option value="2">Week 2</option>
-                    <option value="3">Week 3</option>
-                    <option value="4">Week 4</option>
-                    <option value="5">Week 5</option>
-                    <option value="6">Week 6</option>
-                    <option value="7">Week 7</option>
-                    <option value="8">Week 8</option>
-                    <option value="9">Week 9</option>
-                    <option value="10">Week 10</option>
-                    <option value="11">Week 11</option>
-                    <option value="12">Week 12</option>
-                    <option value="13">Week 13</option>
-                    <option value="14">Week 14</option>
-                    <option value="15">Week 15</option>
+                    <option value="1">1/14/2019</option>
+                    <option value="2">1/21/2019</option>
+                    <option value="3">1/28/2019</option>
+                    <option value="4">2/4/2019</option>
+                    <option value="5">2/11/2019</option>
+                    <option value="6">2/18/2019</option>
+                    <option value="7">3/4/2019</option>
+                    <option value="8">3/11/2019</option>
+                    <option value="9">3/18/2019</option>
+                    <option value="10">3/25/2019</option>
+                    <option value="11">4/1/2019</option>
+                    <option value="12">4/8/2019</option>
+                    <option value="13">4/15/2019</option>
+                    <option value="14">4/22/2019</option>
+                    <option value="15">4/29/2019</option>
                 </select>
                 <button type="submit" style="cursor:pointer">
                     Show
@@ -215,7 +216,7 @@
                 </button>
             </form>
 
-            <form class="box skinny sticky">
+            <form class="box skinny sticky" id="Stats-Panel">
                 <h2>Stats</h2>
                 <p>
                     Progress to Platinum:
