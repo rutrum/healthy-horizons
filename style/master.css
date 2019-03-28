@@ -32,10 +32,10 @@ nav {
     display: inline-block;
     padding: 15px;
 }
-a {
+nav a {
     color: whitesmoke;
 }
-a:hover {
+nav a:hover {
     text-decoration: none;
     color: whitesmoke;
 }
