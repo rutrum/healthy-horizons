@@ -25,6 +25,17 @@ router.get('/', (req, res) => {
     res.sendFile(path.join(__dirname + '/login.html'))
 })
 
+router.post('/login.html', (req, res) => {
+    cred = req.body
+    db.isUser(cred.email, cred.pass, (isUser) => {
+        if (isUser) {
+            res.sendFile(path.join(__dirname + "/home.html"))
+        } else {
+            res.sendFile(path.join(__dirname + "/login.html"))
+        }
+    })
+})
+
 router.get('/:name', (req, res) => {
     res.sendFile(path.join(__dirname + "/" + req.params.name))
 })
