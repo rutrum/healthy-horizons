@@ -49,16 +49,32 @@
                 border-radius: 13px;
                 height: 20px;
                 width: 100%;
-                padding: 0px;
+                padding: 3px;
+            }
+
+            .label-line {
+                float: right;
+                background: silver;
+                height:30px;
+	            width:4px;
+                /*margin-left: 2px;*/
+            }
+
+            .bar-step {
+                position:absolute;
+                margin-top:-8px;
+                font-size:12px;
             }
 
             #progress::after {
+                position: relative;
+                z-index: 3;
                 content: '';
                 display: block;
                 background: var(--main-clr);
-                width: 55%; /* THIS IS THE ACTUAL PROGRESS */
+                width: 50%; /* THIS IS THE ACTUAL PROGRESS */
                 height: 100%;
-                border-radius: 13px;
+                border-radius: 9px;               
             }
 
             input[type=checkbox]
@@ -215,6 +231,7 @@
                     Submit
                 </button>
             </form>
+            
 
             <form class="box skinny sticky" id="Stats-Panel">
                 <h2>Stats</h2>
@@ -222,6 +239,12 @@
                     Progress to Platinum:
                 </p>
                 <div id="progress">
+                    <div class="bar-step" style="left: 30%">
+                            <div class="label-line"></div>
+                        </div>
+                    <div class="bar-step" style="left: 60%">
+                            <div class="label-line"></div>
+                        </div>
                 </div>
             </form>
 
