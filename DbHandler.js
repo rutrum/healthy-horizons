@@ -19,7 +19,20 @@ module.exports = class DBHandler {
         })
     }
 
-    
+    isUser(email, password, callback) {
+        getUser(email, password, (rows) => {
+            if (rows.length == 0) {
+                callback(false)
+            } else {
+                callback(true)
+            }
+        })
+    }
+
+    getUser(email, pass, callback) {
+        query = "SELECT * FROM users WHERE email=" + email + " AND password=" + pass;
+        queryDatabase(query, callback)
+    }
 
     // Removed metadata from columns and simplifies object structure
     clean(rows) {
