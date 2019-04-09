@@ -52,9 +52,25 @@
                 padding: 3px;
             }
 
-            .label-line {
+            .label-line-silver {
                 float: right;
                 background: silver;
+                height:30px;
+	            width:4px;
+                /*margin-left: 2px;*/
+            }
+
+            .label-line-gold {
+                float: right;
+                background: gold;
+                height:30px;
+	            width:4px;
+                /*margin-left: 2px;*/
+            }
+
+            .label-line-platinum {
+                float: right;
+                background: paleturquoise;
                 height:30px;
 	            width:4px;
                 /*margin-left: 2px;*/
@@ -239,11 +255,17 @@
                     Progress to Platinum:
                 </p>
                 <div id="progress">
-                    <div class="bar-step" style="left: 30%">
-                            <div class="label-line"></div>
+                    <div class="bar-step" style="left: 18%">
+                            <div class="label-line-silver"></div>
+                            <p>SILVER</p>
                         </div>
-                    <div class="bar-step" style="left: 60%">
-                            <div class="label-line"></div>
+                    <div class="bar-step" style="left: 48%">
+                            <div class="label-line-gold"></div>
+                            <p>GOLD</p>
+                        </div>
+                    <div class="bar-step" style="left: 70%">
+                            <div class="label-line-platinum"></div>
+                            <p>PLATINUM</p>
                         </div>
                 </div>
             </form>
