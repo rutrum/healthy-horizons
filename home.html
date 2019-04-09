@@ -81,6 +81,19 @@
                 margin-top:-8px;
                 font-size:12px;
             }
+            @media screen and (max-width: 800px) 
+            {
+                #week-selection{
+                    order: 0;
+                }
+                #stats{
+                    order: 1;
+                }
+                #points{
+                    order: 2;
+                }
+            }
+            
 
             #progress::after {
                 position: relative;
@@ -125,7 +138,7 @@
 
         <div id="point-submission">
 
-            <form id="week-selection" class="box skinny sticky" >
+            <form id="week-selection" class="box skinny" >
                 <h2>Spring 2019</h2>
                 <div style="text-align-last: left; padding: 20px 5px">
                     Week of:
@@ -152,7 +165,7 @@
                 </button>
             </form>
 
-            <form class="box" method="POST">
+            <form id="points" class="box" method="POST">
                 <img  style="width: 100%; padding: 20px 5px"  src="./resources\transparent-logo.png">
                 <h2>Point Submission for Week <span id="week-num">1</span></h2>
 
@@ -249,7 +262,7 @@
             </form>
             
 
-            <form class="box skinny sticky" id="Stats-Panel">
+            <form class="box skinny" id="stats">
                 <h2>Stats</h2>
                 <p>
                     Progress to Platinum:
