@@ -5,7 +5,7 @@ module.exports = class DBHandler {
 
     constructor() {
         
-        // Create connection from credentials file
+        // Create connection from credentials file  
         var config = require('./dbCred.json')
         this.connection = new Connection(config)
 
