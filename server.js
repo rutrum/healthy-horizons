@@ -27,7 +27,8 @@ router.get('/', (req, res) => {
 
 router.post('/login.html', (req, res) => {
     cred = req.body
-    db.isUser(cred.email, cred.pass, (isUser) => {
+    db.isUser(cred.email, cred.password, (isUser) => {
+        console.log("isUser ", isUser)
         if (isUser) {
             res.sendFile(path.join(__dirname + "/home.html"))
         } else {
