@@ -84,6 +84,19 @@
                 margin-top:-8px;
                 font-size:12px;
             }
+            @media screen and (max-width: 800px) 
+            {
+                #week-selection{
+                    order: 0;
+                }
+                #stats{
+                    order: 1;
+                }
+                #points{
+                    order: 2;
+                }
+            }
+            
 
             #progress::after {
                 position: relative;
@@ -128,7 +141,7 @@
 
         <div id="point-submission">
 
-            <form id="week-selection" class="box skinny sticky" >
+            <form id="week-selection" class="box skinny" >
                 <h2>Spring 2019</h2>
                 <div style="text-align-last: left; padding: 20px 5px">
                     Week of:
@@ -155,7 +168,11 @@
                 </button>
             </form>
 
+<<<<<<< HEAD
             <form class="box" method="POST" id="objectivelist">
+=======
+            <form id="points" class="box" method="POST">
+>>>>>>> 032594809ca96b75e5c2b4fa9c27b9871125ace4
                 <img  style="width: 100%; padding: 20px 5px"  src="./resources\transparent-logo.png">
                 <h2>Point Submission for Week <span id="week-num">1</span></h2>
 
@@ -163,39 +180,39 @@
                     Earn 1 Point Each
                 </div>
                 <div class="objective">
-                    <input type="number" min="0" placeholder="0">
+                    <input type="number" min="0" placeholder="0" name="meditationClass">
                     <label>Participate in Center for Faith and Vocation guided meditation class</label>
                 </div>
                 <div class="objective">
-                    <input type="number" min="0" placeholder="0">
+                    <input type="number" min="0" placeholder="0" name="fruits">
                     <label>Eat 5 servings of fruits/vegetables in one day</label>
                 </div>
                 <div class="objective">
-                    <input type="number" min="0" placeholder="0">
+                    <input type="number" min="0" placeholder="0" name="noSugaryDrinks">
                     <label>Avoid all sugar-sweetened beverages for one day</label>
                 </div>
                 <div class="objective">
-                    <input type="number" min="0" placeholder="0">
+                    <input type="number" min="0" placeholder="0" name="fitnessClass">
                     <label>Participate in an HRC fitness class</label>
                 </div>
                 <div class="objective">
-                    <input type="number" min="0" placeholder="0">
+                    <input type="number" min="0" placeholder="0" name="homeLunch">
                     <label>Pack a healthy lunch from home</label>
                 </div>
                 <div class="objective">
-                    <input type="number" min="0" placeholder="0">
+                    <input type="number" min="0" placeholder="0" name="parkFar">
                     <label>Park far away from work/store and walk</label>
                 </div>
                 <div class="objective">
-                    <input type="number" min="0" placeholder="0">
+                    <input type="number" min="0" placeholder="0" name="sleep">
                     <label>Sleep 7 and a half hours or more in one night</label>
                 </div>
                 <div class="objective">
-                    <input type="number" min="0" placeholder="0">
+                    <input type="number" min="0" placeholder="0" name="upstairsBathroom">
                     <label>Use the restroom on different floor or building from your office</label>
                 </div>
                 <div class="objective">
-                    <input type="number" min="0" placeholder="0">
+                    <input type="number" min="0" placeholder="0" name="seatbelt">
                     <label>Wear your seat belt whenever in the car or bike helmet when biking</label>
                 </div>
 
@@ -203,19 +220,19 @@
                     Earn 5 Points Each
                 </div>
                 <div class="objective">
-                    <input type="number" min="0" placeholder="0">
+                    <input type="number" min="0" placeholder="0" name="medications">
                     <label>Take prescribed medications for an entire week</label>
                 </div>
                 <div class="objective">
-                    <input type="number" min="0" placeholder="0">
+                    <input type="number" min="0" placeholder="0" name="snackForOffice">
                     <label>Contribute a healthy meal/snack for office pitch in</label>
                 </div>
                 <div class="objective">
-                    <input type="number" min="0" placeholder="0">
+                    <input type="number" min="0" placeholder="0"name="increase steps">
                     <label>Increase your weekly step count average by 1000 steps</label>
                 </div>
                 <div class="objective">
-                    <input type="number" min="0" placeholder="0">
+                    <input type="number" min="0" placeholder="0" name="exercise">
                     <label>Obtain 150 minutes of exercise in one week</label>
                 </div>
 
@@ -223,15 +240,15 @@
                     Earn 25 Points Each
                 </div>
                 <div class="objective">
-                    <input type="number" min="0" placeholder="0">
+                    <input type="number" min="0" placeholder="0" name="lunchAndLearn">
                     <label> Attend a Healthy Horizons lunch and learn</label>
                 </div>
                 <div class="objective">
-                    <input type="checkbox">
+                    <input type="checkbox" name="read">
                     <label> Read an entire novel for stress relief</label>
                 </div>
                 <div class="objective">
-                    <input type="checkbox">
+                    <input type="checkbox" name="healthyBlog">
                     <label> Register for Healthier BU Blog</label>
                 </div>
 
@@ -252,7 +269,7 @@
             </form>
             
 
-            <form class="box skinny sticky" id="Stats-Panel">
+            <form class="box skinny" id="stats">
                 <h2>Stats</h2>
                 <p>
                     Progress to Platinum:
