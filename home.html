@@ -49,16 +49,61 @@
                 border-radius: 13px;
                 height: 20px;
                 width: 100%;
-                padding: 0px;
+                padding: 3px;
             }
 
+            .label-line-silver {
+                float: right;
+                background: silver;
+                height:30px;
+	            width:4px;
+                /*margin-left: 2px;*/
+            }
+
+            .label-line-gold {
+                float: right;
+                background: gold;
+                height:30px;
+	            width:4px;
+                /*margin-left: 2px;*/
+            }
+
+            .label-line-platinum {
+                float: right;
+                background: paleturquoise;
+                height:30px;
+	            width:4px;
+                /*margin-left: 2px;*/
+            }
+
+            .bar-step {
+                position:absolute;
+                margin-top:-8px;
+                font-size:12px;
+            }
+            @media screen and (max-width: 800px) 
+            {
+                #week-selection{
+                    order: 0;
+                }
+                #stats{
+                    order: 1;
+                }
+                #points{
+                    order: 2;
+                }
+            }
+            
+
             #progress::after {
+                position: relative;
+                z-index: 3;
                 content: '';
                 display: block;
                 background: var(--main-clr);
-                width: 55%; /* THIS IS THE ACTUAL PROGRESS */
+                width: 50%; /* THIS IS THE ACTUAL PROGRESS */
                 height: 100%;
-                border-radius: 13px;
+                border-radius: 9px;               
             }
 
             input[type=checkbox]
@@ -75,7 +120,7 @@
         <nav>
              <!-- This is the navigation bar -->
             <div class="navButton"> 
-                <a href="./index.html">Index</a>
+                <a href="./index.html">About</a>
             </div>
 
             <div class="navButton"> 
@@ -93,7 +138,7 @@
 
         <div id="point-submission">
 
-            <form id="week-selection" class="box skinny sticky" >
+            <form id="week-selection" class="box skinny" >
                 <h2>Spring 2019</h2>
                 <div style="text-align-last: left; padding: 20px 5px">
                     Week of:
@@ -120,7 +165,7 @@
                 </button>
             </form>
 
-            <form class="box" method="POST">
+            <form id="points" class="box" method="POST">
                 <img  style="width: 100%; padding: 20px 5px"  src="./resources\transparent-logo.png">
                 <h2>Point Submission for Week <span id="week-num">1</span></h2>
 
@@ -215,13 +260,26 @@
                     Submit
                 </button>
             </form>
+            
 
-            <form class="box skinny sticky" id="Stats-Panel">
+            <form class="box skinny" id="stats">
                 <h2>Stats</h2>
                 <p>
                     Progress to Platinum:
                 </p>
                 <div id="progress">
+                    <div class="bar-step" style="left: 18%">
+                            <div class="label-line-silver"></div>
+                            <p>SILVER</p>
+                        </div>
+                    <div class="bar-step" style="left: 48%">
+                            <div class="label-line-gold"></div>
+                            <p>GOLD</p>
+                        </div>
+                    <div class="bar-step" style="left: 70%">
+                            <div class="label-line-platinum"></div>
+                            <p>PLATINUM</p>
+                        </div>
                 </div>
             </form>
 

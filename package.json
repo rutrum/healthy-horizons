@@ -18,6 +18,7 @@
     "ip": "^1.1.5",
     "jquery": "^3.3.1",
     "mysql": "^2.16.0",
+    "passport-remember-me": "0.0.1",
     "popper.js": "^1.14.7",
     "tedious": "^5.0.3"
   }
