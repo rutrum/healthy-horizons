@@ -11,6 +11,7 @@
         "encrypt": true,
         "database": "horizons",
         "useColumnNames": true,
-        "rowCollectionOnDone": true
+        "rowCollectionOnDone": true,
+        "rowCollectionOnRequestCompletion": true
     }
 }

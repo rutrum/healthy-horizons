@@ -5,7 +5,7 @@ module.exports = class DBHandler {
 
     constructor() {
         
-        // Create connection from credentials file
+        // Create connection from credentials file  
         var config = require('./dbCred.json')
         this.connection = new Connection(config)
 
@@ -19,8 +19,15 @@ module.exports = class DBHandler {
         })
     }
 
+    getUserInfo(id, callback) {
+        getUser(id, (userRow) => {
+
+        })
+    }
+
     isUser(email, password, callback) {
-        getUser(email, password, (rows) => {
+        this.getUser(email, password, (rows) => {
+            console.log(rows)
             if (rows.length == 0) {
                 callback(false)
             } else {
@@ -29,9 +36,21 @@ module.exports = class DBHandler {
         })
     }
 
+    getUser(id, callback) {
+        var query = "SELECT * FROM users id=" + id;
+        this.queryDatabase(query, callback)
+    }
+
     getUser(email, pass, callback) {
-        query = "SELECT * FROM users WHERE email=" + email + " AND password=" + pass;
-        queryDatabase(query, callback)
+        var query = "SELECT * FROM users WHERE email='" + email + "' AND password='" + pass + "'";
+        this.queryDatabase(query, callback)
+    }
+
+    getTasks(user) {
+        var query = "SELECT * FROM usertasks NATURAL JOIN tasks WHERE userID=" + user.id;
+        this.queryDatabase(query, (tasks) => {
+            console.log(tasks)
+        })
     }
 
     // Removed metadata from columns and simplifies object structure
