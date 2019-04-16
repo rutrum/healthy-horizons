@@ -84,8 +84,38 @@
                 margin-top:-8px;
                 font-size:12px;
             }
-            @media screen and (max-width: 800px) 
+            @media screen and (max-width: 738px) 
             {
+                #welcome > *{
+                    display: none;
+                }
+            }
+            
+            @media screen and (max-width: 480px) 
+            {
+                #point-submission{
+                    flex-direction: column;
+                }
+                #week-selection{
+                    order: 0;
+                }
+                #stats{
+                    order: 1;
+                }
+                #points{
+                    order: 2;
+                }
+                .box {
+                    width: 100%;
+                }
+            }
+            
+            @media screen and (max-width: 1200px) 
+            {
+                #point-submission{
+                    flex-direction: row;
+                    flex-wrap: wrap;
+                }
                 #week-selection{
                     order: 0;
                 }
@@ -96,7 +126,7 @@
                     order: 2;
                 }
             }
-            
+        
 
             #progress::after {
                 position: relative;
@@ -133,8 +163,8 @@
             <div class="navButton">
                 <a href="./login.html">Login</a>
             </div>
-            <div style="position: absolute; right: 10; top: 2">
-                <h5 style="padding: 11 0; color: white"; >Hello, Name Here</h5>
+            <div id="welcome" style="position: absolute; right: 10; top: 2">
+                <h5 style="padding: 11 0; color: white" >Hello, Name Here</h5>
             </div>
             
         </nav>
@@ -167,7 +197,8 @@
                     Show
                 </button>
             </form>
-            <form class="box" method="POST" id="objectivelist">
+
+            <form id="points"  class="box" method="POST">
                 <img  style="width: 100%; padding: 20px 5px"  src="./resources\transparent-logo.png">
                 <h2>Point Submission for Week <span id="week-num">1</span></h2>
 
@@ -271,17 +302,17 @@
                 </p>
                 <div id="progress">
                     <div class="bar-step" style="left: 18%">
-                            <div class="label-line-silver"></div>
-                            <p>SILVER</p>
-                        </div>
+                        <!-- <div class="label-line-silver"></div>
+                        <p>SILVER</p> -->
+                    </div>
                     <div class="bar-step" style="left: 48%">
-                            <div class="label-line-gold"></div>
-                            <p>GOLD</p>
-                        </div>
+                        <!-- <div class="label-line-gold"></div>
+                        <p>GOLD</p> -->
+                    </div>
                     <div class="bar-step" style="left: 70%">
-                            <div class="label-line-platinum"></div>
-                            <p>PLATINUM</p>
-                        </div>
+                        <!-- <div class="label-line-platinum"></div>
+                        <p>PLATINUM</p> -->
+                    </div>
                 </div>
             </form>
 
