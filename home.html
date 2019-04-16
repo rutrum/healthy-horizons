@@ -286,9 +286,10 @@
             </form>
 
         </div>
+        <script src="script/data.js" type="text/javascript"></script>
         <script>
         
-            // Update 
+            // Update week
             const weekForm = document.querySelector('#week-selection')
             weekForm.addEventListener('submit', (event) => {
                 event.preventDefault()
@@ -296,6 +297,17 @@
                 const weekNum = document.querySelector('#week-num')
                 weekNum.textContent = week
             })
+
+            // Populate the form with data
+            let data = getLocalFormData()
+            const form = document.querySelector('#objectivelist')
+            form.querySelector("input[name='fruits']").value = data[0].fruits
+
+            for (var objective in data[0]) {
+                if (data[0].hasOwnProperty(objective)) {
+                    form.querySelector("input[name='" + objective +"']").value = data[0][objective]
+                }
+            }
 
         </script>
     </body>
