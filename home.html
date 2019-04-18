@@ -254,7 +254,7 @@
                     <label>Contribute a healthy meal/snack for office pitch in</label>
                 </div>
                 <div class="objective">
-                    <input type="number" min="0" placeholder="0"name="increase steps">
+                    <input type="number" min="0" placeholder="0"name="increaseSteps">
                     <label>Increase your weekly step count average by 1000 steps</label>
                 </div>
                 <div class="objective">
@@ -270,11 +270,11 @@
                     <label> Attend a Healthy Horizons lunch and learn</label>
                 </div>
                 <div class="objective">
-                    <input type="checkbox" name="read">
+                    <input type="number" min="0" placeholder="0" name="read">
                     <label> Read an entire novel for stress relief</label>
                 </div>
                 <div class="objective">
-                    <input type="checkbox" name="healthyBlog">
+                    <input type="number" min="0" placeholder="0" name="healthyBlog">
                     <label> Register for Healthier BU Blog</label>
                 </div>
 
@@ -282,11 +282,11 @@
                     Earn 50 Points Each
                 </div>
                 <div class="objective">
-                    <input type="checkbox" name="annualConsult">
+                    <input type="number" min="0" max="1" placeholder="0" name="annualConsult">
                     <label> Complete annual wellness consult with Healthy Horizons</label>
                 </div>
                 <div class="objective">
-                    <input type="checkbox" name="annualPhysical">
+                    <input type="number" min="0" max="1" placeholder="0" name="annualPhysical">
                     <label> Complete annual physical with your Primary Care Provider</label>
                 </div>
                 <button style="cursor:pointer">
@@ -327,18 +327,43 @@
                 const week = weekForm.querySelector('select').value
                 const weekNum = document.querySelector('#week-num')
                 weekNum.textContent = week
+                fillFormForWeek(week)
             })
 
             // Populate the form with data
             let data = getLocalFormData()
-            const form = document.querySelector('#objectivelist')
-            form.querySelector("input[name='fruits']").value = data[0].fruits
+            const form = document.querySelector('#points')
 
-            for (var objective in data[0]) {
-                if (data[0].hasOwnProperty(objective)) {
-                    form.querySelector("input[name='" + objective +"']").value = data[0][objective]
+            function fillFormForWeek(week) {
+                for (var objective in data[week - 1]) {
+                    if (data[week - 1].hasOwnProperty(objective)) {
+                        form.querySelector("input[name='" + objective +"']").value = data[week - 1][objective]
+                    }
                 }
             }
+
+            const week = document.querySelector('#week-num').textContent
+            fillFormForWeek(week)
+            
+
+            function saveData() {
+                document.querySelector('#week-num').textContent
+                for (var objective in data[week - 1]) {
+                    if (data[week - 1].hasOwnProperty(objective)) {
+                        data[week - 1][objective] = form.querySelector("input[name='" + objective +"']").value
+                    }
+                }
+                window.localStorage.setItem("formData", JSON.stringify(data))
+            }
+
+            function saveOnTimeout() {
+                setTimeout(function () {
+                    saveData()
+                    saveOnTimeout()
+                }, 2000)
+            }
+
+            saveOnTimeout()
 
         </script>
     </body>
