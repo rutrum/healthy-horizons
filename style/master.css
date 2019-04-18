@@ -23,6 +23,7 @@ nav {
 .navButton {
     background-color: var(--secondary-clr);
     margin: 0 10px;
+    z-index: 100;
 }
 .navButton:hover {
     background-color: var(--terciary-clr);
