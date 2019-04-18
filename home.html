@@ -346,6 +346,24 @@
                 weekNum.textContent = week
                 fillFormForWeek(week)
             })
+            
+            // Submit points
+            const pointsForm = document.querySelector('#points')
+            pointsForm.addEventListener('submit', (event) => {
+                event.preventDefault()
+                var conf = confirm("Are you sure that you'd like to submit all points for this semester?")
+                if(conf == true){
+                    // Make new post request and save data from form
+                    var xhr = new XMLHttpRequest();
+                    xhr.open("POST", "home.html", true);
+                    xhr.setRequestHeader('Content-Type', 'application/json');
+                    xhr.send(JSON.stringify(
+                        data
+                    ))
+                    
+
+                }
+            })
 
             // Populate the form with data
             let data = getLocalFormData()
