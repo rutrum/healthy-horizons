@@ -5,7 +5,7 @@ function getLocalFormData() {
         // No previous data.  Initialize new form data.
         oneweek = {
             meditationClass: 0,
-            fruits: 2,
+            fruits: 0,
             noSugaryDrinks: 0,
             fitnessClass: 0,
             homeLunch: 0,
