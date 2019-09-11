@@ -110,6 +110,20 @@
                     width: 100%;
                 }
             }
+            @media screen and (min-width: 1201px)
+            {
+                #stats{
+                    position: -webkit-sticky; /* Safari */
+                    position: sticky;
+                    top: 120px;
+                }
+                #week-selection{
+                    position: -webkit-sticky; /* Safari */
+                    position: sticky;
+                    top: 120px;
+                }
+                
+            }
             
             @media screen and (max-width: 1200px) 
             {
@@ -172,8 +186,8 @@
 
             <form id="week-selection" class="box skinny" >
                 <h2>Spring 2019</h2>
-                <div style="text-align-last: left; padding: 20px 5px">
-                    Week of:
+                <div style="text-align-last: left; padding: 15px 5px">
+                    <h6>Week of:</h6>
                 </div>
                 <select>
                     <option value="1">1/14/2019</option>
@@ -296,9 +310,9 @@
 
             <form class="box skinny" id="stats">
                 <h2>Stats</h2>
-                <p>
+                <h6 style="padding: 10px">
                     Progress to Platinum:
-                </p>
+                </h6>
                 <div id="progresstube">
                     <div class="bar-step" style="left: 18%">
                         <!-- <div class="label-line-silver"></div>
@@ -316,6 +330,7 @@
 
                     </div>
                 </div>
+                <h4 style="margin-top: 20px">Total Points: 175</h4>
             </form>
 
         </div>
