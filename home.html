@@ -331,6 +331,10 @@
                 weekNum.textContent = week
                 fillFormForWeek(week)
             })
+
+            // Populate the form with data
+            let data = getLocalFormData()
+            const form = document.querySelector('#points')
             
             // Submit points
             const pointsForm = document.querySelector('#points')
@@ -339,20 +343,14 @@
                 var conf = confirm("Are you sure that you'd like to submit all points for this semester?")
                 if(conf == true){
                     // Make new post request and save data from form
-                    var xhr = new XMLHttpRequest();
-                    xhr.open("POST", "home.html", true);
-                    xhr.setRequestHeader('Content-Type', 'application/json');
-                    xhr.send(JSON.stringify(
-                        data
-                    ))
-                    
-
+                    var xhr = new XMLHttpRequest()
+                    xhr.open("POST", "home.html", true)
+                    xhr.setRequestHeader('Content-type', 'application/json;charset=UTF-8')
+                    let obj = {jsondata: data}
+                    console.log(JSON.stringify(obj))
+                    xhr.send(JSON.stringify(obj))
                 }
             })
-
-            // Populate the form with data
-            let data = getLocalFormData()
-            const form = document.querySelector('#points')
 
             function fillFormForWeek(week) {
                 for (var objective in data[week - 1]) {
