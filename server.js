@@ -3,8 +3,8 @@ var app = express()
 var ip = require('ip')
 var path = require('path')
 
-var DBHandler = require('./db_handler')
-var db = new DBHandler()
+// var DBHandler = require('./db_handler')
+// var db = new DBHandler()
 
 var port = process.env.PORT || 8080
 
@@ -14,13 +14,19 @@ var router = express.Router()
 var bodyParser = require('body-parser')
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use(express.static(__dirname + "/src"))
-
 // On use of any request
 router.use(function(req, res, next) {
     console.log("\nNew " + req.method + " request.")
     console.log(req.originalUrl)
     next()
+})
+
+// All file are served from the /src directory
+__dirname = __dirname + "/src"
+
+// Redirect favicon to the resources file
+router.get('/favicon.ico', (req, res) => {
+    res.sendFile(path.join(__dirname + '/resources/favicon.ico'))
 })
 
 router.get('/', (req, res) => {
