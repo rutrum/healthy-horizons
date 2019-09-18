@@ -2,7 +2,7 @@
   "name": "healthy-horizons-app",
   "version": "1.0.0",
   "description": "A website for an EPICS project started in 2019 Spring.",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

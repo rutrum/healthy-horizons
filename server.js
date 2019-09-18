@@ -3,7 +3,7 @@ var app = express()
 var ip = require('ip')
 var path = require('path')
 
-var DBHandler = require('./DbHandler')
+var DBHandler = require('./db_handler')
 var db = new DBHandler()
 
 var port = process.env.PORT || 8080
@@ -13,6 +13,8 @@ var router = express.Router()
 // Allows us to parse POST request data
 var bodyParser = require('body-parser')
 app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use(express.static(__dirname + "/src"))
 
 // On use of any request
 router.use(function(req, res, next) {
