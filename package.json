@@ -2,7 +2,7 @@
   "name": "healthy-horizons-app",
   "version": "1.0.0",
   "description": "A website for an EPICS project started in 2019 Spring.",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -13,12 +13,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "bootstrap": "^4.2.1",
     "express": "^4.16.4",
     "ip": "^1.1.5",
-    "jquery": "^3.3.1",
     "mysql": "^2.16.0",
-    "passport-remember-me": "0.0.1",
     "popper.js": "^1.14.7",
     "tedious": "^5.0.3"
   }
