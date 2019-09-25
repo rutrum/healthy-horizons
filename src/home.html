@@ -184,7 +184,7 @@
 
         <div id="point-submission">
 
-            <form id="week-selection" class="box skinny" >
+            <form id="week-selection" class="skinny box" >
                 <h2>Spring 2019</h2>
                 <div style="text-align-last: left; padding: 15px 5px">
                     <h6>Week of:</h6>
@@ -380,7 +380,8 @@
             
 
             function saveData() {
-                document.querySelector('#week-num').textContent
+                let week = document.querySelector('#week-num').textContent
+                console.log()
                 for (var objective in data[week - 1]) {
                     if (data[week - 1].hasOwnProperty(objective)) {
                         data[week - 1][objective] = form.querySelector("input[name='" + objective +"']").value
@@ -393,7 +394,7 @@
                 setTimeout(function () {
                     saveData()
                     saveOnTimeout()
-                }, 2000)
+                }, 1000)
             }
 
             saveOnTimeout()
