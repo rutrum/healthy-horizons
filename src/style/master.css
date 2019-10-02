@@ -75,3 +75,32 @@ nav a:hover {
 h2 {
     font-weight: 500;
 }
+
+.purple {
+    
+    width: 35%; 
+    color: var(--main-clr);
+    justify-items: center;
+    justify-content: center;
+    text-align: center;
+    padding:2px;
+    margin: 0 auto;
+
+}
+
+.extraspace {
+    padding-bottom: 50px;
+}
+
+.point-divider {
+
+    padding: 10px; 
+    font-family:'Times New Roman', Times, serif; 
+    font-size:14px;
+}
+
+.objective {
+
+    font-family: 'Times New Roman', Times, Serif;
+    font-size: 13pt; 
+}
