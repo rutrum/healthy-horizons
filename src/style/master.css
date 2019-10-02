@@ -92,6 +92,21 @@ h2 {
     font-weight: 500;
 }
 
+.purple {
+    
+    width: 35%; 
+    color: var(--main-clr);
+    justify-items: center;
+    justify-content: center;
+    text-align: center;
+    padding:2px;
+    margin: 0 auto;
+
+}
+
+.extraspace {
+    padding-bottom: 50px;
+}
 
 .point-divider {
 
