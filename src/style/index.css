@@ -1,0 +1,23 @@
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+    padding: 5px 0px;
+}
+#main {
+    margin: 0 auto;
+    width: 50%;
+}
+@media screen and (max-width: 800px) 
+{
+    #main {
+        width: 90%;
+    }
+}
+p{
+    font-size: 20px;
+}
+ul{
+    font-size: 20px
+}

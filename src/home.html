@@ -1,166 +1,10 @@
 <html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <head>
         <title>Homepage</title>
         <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="./style/master.css">
-
-        <style>
-            #point-submission {
-                display: flex;
-                align-items: flex-start;
-                justify-content: center;
-            }
-            .objective {
-                display: flex;
-                align-items: baseline;
-                width: 100%;
-            }
-            .objective > input {
-                text-align: start;
-                width: 10%;
-            }
-            
-            .objective > label {
-                width: 85%;
-                padding-left: 10px;
-            }
-            .point-divider {
-                font-size: 18pt;
-                font-weight: 600;
-                margin: 10px;
-                margin-top: 20px;
-            }
-            button {
-                width: 100%;
-                height: 40px;
-                background-color: var(--secondary-clr);
-                border: solid var(--secondary-clr) 0;
-                color: whitesmoke;
-                font-weight: 600;
-                letter-spacing: 1px;
-                border-radius: 5px;
-                margin-top: 8px;
-                cursor: pointer;
-                margin: 20px 0 0 0;
-            }
-            
-            #progresstube {
-                background: var(--secondary-clr);
-                border-radius: 13px;
-                height: 20px;
-                width: 100%;
-                padding: 3px;
-            }
-
-            .label-line-silver {
-                float: right;
-                background: silver;
-                height:30px;
-                width:4px;
-                align: center;
-                /*margin-left: 2px;*/
-            }
-
-            .label-line-gold {
-                float: right;
-                background: gold;
-                height:30px;
-                width:4px;
-                align: center;
-                /*margin-left: 2px;*/
-            }
-
-            .label-line-platinum {
-                float: right;
-                background: paleturquoise;
-                height:30px;
-                width:4px;
-                align: center;
-                /*margin-left: 2px;*/
-            }
-
-            .bar-step {
-                position:absolute;
-                margin-top:-8px;
-                font-size:12px;
-            }
-
-            @media screen and (max-width: 738px) 
-            {
-                #welcome > *{
-                    display: none;
-                }
-            }
-            
-            @media screen and (max-width: 480px) 
-            {
-                #point-submission{
-                    flex-direction: column;
-                }
-                #week-selection{
-                    order: 0;
-                }
-                #stats{
-                    order: 1;
-                }
-                #points{
-                    order: 2;
-                }
-                .box {
-                    width: 100%;
-                }
-            }
-            @media screen and (min-width: 1201px)
-            {
-                #stats{
-                    position: -webkit-sticky; /* Safari */
-                    position: sticky;
-                    top: 120px;
-                }
-                #week-selection{
-                    position: -webkit-sticky; /* Safari */
-                    position: sticky;
-                    top: 120px;
-                }
-                
-            }
-            
-            @media screen and (max-width: 1200px) 
-            {
-                #point-submission{
-                    flex-direction: row;
-                    flex-wrap: wrap;
-                }
-                #week-selection{
-                    order: 0;
-                }
-                #stats{
-                    order: 1;
-                }
-                #points{
-                    order: 2;
-                }
-            }
-
-            #progresswater {
-                position:inherit;
-                content: '';
-                display: block;
-                background: var(--main-clr);
-                width: 50%; /* THIS IS THE ACTUAL PROGRESS */
-                height: 100%;
-                border-radius: 9px;               
-            }
-
-            input[type=checkbox]
-            {
-                transform:scale(1.5);
-            }/*
-            input[type=number]::-webkit-inner-spin-button,
-            input[type=number]::-webkit-outer-spin-button {
-                opacity: 1;
-            }*/
-        </style>
+        <link rel="stylesheet" type="text/css" href="./style/home.css">
     </head>
     <body>
         <nav>
@@ -185,31 +29,64 @@
         <div id="point-submission">
 
             <form id="week-selection" class="skinny box" >
-                <h2>Spring 2019</h2>
+
+                <h2 style="font-family:'Times New Roman', Times, serif; font-size: 25px">
+                    Spring 2019
+                </h2>
                 <div style="text-align-last: left; padding: 15px 5px">
-                    <h6>Week of:</h6>
+                    <h6 style="font-family:'Times New Roman', Times, serif; font-size: 18px">
+                        Week of:
+                    </h6>
                 </div>
-                <select>
-                    <option value="1">1/14/2019</option>
-                    <option value="2">1/21/2019</option>
-                    <option value="3">1/28/2019</option>
-                    <option value="4">2/4/2019</option>
-                    <option value="5">2/11/2019</option>
-                    <option value="6">2/18/2019</option>
-                    <option value="7">3/4/2019</option>
-                    <option value="8">3/11/2019</option>
-                    <option value="9">3/18/2019</option>
-                    <option value="10">3/25/2019</option>
-                    <option value="11">4/1/2019</option>
-                    <option value="12">4/8/2019</option>
-                    <option value="13">4/15/2019</option>
-                    <option value="14">4/22/2019</option>
-                    <option value="15">4/29/2019</option>
+                <select style="font-family:'Times New Roman', Times, serif; font-size: 16px">
+                    <option value="1">8/25/2019</option>
+                    <option value="2">9/1/2019</option>
+                    <option value="3">9/8/2019</option>
+                    <option value="4">9/15/2019</option>
+                    <option value="5">9/22/2019</option>
+                    <option value="6">9/29/2019</option>
+                    <option value="7">10/6/2019</option>
+                    <option value="8">10/13/2019</option>
+                    <option value="9">10/20/2019</option>
+                    <option value="10">10/27/2019</option>
+                    <option value="11">11/3/2019</option>
+                    <option value="12">11/10/2019</option>
+                    <option value="13">11/17/2019</option>
+                    <option value="14">11/24/2019</option>
+                    <option value="15">12/1/2019</option>
+                    <option value="15">12/8/2019</option>
                 </select>
                 <button type="submit" style="cursor:pointer">
                     Show
                 </button>
             </form>
+
+            <form class="box skinny" id="stats">
+                    <h2 style="font-family:'Times New Roman', Times, serif; font-size: 25px">
+                        Stats
+                    </h2>
+                    <h6 style="padding: 10px; font-family:'Times New Roman', Times, serif; font-size: 16px">
+                        Progress to Platinum:
+                    </h6>
+                    <div id="progresstube">
+                        <div class="bar-step" style="left: 1%">
+                            <!-- <div class="label-line-silver"></div>
+                            <p>SILVER</p> -->
+                        </div>
+                        <div class="bar-step" style="left: 48%">
+                            <!-- <div class="label-line-gold"></div>
+                            <p>GOLD</p> -->
+                        </div>
+                        <div class="bar-step" style="left: 70%">
+                            <!-- <div class="label-line-platinum"></div>
+                            <p>PLATINUM</p> -->
+                        </div>
+                        <div id="progresswater">
+    
+                        </div>
+                    </div>
+                    <h4 style="margin-top: 20px">Total Points: 175</h4>
+                </form>
 
             <form id="points"  class="box" method="POST">
                 <img  style="width: 100%; padding: 20px 5px"  src="./resources/logo-transparent.png">
@@ -307,31 +184,6 @@
                 </button>
             </form>
             
-
-            <form class="box skinny" id="stats">
-                <h2>Stats</h2>
-                <h6 style="padding: 10px">
-                    Progress to Platinum:
-                </h6>
-                <div id="progresstube">
-                    <div class="bar-step" style="left: 18%">
-                        <!-- <div class="label-line-silver"></div>
-                        <p>SILVER</p> -->
-                    </div>
-                    <div class="bar-step" style="left: 48%">
-                        <!-- <div class="label-line-gold"></div>
-                        <p>GOLD</p> -->
-                    </div>
-                    <div class="bar-step" style="left: 70%">
-                        <!-- <div class="label-line-platinum"></div>
-                        <p>PLATINUM</p> -->
-                    </div>
-                    <div id="progresswater">
-
-                    </div>
-                </div>
-                <h4 style="margin-top: 20px">Total Points: 175</h4>
-            </form>
 
         </div>
         <script src="script/data.js" type="text/javascript"></script>

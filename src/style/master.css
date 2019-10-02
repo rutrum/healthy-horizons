@@ -48,9 +48,9 @@ nav a:hover {
     margin: 0 auto;
 }
 .box{
-    margin: 30px;
-    padding: 30px;
-    width: 500px;
+    margin: 5%;
+    padding: 5%;
+    width: 100%;
     box-shadow: 0 2px 20px grey;
 
     border: solid var(--secondary-clr) 2px;
@@ -63,7 +63,23 @@ nav a:hover {
 }
 
 .skinny {
-    width: 300px;
+    width: 47%;
+}
+
+.purple {
+    
+    width: 35%; 
+    color: var(--main-clr);
+    justify-items: center;
+    justify-content: center;
+    text-align: center;
+    padding:2px;
+    margin: 0 auto;
+
+}
+
+.extraspace {
+    padding-bottom: 50px;
 }
 
 .sticky {
@@ -74,4 +90,18 @@ nav a:hover {
 
 h2 {
     font-weight: 500;
+}
+
+
+.point-divider {
+
+    padding: 10px; 
+    font-family:'Times New Roman', Times, serif; 
+    font-size:14px;
+}
+
+.objective {
+
+    font-family: 'Times New Roman', Times, Serif;
+    font-size: 13pt; 
 }
