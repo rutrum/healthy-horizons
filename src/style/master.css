@@ -51,6 +51,7 @@ nav a:hover {
     margin: 5%;
     padding: 5%;
     width: 100%;
+    max-width: 500px;
     box-shadow: 0 2px 20px grey;
 
     border: solid var(--secondary-clr) 2px;
