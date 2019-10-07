@@ -23,11 +23,11 @@ function getLocalFormData() {
             annualConsult: 0,
             annualPhysical: 0
         }
-        weeks = []
-        for(let x = 0; x < 15; x++){
-            weeks.push(JSON.parse(JSON.stringify(oneweek))) // deep copy hCAckkermamannn
-        }
-        data = weeks
+        // weeks = []
+        // for(let x = 0; x < 15; x++){
+        //     weeks.push(JSON.parse(JSON.stringify(oneweek))) // deep copy hCAckkermamannn
+        // }
+        data = oneweek
     }
     return data;
 }
