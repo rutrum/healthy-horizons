@@ -52,26 +52,30 @@ function saveData() {
     let pointvals = {
         meditationClass: 1,
         fruits: 1,
-        noSugaryDrinks: 0,
-        fitnessClass: 0,
-        homeLunch: 0,
-        parkFar: 0,
-        sleep: 0,
-        upstairsBathroom: 0,
+        noSugaryDrinks: 1,
+        fitnessClass: 1,
+        homeLunch: 1,
+        parkFar: 1,
+        sleep: 1,
+        upstairsBathroom: 1,
         seatbelt: 0,
-        medications: 0,
+        medications: 5,
         snackForOffice: 0,
-        increaseSteps: 0,
-        exercise: 0,
-        lunchAndLearn: 0,
-        read: 0,
-        healthyBlog: 0,
-        annualConsult: 0,
-        annualPhysical: 0
+        increaseSteps: 5,
+        exercise: 5,
+        lunchAndLearn: 25,
+        read: 25,
+        healthyBlog: 25,
+        annualConsult: 50,
+        annualPhysical: 50,
     }
-
+    
     console.log(pointvals, data)
-
+    for (var objective in data) {
+        if (data.hasOwnProperty(objective)) {
+            data[objective] = form.querySelector("input[name='" + objective +"']").value
+        }
+    }
     // Update point values
     let points = 100;
 
