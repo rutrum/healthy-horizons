@@ -1,12 +1,12 @@
 // Update week
 const weekForm = document.querySelector('#week-selection')
-weekForm.addEventListener('submit', (event) => {
-    event.preventDefault()
-    const week = weekForm.querySelector('select').value
-    const weekNum = document.querySelector('#week-num')
-    weekNum.textContent = week
-    fillFormForWeek(week)
-})
+// weekForm.addEventListener('submit', (event) => {
+//     event.preventDefault()
+//     const week = weekForm.querySelector('select').value
+//     const weekNum = document.querySelector('#week-num')
+//     weekNum.textContent = week
+//     fillFormForWeek(week)
+// })
 
 // Populate the form with data
 let data = getLocalFormData()
@@ -36,19 +36,25 @@ function fillFormForWeek(week) {
     }
 }
 
-const week = document.querySelector('#week-num').textContent
-fillFormForWeek(week)
+// const week = document.querySelector('#week-num').textContent
+// fillFormForWeek(week)
 
 
 function saveData() {
-    let week = document.querySelector('#week-num').textContent
-    console.log()
-    for (var objective in data[week - 1]) {
-        if (data[week - 1].hasOwnProperty(objective)) {
-            data[week - 1][objective] = form.querySelector("input[name='" + objective +"']").value
-        }
-    }
-    window.localStorage.setItem("formData", JSON.stringify(data))
+    // let week = document.querySelector('#week-num').textContent
+    // console.log()
+    // for (var objective in data[week - 1]) {
+    //     if (data[week - 1].hasOwnProperty(objective)) {
+    //         data[week - 1][objective] = form.querySelector("input[name='" + objective +"']").value
+    //     }
+    // }
+    // window.localStorage.setItem("formData", JSON.stringify(data))
+
+    // Update point values
+    let points = 100;
+
+    document.querySelector("#point-total").textContent = points
+
 }
 
 function saveOnTimeout() {
