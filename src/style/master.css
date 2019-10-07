@@ -1,8 +1,8 @@
 /* This is for storing variables...like colors! */
 :root {
-    --main-clr: #372c9b;
-    --secondary-clr: rgb(139, 141, 255);
-    --terciary-clr: rgb(182, 183, 248);
+    --main-clr: #1287da;
+    --secondary-clr:#92c3ff;
+    --terciary-clr: #91c4e8;
 }
 
 body {
@@ -48,10 +48,10 @@ nav a:hover {
     margin: 0 auto;
 }
 .box{
-    margin: 5%;
-    padding: 5%;
-    width: 100%;
-    max-width: 500px;
+    margin: 30px;
+    padding: 30px;
+    width: 600px;
+    max-width: 600px;
     box-shadow: 0 2px 20px grey;
 
     border: solid var(--secondary-clr) 2px;
@@ -64,7 +64,7 @@ nav a:hover {
 }
 
 .skinny {
-    width: 47%;
+    width: 300px;
 }
 
 .purple {
