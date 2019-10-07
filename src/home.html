@@ -22,13 +22,14 @@
             </div> --> 
             
             <div id="welcome" style="position: absolute; right: 10; top: 2">
+            <!-- <div id="welcome" style="position: absolute; right: 10; top: 2">
                 <h5 style="padding: 11 0; color: white" >Hello, Name Here</h5>
-            </div>
+            </div> -->
             
         </nav>
 
         <div id="point-submission">
-
+            <!--
             <form id="week-selection" class="skinny box" >
 
                 <h2 style="font-family:'Times New Roman', Times, serif; font-size: 25px">
@@ -61,6 +62,7 @@
                     Show
                 </button>
             </form>
+            -->
 
             <form class="box skinny" id="stats">
                     <h2 style="font-family:'Times New Roman', Times, serif; font-size: 25px">
@@ -91,7 +93,8 @@
 
             <form id="points"  class="box" method="POST">
                 <img  style="width: 100%; padding: 20px 5px"  src="./resources/logo-transparent.png">
-                <h2>Point Submission for Week <span id="week-num">1</span></h2>
+                <!-- <h2>Point Submission for Week <span id="week-num">1</span></h2> -->
+                <h2>Point Submssion for Fall 2019</h2>
 
                 <div class="point-divider">
                     Earn 1 Point Each
@@ -188,70 +191,6 @@
 
         </div>
         <script src="script/data.js" type="text/javascript"></script>
-        <script>
-        
-            // Update week
-            const weekForm = document.querySelector('#week-selection')
-            weekForm.addEventListener('submit', (event) => {
-                event.preventDefault()
-                const week = weekForm.querySelector('select').value
-                const weekNum = document.querySelector('#week-num')
-                weekNum.textContent = week
-                fillFormForWeek(week)
-            })
-
-            // Populate the form with data
-            let data = getLocalFormData()
-            const form = document.querySelector('#points')
-            
-            // Submit points
-            const pointsForm = document.querySelector('#points')
-            pointsForm.addEventListener('submit', (event) => {
-                event.preventDefault()
-                var conf = confirm("Are you sure that you'd like to submit all points for this semester?")
-                if(conf == true){
-                    // Make new post request and save data from form
-                    var xhr = new XMLHttpRequest()
-                    xhr.open("POST", "home.html", true)
-                    xhr.setRequestHeader('Content-type', 'application/json;charset=UTF-8')
-                    let obj = {jsondata: data}
-                    console.log(JSON.stringify(obj))
-                    xhr.send(JSON.stringify(obj))
-                }
-            })
-
-            function fillFormForWeek(week) {
-                for (var objective in data[week - 1]) {
-                    if (data[week - 1].hasOwnProperty(objective)) {
-                        form.querySelector("input[name='" + objective +"']").value = data[week - 1][objective]
-                    }
-                }
-            }
-
-            const week = document.querySelector('#week-num').textContent
-            fillFormForWeek(week)
-            
-
-            function saveData() {
-                let week = document.querySelector('#week-num').textContent
-                console.log()
-                for (var objective in data[week - 1]) {
-                    if (data[week - 1].hasOwnProperty(objective)) {
-                        data[week - 1][objective] = form.querySelector("input[name='" + objective +"']").value
-                    }
-                }
-                window.localStorage.setItem("formData", JSON.stringify(data))
-            }
-
-            function saveOnTimeout() {
-                setTimeout(function () {
-                    saveData()
-                    saveOnTimeout()
-                }, 1000)
-            }
-
-            saveOnTimeout()
-
-        </script>
+        <script src="script/home.js" type="text/javascript"></script>
     </body>
 </html>
