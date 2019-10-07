@@ -115,6 +115,12 @@ button {
         position: sticky;
         top: 120px;
     }
+    #stats {
+        order:2;
+    }
+    #points {
+        order:1;
+    }
     
 }
 
