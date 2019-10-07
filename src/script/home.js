@@ -41,14 +41,13 @@ function fillFormForWeek(week) {
 
 
 function saveData() {
-    // let week = document.querySelector('#week-num').textContent
-    // console.log()
-    // for (var objective in data[week - 1]) {
-    //     if (data[week - 1].hasOwnProperty(objective)) {
-    //         data[week - 1][objective] = form.querySelector("input[name='" + objective +"']").value
-    //     }
-    // }
-    // window.localStorage.setItem("formData", JSON.stringify(data))
+    console.log()
+    for (var objective in data) {
+        if (data.hasOwnProperty(objective)) {
+            data[objective] = form.querySelector("input[name='" + objective +"']").value
+        }
+    }
+    window.localStorage.setItem("formData", JSON.stringify(data))
 
     // Update point values
     let points = 100;
