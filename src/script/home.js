@@ -50,6 +50,29 @@ function saveData() {
     // }
     // window.localStorage.setItem("formData", JSON.stringify(data))
 
+    let pointvals = {
+        meditationClass: 1,
+        fruits: 1,
+        noSugaryDrinks: 0,
+        fitnessClass: 0,
+        homeLunch: 0,
+        parkFar: 0,
+        sleep: 0,
+        upstairsBathroom: 0,
+        seatbelt: 0,
+        medications: 0,
+        snackForOffice: 0,
+        increaseSteps: 0,
+        exercise: 0,
+        lunchAndLearn: 0,
+        read: 0,
+        healthyBlog: 0,
+        annualConsult: 0,
+        annualPhysical: 0
+    }
+
+    console.log(pointvals, data)
+
     // Update point values
     let points = 100;
 
