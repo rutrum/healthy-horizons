@@ -1,29 +1,8 @@
-.center {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 40%;
-    padding: 5px 0px;
-}
 #main {
-    margin: 0 auto;
-    width: 50%;
-    font-size: 20px;
-    font-family: 'Times New Roman', Times, serif;
-}
-@media screen and (max-width: 800px) 
-{
-    #main {
-        width: 90%;
-    }
+    margin: 100px auto;
+    width: 80%;
 }
 
-p {
-    font-size: 19px;
-    font-family: 'Times New Roman', Times, serif;
-    
+ul {
+    list-style-type: square;
 }
-ul{
-    font-size: 20px
-}
-

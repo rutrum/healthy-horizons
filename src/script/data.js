@@ -1,6 +1,8 @@
 function getLocalFormData() {
+    // Grab data from local storage
     let data = JSON.parse(window.localStorage.getItem("formData"))
-    console.log(data)
+
+    // Check if data was stored in local storage
     if (data == null) {
         // No previous data.  Initialize new form data.
         oneweek = {

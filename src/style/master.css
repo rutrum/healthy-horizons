@@ -2,7 +2,7 @@
 :root {
     --main-clr: #1287da;
     --secondary-clr:#92c3ff;
-    --terciary-clr: #91c4e8;
+    --terciary-clr: #a0bccc;
 }
 
 body {
@@ -12,6 +12,8 @@ body {
     background-color: whitesmoke;
 }
 
+/* NAVIGATION BAR */
+
 nav {
     background-color: var(--main-clr);
     position: fixed;
@@ -20,43 +22,71 @@ nav {
     display: flex;
     justify-content: center;
 }
+
 .navButton {
     background-color: var(--secondary-clr);
     margin: 0 10px;
     z-index: 100;
 }
+
 .navButton:hover {
     background-color: var(--terciary-clr);
     transition-duration: .3s;
 }
+
 .navButton > a {
     display: inline-block;
     padding: 15px;
 }
+
 nav a {
     color: whitesmoke;
 }
+
 nav a:hover {
     text-decoration: none;
     color: whitesmoke;
 }
+
+
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
     color: #eeecec;
     opacity: 1; /* Firefox */
 }
+
+/* HEADERS */
+
+h1 {
+    font-size: 50px;
+    margin: 20px auto;
+}
+
+h2 {
+    font-size: 35px;
+    text-align: center;
+    font-weight: 500;
+}
+
+h3 {
+    padding: 10px;
+}
+
+/* OTHER CLASSES */
+
 .center {
     margin: 0 auto;
 }
+
 .box{
     margin: 30px;
     padding: 30px;
-    width: 600px;
     max-width: 600px;
-    box-shadow: 0 2px 20px grey;
 
+    box-shadow: 0 2px 20px grey;
     border: solid var(--secondary-clr) 2px;
     background-color: white;
     border-radius: 10px;
+    
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -67,57 +97,9 @@ nav a:hover {
     width: 300px;
 }
 
-.purple {
-    
-    width: 35%; 
-    color: var(--main-clr);
-    justify-items: center;
-    justify-content: center;
-    text-align: center;
-    padding:2px;
-    margin: 0 auto;
-
-}
-
-.extraspace {
-    padding-bottom: 50px;
-}
-
 .sticky {
     position: -webkit-sticky; /* Safari */
     position: sticky;
     top: 120px;
 }
 
-h2 {
-    font-weight: 500;
-}
-
-.purple {
-    
-    width: 35%; 
-    color: var(--main-clr);
-    justify-items: center;
-    justify-content: center;
-    text-align: center;
-    padding:2px;
-    margin: 0 auto;
-
-}
-
-.extraspace {
-    padding-bottom: 50px;
-}
-
-.point-divider {
-
-    padding: 10px; 
-    font-family:'Times New Roman', Times, serif; 
-    font-size:14px;
-}
-
-.objective {
-
-    font-family: 'Times New Roman', Times, Serif;
-    font-size: 13pt; 
-}

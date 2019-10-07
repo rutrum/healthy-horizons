@@ -1,195 +1,172 @@
 <html>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <head>
-        <title>Homepage</title>
-        <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
-        <link rel="stylesheet" type="text/css" href="./style/master.css">
-        <link rel="stylesheet" type="text/css" href="./style/home.css">
-    </head>
-    <body>
-        <nav>
-             <!-- This is the navigation bar -->
-            <div class="navButton"> 
-                <a href="./index.html">About</a>
-            </div>
-
-            <div class="navButton"> 
-                <a href="./home.html">Home</a>
-            </div>
-            
-            <!-- <div class="navButton">
-                <a href="./login.html">Login</a>
-            </div> --> 
-         
-            <!-- <div id="welcome" style="position: absolute; right: 10; top: 2">
-                <h5 style="padding: 11 0; color: white" >Hello, Name Here</h5>
-            </div> -->
-            
-        </nav>
-        
-        <div id="point-submission">
-            <!--    
-            <form id="week-selection" class="skinny box" >
-
-                <h2 style="font-family:'Times New Roman', Times, serif; font-size: 25px">
-                    Spring 2019
-                </h2>
-                <div style="text-align-last: left; padding: 15px 5px">
-                    <h6 style="font-family:'Times New Roman', Times, serif; font-size: 18px">
-                        Week of:
-                    </h6>
-                </div>
-                <select style="font-family:'Times New Roman', Times, serif; font-size: 16px">
-                    <option value="1">8/25/2019</option>
-                    <option value="2">9/1/2019</option>
-                    <option value="3">9/8/2019</option>
-                    <option value="4">9/15/2019</option>
-                    <option value="5">9/22/2019</option>
-                    <option value="6">9/29/2019</option>
-                    <option value="7">10/6/2019</option>
-                    <option value="8">10/13/2019</option>
-                    <option value="9">10/20/2019</option>
-                    <option value="10">10/27/2019</option>
-                    <option value="11">11/3/2019</option>
-                    <option value="12">11/10/2019</option>
-                    <option value="13">11/17/2019</option>
-                    <option value="14">11/24/2019</option>
-                    <option value="15">12/1/2019</option>
-                    <option value="15">12/8/2019</option>
-                </select>
-                <button type="submit" style="cursor:pointer">
-                    Show
-                </button>
-            </form>
-            -->
-
-            <form class="box skinny" id="stats">
-                    <h2 style="font-family:'Times New Roman', Times, serif; font-size: 25px">
-                        Stats
-                    </h2>
-                    <h6 style="padding: 10px; font-family:'Times New Roman', Times, serif; font-size: 16px">
-                        Progress to Platinum:
-                    </h6>
-                    <div id="progresstube">
-                        <div class="bar-step" style="left: 1%">
-                            <!-- <div class="label-line-silver"></div>
-                            <p>SILVER</p> -->
-                        </div>
-                        <div class="bar-step" style="left: 48%">
-                            <!-- <div class="label-line-gold"></div>
-                            <p>GOLD</p> -->
-                        </div>
-                        <div class="bar-step" style="left: 70%">
-                            <!-- <div class="label-line-platinum"></div>
-                            <p>PLATINUM</p> -->
-                        </div>
-                        <div id="progresswater">
-    
-                        </div>
-                    </div>
-                    <h4 style="margin-top: 20px">Total Points: <span id="point-total">175</span></h4>
-                </form>
-
-            <form id="points"  class="box" method="POST">
-                <img  style="width: 100%; padding: 20px 5px"  src="./resources/logo-transparent.png">
-                <!-- <h2>Point Submission for Week <span id="week-num">1</span></h2> -->
-                <h2>Point Submssion for Fall 2019</h2>
-
-                <div class="point-divider">
-                    Earn 1 Point Each
-                </div>
-                <div class="objective">
-                    <input type="number" min="0" placeholder="0" name="meditationClass">
-                    <label>Participate in Center for Faith and Vocation guided meditation class</label>
-                </div>
-                <div class="objective">
-                    <input type="number" min="0" placeholder="0" name="fruits">
-                    <label>Eat 5 servings of fruits/vegetables in one day</label>
-                </div>
-                <div class="objective">
-                    <input type="number" min="0" placeholder="0" name="noSugaryDrinks">
-                    <label>Avoid all sugar-sweetened beverages for one day</label>
-                </div>
-                <div class="objective">
-                    <input type="number" min="0" placeholder="0" name="fitnessClass">
-                    <label>Participate in an HRC fitness class</label>
-                </div>
-                <div class="objective">
-                    <input type="number" min="0" placeholder="0" name="homeLunch">
-                    <label>Pack a healthy lunch from home</label>
-                </div>
-                <div class="objective">
-                    <input type="number" min="0" placeholder="0" name="parkFar">
-                    <label>Park far away from work/store and walk</label>
-                </div>
-                <div class="objective">
-                    <input type="number" min="0" placeholder="0" name="sleep">
-                    <label>Sleep 7 and a half hours or more in one night</label>
-                </div>
-                <div class="objective">
-                    <input type="number" min="0" placeholder="0" name="upstairsBathroom">
-                    <label>Use the restroom on different floor or building from your office</label>
-                </div>
-                <div class="objective">
-                    <input type="number" min="0" placeholder="0" name="seatbelt">
-                    <label>Wear your seat belt whenever in the car or bike helmet when biking</label>
-                </div>
-
-                <div class="point-divider">
-                    Earn 5 Points Each
-                </div>
-                <div class="objective">
-                    <input type="number" min="0" placeholder="0" name="medications">
-                    <label>Take prescribed medications for an entire week</label>
-                </div>
-                <div class="objective">
-                    <input type="number" min="0" placeholder="0" name="snackForOffice">
-                    <label>Contribute a healthy meal/snack for office pitch in</label>
-                </div>
-                <div class="objective">
-                    <input type="number" min="0" placeholder="0"name="increaseSteps">
-                    <label>Increase your weekly step count average by 1000 steps</label>
-                </div>
-                <div class="objective">
-                    <input type="number" min="0" placeholder="0" name="exercise">
-                    <label>Obtain 150 minutes of exercise in one week</label>
-                </div>
-
-                <div class="point-divider">
-                    Earn 25 Points Each
-                </div>
-                <div class="objective">
-                    <input type="number" min="0" placeholder="0" name="lunchAndLearn">
-                    <label> Attend a Healthy Horizons lunch and learn</label>
-                </div>
-                <div class="objective">
-                    <input type="number" min="0" placeholder="0" name="read">
-                    <label> Read an entire novel for stress relief</label>
-                </div>
-                <div class="objective">
-                    <input type="number" min="0" placeholder="0" name="healthyBlog">
-                    <label> Register for Healthier BU Blog</label>
-                </div>
-
-                <div class="point-divider">
-                    Earn 50 Points Each
-                </div>
-                <div class="objective">
-                    <input type="number" min="0" max="1" placeholder="0" name="annualConsult">
-                    <label> Complete annual wellness consult with Healthy Horizons</label>
-                </div>
-                <div class="objective">
-                    <input type="number" min="0" max="1" placeholder="0" name="annualPhysical">
-                    <label> Complete annual physical with your Primary Care Provider</label>
-                </div>
-                <button style="cursor:pointer">
-                    Submit
-                </button>
-            </form>
-            
-
+<head>
+    <title>Homepage</title>
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./style/master.css">
+    <link rel="stylesheet" type="text/css" href="./style/home.css">
+</head>
+<body>
+    <nav>
+        <div class="navButton"> 
+            <a href="./index.html">About</a>
         </div>
-        <script src="script/data.js" type="text/javascript"></script>
-        <script src="script/home.js" type="text/javascript"></script>
-    </body>
+
+        <div class="navButton"> 
+            <a href="./home.html">Home</a>
+        </div>
+    </nav>
+    
+    <div id="point-submission">
+        <!--    
+        <form id="week-selection" class="skinny box" >
+
+            <h2 style="font-family:'Times New Roman', Times, serif; font-size: 25px">
+                Spring 2019
+            </h2>
+            <div style="text-align-last: left; padding: 15px 5px">
+                <h6 style="font-family:'Times New Roman', Times, serif; font-size: 18px">
+                    Week of:
+                </h6>
+            </div>
+            <select style="font-family:'Times New Roman', Times, serif; font-size: 16px">
+                <option value="1">8/25/2019</option>
+                <option value="2">9/1/2019</option>
+                <option value="3">9/8/2019</option>
+                <option value="4">9/15/2019</option>
+                <option value="5">9/22/2019</option>
+                <option value="6">9/29/2019</option>
+                <option value="7">10/6/2019</option>
+                <option value="8">10/13/2019</option>
+                <option value="9">10/20/2019</option>
+                <option value="10">10/27/2019</option>
+                <option value="11">11/3/2019</option>
+                <option value="12">11/10/2019</option>
+                <option value="13">11/17/2019</option>
+                <option value="14">11/24/2019</option>
+                <option value="15">12/1/2019</option>
+                <option value="15">12/8/2019</option>
+            </select>
+            <button type="submit" style="cursor:pointer">
+                Show
+            </button>
+        </form>
+        -->
+
+        <form class="box skinny" id="stats">
+            <h2>Stats</h2>
+            <div id="progresstube">
+                <div class="bar-step" style="left: 1%">
+                    <!-- <div class="label-line-silver"></div>
+                    <p>SILVER</p> -->
+                </div>
+                <div class="bar-step" style="left: 48%">
+                    <!-- <div class="label-line-gold"></div>
+                    <p>GOLD</p> -->
+                </div>
+                <div class="bar-step" style="left: 70%">
+                    <!-- <div class="label-line-platinum"></div>
+                    <p>PLATINUM</p> -->
+                </div>
+                <div id="progresswater"></div>
+            </div>
+            <h3>Total Points: <span id="point-total">175</span></h3>
+        </form>
+
+        <form id="points" class="box" method="POST">
+            <img src="./resources/sun.png">
+
+            <h2>Point Submission for Fall 2019</h2>
+
+            <h3>Earn 1 Point Each</h3>
+
+            <div class="objective">
+                <input type="number" min="0" placeholder="0" name="meditationClass">
+                <label>Participate in Center for Faith and Vocation guided meditation class</label>
+            </div>
+            <div class="objective">
+                <input type="number" min="0" placeholder="0" name="fruits">
+                <label>Eat 5 servings of fruits/vegetables in one day</label>
+            </div>
+            <div class="objective">
+                <input type="number" min="0" placeholder="0" name="noSugaryDrinks">
+                <label>Avoid all sugar-sweetened beverages for one day</label>
+            </div>
+            <div class="objective">
+                <input type="number" min="0" placeholder="0" name="fitnessClass">
+                <label>Participate in an HRC fitness class</label>
+            </div>
+            <div class="objective">
+                <input type="number" min="0" placeholder="0" name="homeLunch">
+                <label>Pack a healthy lunch from home</label>
+            </div>
+            <div class="objective">
+                <input type="number" min="0" placeholder="0" name="parkFar">
+                <label>Park far away from work/store and walk</label>
+            </div>
+            <div class="objective">
+                <input type="number" min="0" placeholder="0" name="sleep">
+                <label>Sleep 7 and a half hours or more in one night</label>
+            </div>
+            <div class="objective">
+                <input type="number" min="0" placeholder="0" name="upstairsBathroom">
+                <label>Use the restroom on different floor or building from your office</label>
+            </div>
+            <div class="objective">
+                <input type="number" min="0" placeholder="0" name="seatbelt">
+                <label>Wear your seat belt whenever in the car or bike helmet when biking</label>
+            </div>
+
+            <h3>Earn 5 Points Each</h3>
+
+            <div class="objective">
+                <input type="number" min="0" placeholder="0" name="medications">
+                <label>Take prescribed medications for an entire week</label>
+            </div>
+            <div class="objective">
+                <input type="number" min="0" placeholder="0" name="snackForOffice">
+                <label>Contribute a healthy meal/snack for office pitch in</label>
+            </div>
+            <div class="objective">
+                <input type="number" min="0" placeholder="0"name="increaseSteps">
+                <label>Increase your weekly step count average by 1000 steps</label>
+            </div>
+            <div class="objective">
+                <input type="number" min="0" placeholder="0" name="exercise">
+                <label>Obtain 150 minutes of exercise in one week</label>
+            </div>
+
+            <h3>Earn 25 Points Each</h3>
+
+            <div class="objective">
+                <input type="number" min="0" placeholder="0" name="lunchAndLearn">
+                <label> Attend a Healthy Horizons lunch and learn</label>
+            </div>
+            <div class="objective">
+                <input type="number" min="0" placeholder="0" name="read">
+                <label> Read an entire novel for stress relief</label>
+            </div>
+            <div class="objective">
+                <input type="number" min="0" placeholder="0" name="healthyBlog">
+                <label> Register for Healthier BU Blog</label>
+            </div>
+
+            <h3>Earn 50 Points Each</h3>
+
+            <div class="objective">
+                <input type="number" min="0" max="1" placeholder="0" name="annualConsult">
+                <label> Complete annual wellness consult with Healthy Horizons</label>
+            </div>
+            <div class="objective">
+                <input type="number" min="0" max="1" placeholder="0" name="annualPhysical">
+                <label> Complete annual physical with your Primary Care Provider</label>
+            </div>
+
+            <button>Submit</button>
+        </form>
+        
+    </div>
+    <script src="script/data.js" type="text/javascript"></script>
+    <script src="script/home.js" type="text/javascript"></script>
+</body>
 </html>
