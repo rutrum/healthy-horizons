@@ -31,24 +31,24 @@ pointsForm.addEventListener('submit', (event) => {
     // }
 })
 
-function fillFormForWeek(week) {
-    for (var objective in data[week - 1]) {
-        if (data[week - 1].hasOwnProperty(objective)) {
-            form.querySelector("input[name='" + objective +"']").value = data[week - 1][objective]
-        }
-    }
-}
+// function fillFormForWeek(week) {
+//     for (var objective in data[week - 1]) {
+//         if (data[week - 1].hasOwnProperty(objective)) {
+//             form.querySelector("input[name='" + objective +"']").value = data[week - 1][objective]
+//         }
+//     }
+// }
 
 function saveData() {
     console.log()
-    for (var objective in data) {
-        if (data.hasOwnProperty(objective)) {
-            data[objective] = form.querySelector("input[name='" + objective +"']").value
-        }
-    }
+    // for (var objective in data) {
+    //     if (data.hasOwnProperty(objective)) {
+    //         data[objective] = form.querySelector("input[name='" + objective +"']").value
+    //     }
+    // }
     window.localStorage.setItem("formData", JSON.stringify(data))
 
-    let pointvals = {
+    let pointVals = {
         meditationClass: 1,
         fruits: 1,
         noSugaryDrinks: 1,
@@ -69,12 +69,13 @@ function saveData() {
         annualPhysical: 50,
     }
     
-    console.log(pointvals, data)
-    for (var objective in data) {
-        if (data.hasOwnProperty(objective)) {
-            data[objective] = form.querySelector("input[name='" + objective +"']").value
-        }
+    console.log()
+    for (var key in pointVals) {
+        console.log (pointVals[key] * data[0][key])
+        var total = total + (pointVals[key] * data[0][key])
+        console.log(total)
     }
+
     // Update point values
     let points = 100;
 
