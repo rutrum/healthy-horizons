@@ -13,6 +13,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "ejs": "^2.7.1",
     "express": "^4.16.4",
     "ip": "^1.1.5",
     "mysql": "^2.16.0",

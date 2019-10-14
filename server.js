@@ -10,6 +10,8 @@ var port = process.env.PORT || 8080
 
 var router = express.Router()
 
+app.set('view engine', 'ejs')
+
 // Allows us to parse POST request data
 var bodyParser = require('body-parser')
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -27,6 +29,10 @@ __dirname = __dirname + "/src"
 // Redirect favicon to the resources file
 router.get('/favicon.ico', (req, res) => {
     res.sendFile(path.join(__dirname + '/resources/favicon.ico'))
+})
+
+router.get('/home', (req, res) => {
+    res.render('/home')
 })
 
 router.get('/', (req, res) => {
