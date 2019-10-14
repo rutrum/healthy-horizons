@@ -33,9 +33,16 @@
             <form id="points"  class="box" method="POST">
                 <img src="./resources/logo-transparent.png">
 
-                <h2>Congratulations for your hard work this semester!</h2> 
-                <p>Please select a prize that corresponds with your level of achievement.</p>
+                <div id="congrats">
+                    <h2>Congratulations for your hard work this semester!</h2> 
+                    <p>Please select a prize that corresponds with your level of achievement.</p>
+                </div>
 
+                <div style="display: none" id="not-enough">
+                    Sorry, but based on the activity you have entered, you have not built up enough points to be considered for any prizes. Are you sure you would like to submit your form?
+                </div>
+
+            <div id="silver">
                 <h3>Silver (150 Points)</h3>
                 <div class="objective">
                     <input type="checkbox" min="0" placeholder="0" name="fingerlessGloves">
@@ -61,7 +68,9 @@
                     <input type="checkbox" min="0" placeholder="0" name="waterBottle">
                     <label>Water Bottle</label>
                 </div>
+            </div>
 
+            <div id="gold">
                 <h3>Gold (250 Points)</h3>
                 <div class="objective">
                     <input type="checkbox" min="0" placeholder="0" name="lantern">
@@ -83,7 +92,9 @@
                     <input type="checkbox" min="0" placeholder="0" name="thermos">
                     <label>Lined Thermos</label>
                 </div>
+            </div>
 
+            <div id="platinum">
                 <h3>Platinum (350 Points)</h3>
                 <div class="objective">
                     <input type="checkbox" min="0" placeholder="0" name="picnic">
@@ -97,14 +108,42 @@
                     <input type="checkbox" min="0" placeholder="0" name="rainJackets">
                     <label> Rain Jackets</label>
                 </div>
+            </div>
 
-                <button>Submit</button>
+            <button>Submit</button>
+
             </form>
-            
 
-            
+        <script>
+        
+            let points = 100;
 
-        </div>
-        <script src="script/data.js" type="text/javascript"></script>
+            if (points < 150)
+            {
+                let fail = document.getElementById("not-enough")
+                fail.style.display = "block";
+
+                let congrats = document.getElementById("congrats")
+                congrats.style.display = "none";
+
+                let silver = document.getElementById("silver")
+                silver.style.display = "none";
+            }
+
+            if (points < 250)
+            {
+                let gold = document.getElementById("gold")
+                gold.style.display = "none";
+            }
+
+            if (points < 350)
+            {
+                let platinum = document.getElementById("platinum")
+                platinum.style.display = "none";
+            }
+           
+
+        </script>
+
     </body>
 </html>
