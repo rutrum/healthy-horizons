@@ -3,155 +3,9 @@
         <title>Homepage</title>
         <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="./style/master.css">
+        <link rel="stylesheet" type="text/css" href="./style/home.css">
 
         <style>
-            #point-submission {
-                display: flex;
-                align-items: flex-start;
-                justify-content: center;
-            }
-            .objective {
-                display: flex;
-                align-items: baseline;
-                width: 100%;
-            }
-            .objective > input {
-                text-align: start;
-                width: 10%;
-            }
-            
-            .objective > label {
-                width: 85%;
-                padding-left: 10px;
-            }
-            .point-divider {
-                font-size: 18pt;
-                font-weight: 600;
-                margin: 10px;
-                margin-top: 20px;
-            }
-            button {
-                width: 100%;
-                height: 40px;
-                background-color: var(--secondary-clr);
-                border: solid var(--secondary-clr) 0;
-                color: whitesmoke;
-                font-weight: 600;
-                letter-spacing: 1px;
-                border-radius: 5px;
-                margin-top: 8px;
-                cursor: pointer;
-                margin: 20px 0 0 0;
-            }
-            
-            #progresstube {
-                background: var(--secondary-clr);
-                border-radius: 13px;
-                height: 20px;
-                width: 100%;
-                padding: 3px;
-            }
-
-            .label-line-silver {
-                float: right;
-                background: silver;
-                height:30px;
-                width:4px;
-                align: center;
-                /*margin-left: 2px;*/
-            }
-
-            .label-line-gold {
-                float: right;
-                background: gold;
-                height:30px;
-                width:4px;
-                align: center;
-                /*margin-left: 2px;*/
-            }
-
-            .label-line-platinum {
-                float: right;
-                background: paleturquoise;
-                height:30px;
-                width:4px;
-                align: center;
-                /*margin-left: 2px;*/
-            }
-
-            .bar-step {
-                position:absolute;
-                margin-top:-8px;
-                font-size:12px;
-            }
-
-            @media screen and (max-width: 738px) 
-            {
-                #welcome > *{
-                    display: none;
-                }
-            }
-            
-            @media screen and (max-width: 480px) 
-            {
-                #point-submission{
-                    flex-direction: column;
-                }
-                #week-selection{
-                    order: 0;
-                }
-                #stats{
-                    order: 1;
-                }
-                #points{
-                    order: 2;
-                }
-                .box {
-                    width: 100%;
-                }
-            }
-            @media screen and (min-width: 1201px)
-            {
-                #stats{
-                    position: -webkit-sticky; /* Safari */
-                    position: sticky;
-                    top: 120px;
-                }
-                #week-selection{
-                    position: -webkit-sticky; /* Safari */
-                    position: sticky;
-                    top: 120px;
-                }
-                
-            }
-            
-            @media screen and (max-width: 1200px) 
-            {
-                #point-submission{
-                    flex-direction: row;
-                    flex-wrap: wrap;
-                }
-                #week-selection{
-                    order: 0;
-                }
-                #stats{
-                    order: 1;
-                }
-                #points{
-                    order: 2;
-                }
-            }
-
-            #progresswater {
-                position:inherit;
-                content: '';
-                display: block;
-                background: var(--main-clr);
-                width: 50%; /* THIS IS THE ACTUAL PROGRESS */
-                height: 100%;
-                border-radius: 9px;               
-            }
-
             input[type=checkbox]
             {
                 transform:scale(1.5);
@@ -172,29 +26,17 @@
             <div class="navButton"> 
                 <a href="./home.html">Home</a>
             </div>
-            
-            <div class="navButton"> 
-                <a href="./final.html">Prize Selection</a>
-            </div>
-
-            <div class="navButton">
-                <a href="./login.html">Login</a>
-            </div>
-            <div id="welcome" style="position: absolute; right: 10; top: 2">
-                <h5 style="padding: 11 0; color: white" >Hello, Name Here</h5>
-            </div>
-            
         </nav>
 
         <div id="point-submission">
 
             <form id="points"  class="box" method="POST">
-                <img  style="width: 100%; padding: 5px 5px"  src="./resources/logo-transparent.png">
-                <h2 style="text-align: center; font-size:22px; font-family:'Times New Roman', Times, serif">Congratulations for your hard work this semester! Please select a prize that corresponds with your level of achievement.</h2>
+                <img src="./resources/logo-transparent.png">
 
-                <div class="point-divider">
-                    Silver (150 Points)
-                </div>
+                <h2>Congratulations for your hard work this semester!</h2> 
+                <p>Please select a prize that corresponds with your level of achievement.</p>
+
+                <h3>Silver (150 Points)</h3>
                 <div class="objective">
                     <input type="checkbox" min="0" placeholder="0" name="fingerlessGloves">
                     <label>Finglerless Gloves</label>
@@ -220,9 +62,7 @@
                     <label>Water Bottle</label>
                 </div>
 
-                <div class="point-divider">
-                    Gold (250 Points)
-                </div>
+                <h3>Gold (250 Points)</h3>
                 <div class="objective">
                     <input type="checkbox" min="0" placeholder="0" name="lantern">
                     <label>Camp/Car LED Lantern</label>
@@ -244,9 +84,7 @@
                     <label>Lined Thermos</label>
                 </div>
 
-                <div class="point-divider">
-                    Platinum (350 Points)
-                </div>
+                <h3>Platinum (350 Points)</h3>
                 <div class="objective">
                     <input type="checkbox" min="0" placeholder="0" name="picnic">
                     <label> Waterproof Picnic Throw</label>
@@ -260,9 +98,7 @@
                     <label> Rain Jackets</label>
                 </div>
 
-                <button style="cursor:pointer">
-                    Submit
-                </button>
+                <button>Submit</button>
             </form>
             
 

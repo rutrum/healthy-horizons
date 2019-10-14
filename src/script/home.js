@@ -16,16 +16,19 @@ const form = document.querySelector('#points')
 const pointsForm = document.querySelector('#points')
 pointsForm.addEventListener('submit', (event) => {
     event.preventDefault()
-    var conf = confirm("Are you sure that you'd like to submit all points for this semester?")
-    if(conf == true){
-        // Make new post request and save data from form
-        var xhr = new XMLHttpRequest()
-        xhr.open("POST", "home.html", true)
-        xhr.setRequestHeader('Content-type', 'application/json;charset=UTF-8')
-        let obj = {jsondata: data}
-        console.log(JSON.stringify(obj))
-        xhr.send(JSON.stringify(obj))
-    }
+
+    // Sends user to final page
+    window.location.href = "./final.html"
+    // var conf = confirm("Are you sure that you'd like to submit all points for this semester?")
+    // if(conf == true){
+    //     // Make new post request and save data from form
+    //     var xhr = new XMLHttpRequest()
+    //     xhr.open("POST", "home.html", true)
+    //     xhr.setRequestHeader('Content-type', 'application/json;charset=UTF-8')
+    //     let obj = {jsondata: data}
+    //     console.log(JSON.stringify(obj))
+    //     xhr.send(JSON.stringify(obj))
+    // }
 })
 
 function fillFormForWeek(week) {
@@ -35,10 +38,6 @@ function fillFormForWeek(week) {
         }
     }
 }
-
-// const week = document.querySelector('#week-num').textContent
-// fillFormForWeek(week)
-
 
 function saveData() {
     console.log()

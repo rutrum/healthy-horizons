@@ -12,6 +12,10 @@ body {
     background-color: whitesmoke;
 }
 
+button a {
+    color: inherit
+}
+
 /* NAVIGATION BAR */
 
 nav {
@@ -91,6 +95,10 @@ h3 {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+.box img {
+    width: 100%
 }
 
 .skinny {
