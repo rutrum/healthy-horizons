@@ -7,8 +7,8 @@ pointsForm.addEventListener('submit', (event) => {
     // Stop page from reloading (default)
     event.preventDefault()
 
-    // Sends user to final page
-    window.location.href = "./final.html"
+    // Sends user to prize page
+    window.location.href = "./prize"
 })
 
 // This function runs every second and serves two purposes:
