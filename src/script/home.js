@@ -1,8 +1,14 @@
 // Populate the form with data
 let data = getLocalFormData()
 
+// Check for change in points
+
+// Submit points
 // When user submits form, redirect to another page
 const pointsForm = document.querySelector('#points')
+pointsForm.addEventListener('change' , (event) => {
+
+})
 pointsForm.addEventListener('submit', (event) => {
     // Stop page from reloading (default)
     event.preventDefault()
@@ -26,7 +32,7 @@ function saveData() {
     // Save data object to local storage
     window.localStorage.setItem("formData", JSON.stringify(data))
 
-    let pointvals = {
+    let pointVals = {
         meditationClass: 1,
         fruits: 1,
         noSugaryDrinks: 1,
@@ -35,7 +41,7 @@ function saveData() {
         parkFar: 1,
         sleep: 1,
         upstairsBathroom: 1,
-        seatbelt: 0,
+        seatbelt: 1,
         medications: 5,
         snackForOffice: 0,
         increaseSteps: 5,
@@ -50,13 +56,16 @@ function saveData() {
     // Set initial points
     let points = 0;
     
-    // Loop over every possible point entry, add up points
-    console.log(pointvals, data)
-    for (var objective in data) {
-        if (data.hasOwnProperty(objective)) {
-            data[objective] = form.querySelector("input[name='" + objective +"']").value
-        }
+    console.log()
+    var total = 0
+    for (var key in pointVals) {
+       total = total + (pointVals[key] * data[key]) 
+       console.log(total)
+       console.log(data[key])
     }
+
+    // Update point values
+    let points = 100;
 
     // Set #point-total tag to show points
     document.querySelector("#point-total").textContent = points
