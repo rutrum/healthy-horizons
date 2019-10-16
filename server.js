@@ -31,8 +31,8 @@ router.get('/favicon.ico', (req, res) => {
     res.sendFile(path.join(__dirname + '/resources/favicon.ico'))
 })
 
-router.get('/home', (req, res) => {
-    res.render('/home')
+router.get('/:name', (req, res) => {
+    res.render(req.params.name)
 })
 
 router.get('/', (req, res) => {
@@ -51,9 +51,9 @@ router.post('/login.html', (req, res) => {
     })
 })
 
-router.get('/:name', (req, res) => {
-    res.sendFile(path.join(__dirname + "/" + req.params.name))
-})
+// router.get('/:name', (req, res) => {
+//     res.sendFile(path.join(__dirname + "/" + req.params.name))
+// })
 
 router.get('/style/:name', (req, res) => {
     res.sendFile(path.join(__dirname + "/style/" + req.params.name))
@@ -67,14 +67,14 @@ router.get('/resources/:name', (req, res) => {
     res.sendFile(path.join(__dirname + "/resources/" + req.params.name))
 })
 
-router.post('/home.html', (req, res) => {
-    // Point form submission
-    // Do something with the data
-    console.log(req.body)
+// router.post('/home.html', (req, res) => {
+//     // Point form submission
+//     // Do something with the data
+//     console.log(req.body)
 
-    // Send them back the homepage for now
-    res.sendFile(path.join(__dirname + "/home.html"))
-})
+//     // Send them back the homepage for now
+//     res.sendFile(path.join(__dirname + "/home.html"))
+// })
 
 // Attach routes at root
 app.use('/', router)
