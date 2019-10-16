@@ -1,11 +1,18 @@
-// Populate the form with data
+// Get data from local storage
 let data = getLocalFormData()
+
+// Insert data into input fields on form
+const pointsForm = document.querySelector('#points')
+for (let objective in data) {
+    if (data.hasOwnProperty(objective)) {
+        pointsForm.querySelector("input[name='" + objective + "']").value = data[objective]
+    }
+}
 
 // Check for change in points
 
 // Submit points
 // When user submits form, redirect to another page
-const pointsForm = document.querySelector('#points')
 pointsForm.addEventListener('change' , (event) => {
 
 })
@@ -25,7 +32,13 @@ function saveData() {
     // Set data to most recent user entered data
     for (var objective in data) {
         if (data.hasOwnProperty(objective)) {
-            data[objective] = form.querySelector("input[name='" + objective +"']").value
+            let val = pointsForm.querySelector("input[name='" + objective +"']").value
+            console.log(val)
+            if (val == "") {
+                data[objective] = 0
+            } else {
+                data[objective] = parseInt(val)
+            }
         }
     }
 
@@ -63,9 +76,6 @@ function saveData() {
        console.log(total)
        console.log(data[key])
     }
-
-    // Update point values
-    let points = 100;
 
     // Set #point-total tag to show points
     document.querySelector("#point-total").textContent = points
