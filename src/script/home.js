@@ -12,8 +12,13 @@ const weekForm = document.querySelector('#week-selection')
 let data = getLocalFormData()
 const form = document.querySelector('#points')
 
+// Check for change in points
+
 // Submit points
 const pointsForm = document.querySelector('#points')
+pointsForm.addEventListener('change' , (event) => {
+
+})
 pointsForm.addEventListener('submit', (event) => {
     event.preventDefault()
 
@@ -57,7 +62,7 @@ function saveData() {
         parkFar: 1,
         sleep: 1,
         upstairsBathroom: 1,
-        seatbelt: 0,
+        seatbelt: 1,
         medications: 5,
         snackForOffice: 0,
         increaseSteps: 5,
@@ -70,10 +75,11 @@ function saveData() {
     }
     
     console.log()
+    var total = 0
     for (var key in pointVals) {
-        console.log (pointVals[key] * data[0][key])
-        var total = total + (pointVals[key] * data[0][key])
-        console.log(total)
+       total = total + (pointVals[key] * data[key]) 
+       console.log(total)
+       console.log(data[key])
     }
 
     // Update point values
