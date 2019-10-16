@@ -38,14 +38,6 @@ button {
     margin: 20px 0 0 0;
 }
 
-#progresstube {
-    background: var(--secondary-clr);
-    border-radius: 13px;
-    height: 20px;
-    width: 100%;
-    padding: 3px;
-}
-
 @media screen and (max-width: 480px) 
 {
     #point-submission{
@@ -100,14 +92,4 @@ button {
     #points{
         order: 2;
     }
-}
-
-#progresswater {
-    position:inherit;
-    content: '';
-    display: block;
-    background: var(--main-clr);
-    width: 50%; /* THIS IS THE ACTUAL PROGRESS */
-    height: 100%;
-    border-radius: 9px;               
 }

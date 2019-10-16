@@ -1,41 +1,26 @@
-// Update week
-const weekForm = document.querySelector('#week-selection')
-// weekForm.addEventListener('submit', (event) => {
-//     event.preventDefault()
-//     const week = weekForm.querySelector('select').value
-//     const weekNum = document.querySelector('#week-num')
-//     weekNum.textContent = week
-//     fillFormForWeek(week)
-// })
-
 // Populate the form with data
 let data = getLocalFormData()
-const form = document.querySelector('#points')
 
+<<<<<<< HEAD
 // Check for change in points
 
 // Submit points
+=======
+// When user submits form, redirect to another page
+>>>>>>> fbfce1348b3f3dd7d090115ebf0a2e76edf48fd4
 const pointsForm = document.querySelector('#points')
 pointsForm.addEventListener('change' , (event) => {
 
 })
 pointsForm.addEventListener('submit', (event) => {
+    // Stop page from reloading (default)
     event.preventDefault()
 
     // Sends user to final page
     window.location.href = "./final.html"
-    // var conf = confirm("Are you sure that you'd like to submit all points for this semester?")
-    // if(conf == true){
-    //     // Make new post request and save data from form
-    //     var xhr = new XMLHttpRequest()
-    //     xhr.open("POST", "home.html", true)
-    //     xhr.setRequestHeader('Content-type', 'application/json;charset=UTF-8')
-    //     let obj = {jsondata: data}
-    //     console.log(JSON.stringify(obj))
-    //     xhr.send(JSON.stringify(obj))
-    // }
 })
 
+<<<<<<< HEAD
 // function fillFormForWeek(week) {
 //     for (var objective in data[week - 1]) {
 //         if (data[week - 1].hasOwnProperty(objective)) {
@@ -51,6 +36,21 @@ function saveData() {
     //         data[objective] = form.querySelector("input[name='" + objective +"']").value
     //     }
     // }
+=======
+// This function runs every second and serves two purposes:
+// * Save the user submitted data to localstorage
+// * Update the total number of points and save that to local storage
+function saveData() {
+    
+    // Set data to most recent user entered data
+    for (var objective in data) {
+        if (data.hasOwnProperty(objective)) {
+            data[objective] = form.querySelector("input[name='" + objective +"']").value
+        }
+    }
+
+    // Save data object to local storage
+>>>>>>> fbfce1348b3f3dd7d090115ebf0a2e76edf48fd4
     window.localStorage.setItem("formData", JSON.stringify(data))
 
     let pointVals = {
@@ -73,7 +73,11 @@ function saveData() {
         annualConsult: 50,
         annualPhysical: 50,
     }
+
+    // Set initial points
+    let points = 0;
     
+<<<<<<< HEAD
     console.log()
     var total = 0
     for (var key in pointVals) {
@@ -84,9 +88,18 @@ function saveData() {
 
     // Update point values
     let points = 100;
+=======
+    // Loop over every possible point entry, add up points
+    console.log(pointvals, data)
+    for (var objective in data) {
+        if (data.hasOwnProperty(objective)) {
+            data[objective] = form.querySelector("input[name='" + objective +"']").value
+        }
+    }
+>>>>>>> fbfce1348b3f3dd7d090115ebf0a2e76edf48fd4
 
+    // Set #point-total tag to show points
     document.querySelector("#point-total").textContent = points
-
 }
 
 function saveOnTimeout() {

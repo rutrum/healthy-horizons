@@ -7,35 +7,13 @@
     <link rel="stylesheet" type="text/css" href="./style/home.css">
 </head>
 <body>
-    <nav>
-        <div class="navButton"> 
-            <a href="./index.html">About</a>
-        </div>
-
-        <div class="navButton"> 
-            <a href="./home.html">Home</a>
-        </div>
-    </nav>
+    
+    <% include ./navbar.ejs %>
     
     <div id="point-submission">
 
         <form class="box skinny" id="stats">
             <h2>Stats</h2>
-            <div id="progresstube">
-                <div class="bar-step" style="left: 1%">
-                    <!-- <div class="label-line-silver"></div>
-                    <p>SILVER</p> -->
-                </div>
-                <div class="bar-step" style="left: 48%">
-                    <!-- <div class="label-line-gold"></div>
-                    <p>GOLD</p> -->
-                </div>
-                <div class="bar-step" style="left: 70%">
-                    <!-- <div class="label-line-platinum"></div>
-                    <p>PLATINUM</p> -->
-                </div>
-                <div id="progresswater"></div>
-            </div>
             <h3>Total Points: <span id="point-total">175</span></h3>
         </form>
 
