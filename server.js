@@ -36,7 +36,7 @@ router.get('/:name', (req, res) => {
 })
 
 router.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname + '/login.html'))
+    res.render("index")
 })
 
 router.post('/prize', (req, res) => {
