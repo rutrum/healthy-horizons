@@ -101,9 +101,9 @@
                 </div>
             </div>
 
-            <button>Submit</button>
+            <button type="submit">Submit</button>
 
-            </form>
+        </form>
 
         <script>
         
@@ -133,6 +133,25 @@
                 platinum.style.display = "none";
             }
            
+
+        </script>
+
+        <script>
+        
+        form = document.querySelector('form')
+        form.addEventListener('submit', (event) => {
+            // Stop page from reloading (default)
+            event.preventDefault()
+            
+            // Read the data from local storage
+
+            // Read the data from the above form
+
+            // Concatenate all data into one object
+
+            // POST data to the server
+            
+        })    
 
         </script>
 

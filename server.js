@@ -39,16 +39,24 @@ router.get('/', (req, res) => {
     res.sendFile(path.join(__dirname + '/login.html'))
 })
 
-router.post('/login.html', (req, res) => {
+router.post('/prize', (req, res) => {
     cred = req.body
-    db.isUser(cred.email, cred.password, (isUser) => {
-        console.log("isUser ", isUser)
-        if (isUser) {
-            res.sendFile(path.join(__dirname + "/home.html"))
-        } else {
-            res.sendFile(path.join(__dirname + "/login.html"))
-        }
-    })
+
+    console.log(cred)
+
+    // Generate a pretty string that represents the data
+
+    // Save the data to a unique file (by name/email)
+
+    res.render("index")
+    // db.isUser(cred.email, cred.password, (isUser) => {
+    //     console.log("isUser ", isUser)
+    //     if (isUser) {
+    //         res.sendFile(path.join(__dirname + "/home.html"))
+    //     } else {
+    //         res.sendFile(path.join(__dirname + "/login.html"))
+    //     }
+    // })
 })
 
 // router.get('/:name', (req, res) => {
