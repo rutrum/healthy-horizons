@@ -14,6 +14,7 @@ for (let objective in data) {
 // Submit points
 // When user submits form, redirect to another page
 pointsForm.addEventListener('change' , (event) => {
+saveData()
 
 })
 pointsForm.addEventListener('submit', (event) => {
@@ -79,11 +80,11 @@ function saveData() {
     document.querySelector("#point-total").textContent = total
 }
 
-function saveOnTimeout() {
-    setTimeout(function () {
-        saveData()
-        saveOnTimeout()
-    }, 1000)
-}
+// function saveOnTimeout() {
+//     setTimeout(function () {
+//         saveData()
+//         saveOnTimeout()
+//     }, 1000)
+// }
 
-saveOnTimeout()
+saveData()
