@@ -5,7 +5,7 @@ let data = getLocalFormData()
 const pointsForm = document.querySelector('#points')
 for (let objective in data) {
     if (data.hasOwnProperty(objective)) {
-        if (data[objective] !== 0) {
+        if (data[objective] > 0) {
             pointsForm.querySelector("input[name='" + objective + "']").value = data[objective]
         }
     }
@@ -17,7 +17,6 @@ for (let objective in data) {
 // When user submits form, redirect to another page
 pointsForm.addEventListener('change' , (event) => {
 saveData()
-
 })
 pointsForm.addEventListener('submit', (event) => {
     // Stop page from reloading (default)
@@ -75,8 +74,11 @@ function saveData() {
     console.log()
     var total = 0
     for (var key in pointVals) {
+        if (data[key] > 0) {
        total = total + (pointVals[key] * data[key]) 
+        }
     }
+
 
     // Set #point-total tag to show points
     document.querySelector("#point-total").textContent = total
