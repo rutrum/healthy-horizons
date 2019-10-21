@@ -5,7 +5,9 @@ let data = getLocalFormData()
 const pointsForm = document.querySelector('#points')
 for (let objective in data) {
     if (data.hasOwnProperty(objective)) {
-        pointsForm.querySelector("input[name='" + objective + "']").value = data[objective]
+        if (data[objective] !== 0) {
+            pointsForm.querySelector("input[name='" + objective + "']").value = data[objective]
+        }
     }
 }
 
@@ -50,7 +52,7 @@ function saveData() {
         meditationClass: 1,
         fruits: 1,
         noSugaryDrinks: 1,
-        fitnessClass: 1,
+        fitnessClass: 1,         
         homeLunch: 1,
         parkFar: 1,
         sleep: 1,
