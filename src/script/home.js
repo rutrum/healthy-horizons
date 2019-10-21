@@ -73,12 +73,10 @@ function saveData() {
     var total = 0
     for (var key in pointVals) {
        total = total + (pointVals[key] * data[key]) 
-       console.log(total)
-       console.log(data[key])
     }
 
     // Set #point-total tag to show points
-    document.querySelector("#point-total").textContent = points
+    document.querySelector("#point-total").textContent = total
 }
 
 function saveOnTimeout() {
