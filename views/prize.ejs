@@ -27,11 +27,14 @@
                 <div id="congrats">
                     <h2>Congratulations for your hard work this semester!</h2> 
                     <p>Please select a prize that corresponds with your level of achievement.</p>
+                  
                 </div>
 
                 <div style="display: none" id="not-enough">
                     Sorry, but based on the activity you have entered, you have not built up enough points to be considered for any prizes. Are you sure you would like to submit your form?
+                
                 </div>
+
 
             <div id="silver">
                 <h3>Silver (150 Points)</h3>
@@ -99,9 +102,11 @@
                     <input type="checkbox" min="0" placeholder="0" name="rainJackets">
                     <label> Rain Jackets</label>
                 </div>
+                 
             </div>
 
-            <button type="submit">Submit</button>
+               <button class="submit" id="congrats"> Submit </button>
+               <button id="goback"> Take Me Back </button>
 
         </form>
 
@@ -145,6 +150,9 @@
             window.location.href = "./home"
         })
         
+
+
+
         form = document.querySelector('form')
         form.addEventListener('submit', (event) => {
             // Stop page from reloading (default)
