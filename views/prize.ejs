@@ -138,6 +138,12 @@
         </script>
 
         <script>
+
+        goback = document.querySelector('#goback');
+        goback.addEventListener('onclick', (event) => {
+            event.preventDefault();
+            window.location.href = "./home"
+        })
         
         form = document.querySelector('form')
         form.addEventListener('submit', (event) => {
