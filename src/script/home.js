@@ -1,5 +1,5 @@
 // Get data from local storage
-let data = getLocalFormData()
+let data = getTaskData()
 
 // Insert data into input fields on form
 const pointsForm = document.querySelector('#points')
@@ -16,8 +16,9 @@ for (let objective in data) {
 // Submit points
 // When user submits form, redirect to another page
 pointsForm.addEventListener('change' , (event) => {
-saveData()
+    saveData()
 })
+
 pointsForm.addEventListener('submit', (event) => {
     // Stop page from reloading (default)
     event.preventDefault()
@@ -75,20 +76,14 @@ function saveData() {
     var total = 0
     for (var key in pointVals) {
         if (data[key] > 0) {
-       total = total + (pointVals[key] * data[key]) 
+            total = total + (pointVals[key] * data[key]) 
         }
     }
 
-
     // Set #point-total tag to show points
     document.querySelector("#point-total").textContent = total
-}
 
-// function saveOnTimeout() {
-//     setTimeout(function () {
-//         saveData()
-//         saveOnTimeout()
-//     }, 1000)
-// }
+    savePoints(total)
+}
 
 saveData()
