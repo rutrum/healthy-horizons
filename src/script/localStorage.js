@@ -52,7 +52,7 @@ function savePoints(points) {
 
 // Returns points from local storage
 function didUserSubmit() {
-    return window.localStorage.getItem("isSubmitted")
+    return JSON.parse(window.localStorage.getItem("isSubmitted"))
 }
 
 // Saves points to local storage

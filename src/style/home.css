@@ -24,20 +24,6 @@
     padding-left: 10px;
 }
 
-button {
-    width: 100%;
-    height: 40px;
-    background-color: var(--secondary-clr);
-    border: solid var(--secondary-clr) 0;
-    color: whitesmoke;
-    font-weight: 600;
-    letter-spacing: 1px;
-    border-radius: 5px;
-    margin-top: 8px;
-    cursor: pointer;
-    margin: 20px 0 0 0;
-}
-
 .submit {
     background-color: var(--main-clr);
 }
