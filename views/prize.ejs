@@ -17,114 +17,6 @@
         </style>
     </head>
     <body>
-<<<<<<< HEAD
-        <% include ./navbar.ejs %>
-
-        <div id="point-submission">
-
-            <form id="points"  class="box" method="POST">
-                <img src="./resources/logo-transparent.png">
-
-                <div id="congrats">
-                    <h2>Congratulations for your hard work this semester!</h2> 
-                    <p>Please select a prize that corresponds with your level of achievement.</p>
-                </div>
-
-                <div style="display: none" id="not-enough">
-                    Sorry, but based on the activity you have entered, you have not built up enough points to be considered for any prizes. Are you sure you would like to submit your form?
-                </div>
-
-                <div style="display: none" id ="alreadySubmitted">
-                    <h2>Congratulations for your hard work this semester!</h2>
-                </div>
-
-                <div id="silver">
-                    <h3 style="text-align: center">Silver (150 Points)</h3>
-                    <div class="objective">
-                        <input type="checkbox" min="0" placeholder="0" name="fingerlessGloves">
-                        <label>Finglerless Gloves</label>
-                    </div>
-                    <div class="objective">
-                        <input type="checkbox" min="0" placeholder="0" name="pillDispenser">
-                        <label>Pill Dispenser</label>
-                    </div>
-                    <div class="objective">
-                        <input type="checkbox" min="0" placeholder="0" name="megneticClip">
-                        <label>Magnetic Clip</label>
-                    </div>
-                    <div class="objective">
-                        <input type="checkbox" min="0" placeholder="0" name="firstAidKit">
-                        <label>First Aid Kit</label>
-                    </div>
-                    <div class="objective">
-                        <input type="checkbox" min="0" placeholder="0" name="groceryBag">
-                        <label>Cloth Grocery Bag</label>
-                    </div>
-                    <div class="objective">
-                        <input type="checkbox" min="0" placeholder="0" name="waterBottle">
-                        <label>Water Bottle</label>
-                    </div>
-                </div>
-
-                <div id="gold">
-                    <h3 style="text-align: center">Gold (250 Points)</h3>
-                    <div class="objective">
-                        <input type="checkbox" min="0" placeholder="0" name="lantern">
-                        <label>Camp/Car LED Lantern</label>
-                    </div>
-                    <div class="objective">
-                        <input type="checkbox" min="0" placeholder="0" name="utensils">
-                        <label>Reusable Utensils & Bag</label>
-                    </div>
-                    <div class="objective">
-                        <input type="checkbox" min="0" placeholder="0"name="coloringBook">
-                        <label>Zen Coloring Book & Pencils</label>
-                    </div>
-                    <div class="objective">
-                        <input type="checkbox" min="0" placeholder="0" name="shirt">
-                        <label>Dri-Mesh Shirt</label>
-                    </div>
-                    <div class="objective">
-                        <input type="checkbox" min="0" placeholder="0" name="thermos">
-                        <label>Lined Thermos</label>
-                    </div>
-                </div>
-
-                <div id="platinum">
-                    <h3 style="text-align: center">Platinum (350 Points)</h3>
-                    <div class="objective">
-                        <input type="checkbox" min="0" placeholder="0" name="picnic">
-                        <label> Waterproof Picnic Throw</label>
-                    </div>
-                    <div class="objective">
-                        <input type="checkbox" min="0" placeholder="0" name="earbuds">
-                        <label> Bluetooth Earbuds</label>
-                    </div>
-                    <div class="objective">
-                        <input type="checkbox" min="0" placeholder="0" name="rainJackets">
-                        <label> Rain Jackets</label>
-                    </div>
-                </div>
-
-                <div id="contact info">
-                    <div class="box">
-                        <input type="text" min="0" placeholder="0" name="first name">
-                        <label>First Name</label>
-                    </div>
-                    <div class="box">
-                        <input type="text" min="0" placeholder="0" name="last name">
-                        <label>Last Name</label>
-                    </div>
-                    <div class="box">
-                        <input type="text" min="0" placeholder="0"name="email">
-                        <label>Email</label>
-                    </div>
-                </div>
-
-                <button>Submit</button>
-
-            </form>
-=======
          <% include ./navbar.ejs %>
         
         <div class="box center">
@@ -141,24 +33,15 @@
             </div>
         </div>
 
->>>>>>> 359b61fb120e5d74658b95a0f6253dac73c3309b
 
         <script src="script/localStorage.js" type="text/javascript"></script>
         <script>
         
             let points = getPoints()
-<<<<<<< HEAD
             let submitted = didUserSubmit()
             if (submitted) {
                 let submittedDiv = document.getElementById("alreadySubmitted")
                 submittedDiv.style.display = "none"
-=======
-
-            if (points < 250)
-            {
-                let gold = document.getElementById("gold")
-                gold.style.display = "none";
->>>>>>> 359b61fb120e5d74658b95a0f6253dac73c3309b
             }
             else{
                 if (points < 150)
