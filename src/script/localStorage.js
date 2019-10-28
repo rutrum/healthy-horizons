@@ -50,12 +50,12 @@ function savePoints(points) {
     window.localStorage.setItem("totalPoints", points)
 }
 
-// Returns points from local storage
+// Returns if user has already submitted
 function didUserSubmit() {
     return JSON.parse(window.localStorage.getItem("isSubmitted"))
 }
 
-// Saves points to local storage
+// Turns the isSubmitted item to true in local storage
 function userSubmitted() {
     window.localStorage.setItem("isSubmitted", true)
 }

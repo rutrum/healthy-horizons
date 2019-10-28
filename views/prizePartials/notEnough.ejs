@@ -1,9 +1,14 @@
  <div id="not-enough" style="display: none">
-    Sorry, but based on the activity you have entered, you have not built up enough points to be considered for any prizes and are unable to submit a form at this time.
+    <p>You have not accumulated enough points to select a prize.  You currently have <span id="current-points"></span> points and need at least 150 to select a prize from the silver tier.  Keep being healthy and earn more points!</p>
     <button class="submit" id="goback"> Take Me Back </button>
  </div>
 
 <script>
+
+    // Insert total points into webpage
+    document.querySelector("#current-points").textContent = getPoints()
+
+    // Make goback button go to homepage
     goback = document.querySelector('#goback')
     goback.addEventListener('click', (event) => {
         event.preventDefault()
