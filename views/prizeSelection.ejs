@@ -1,93 +1,89 @@
- <div id="prize-selection">
+<form id="prize-selection" method="POST" style="display:none">
 
-    <form id="points" method="POST">
-                
-        <div id="congrats">
-            <h2>Congratulations for your hard work this semester!</h2> 
-            <p>Please select a prize that corresponds with your level of achievement.</p>
-            </div>
+    <h2>Congratulations for your hard work this semester!</h2> 
+    <p>Please select a prize that corresponds with your level of achievement.</p>
 
-            <div id="silver">
-                <h3 style="text-align: center">Silver (150 Points)</h3>
-                <div class="objective">
-                    <input type="radio" name="silver" value="fingerlessGloves">
-                    <label>Finglerless Gloves</label>
-                </div>
-                <div class="objective">
-                    <input type="radio" name="silver" value="pillDispenser">
-                    <label>Pill Dispenser</label>
-                </div>
-                <div class="objective">
-                    <input type="radio" name="silver" value="megneticClip">
-                    <label>Magnetic Clip</label>
-                </div>
-                <div class="objective">
-                    <input type="radio" name="silver" value="firstAidKit">
-                    <label>First Aid Kit</label>
-                </div>
-                <div class="objective">
-                    <input type="radio" name="silver" value="groceryBag">
-                    <label>Cloth Grocery Bag</label>
-                </div>
-                <div class="objective">
-                    <input type="radio" name= "silver" value="waterBottle">
-                    <label>Water Bottle</label>
-                </div>
-            </div>
+    <div id="silver">
+        <h3 style="text-align: center">Silver (150 Points)</h3>
+        <div class="objective">
+            <input type="radio" name="silver" value="fingerlessGloves">
+            <label>Finglerless Gloves</label>
+        </div>
+        <div class="objective">
+            <input type="radio" name="silver" value="pillDispenser">
+            <label>Pill Dispenser</label>
+        </div>
+        <div class="objective">
+            <input type="radio" name="silver" value="megneticClip">
+            <label>Magnetic Clip</label>
+        </div>
+        <div class="objective">
+            <input type="radio" name="silver" value="firstAidKit">
+            <label>First Aid Kit</label>
+        </div>
+        <div class="objective">
+            <input type="radio" name="silver" value="groceryBag">
+            <label>Cloth Grocery Bag</label>
+        </div>
+        <div class="objective">
+            <input type="radio" name= "silver" value="waterBottle">
+            <label>Water Bottle</label>
+        </div>
+    </div>
 
-            <div id="gold">
-                <h3 style="text-align: center">Gold (250 Points)</h3>
-                <div class="objective">
-                    <input type="radio" name="gold" value="lantern">
-                    <label>Camp/Car LED Lantern</label>
-                </div>
-                <div class="objective">
-                    <input type="radio" name="gold" value="utensils">
-                    <label>Reusable Utensils & Bag</label>
-                </div>
-                <div class="objective">
-                    <input type="radio" name="gold" value="coloringBook">
-                    <label>Zen Coloring Book & Pencils</label>
-                </div>
-                <div class="objective">
-                    <input type="radio" name="gold" value="shirt">
-                    <label>Dri-Mesh Shirt</label>
-                </div>
-                <div class="objective">
-                    <input type="radio" name="gold" value="thermos">
-                    <label>Lined Thermos</label>
-                </div>
-            </div>
+    <div id="gold">
+        <h3 style="text-align: center">Gold (250 Points)</h3>
+        <div class="objective">
+            <input type="radio" name="gold" value="lantern">
+            <label>Camp/Car LED Lantern</label>
+        </div>
+        <div class="objective">
+            <input type="radio" name="gold" value="utensils">
+            <label>Reusable Utensils & Bag</label>
+        </div>
+        <div class="objective">
+            <input type="radio" name="gold" value="coloringBook">
+            <label>Zen Coloring Book & Pencils</label>
+        </div>
+        <div class="objective">
+            <input type="radio" name="gold" value="shirt">
+            <label>Dri-Mesh Shirt</label>
+        </div>
+        <div class="objective">
+            <input type="radio" name="gold" value="thermos">
+            <label>Lined Thermos</label>
+        </div>
+    </div>
 
-            <div id="platinum">
-                <h3 style="text-align: center">Platinum (350 Points)</h3>
-                <div class="objective">
-                    <input type="radio" name="platonum" value="picnic">
-                    <label> Waterproof Picnic Throw</label>
-                </div>
-                <div class="objective">
-                    <input type="radio" name="platinum" value="earbuds">
-                    <label> Bluetooth Earbuds</label>
-                </div>
-                <div class="objective">
-                    <input type="radio" name="platinum" value="rainJackets">
-                    <label> Rain Jackets</label>
-                </div>
-            </div>
+    <div id="platinum">
+        <h3 style="text-align: center">Platinum (350 Points)</h3>
+        <div class="objective">
+            <input type="radio" name="platinum" value="picnic">
+            <label> Waterproof Picnic Throw</label>
+        </div>
+        <div class="objective">
+            <input type="radio" name="platinum" value="earbuds">
+            <label> Bluetooth Earbuds</label>
+        </div>
+        <div class="objective">
+            <input type="radio" name="platinum" value="rainJackets">
+            <label> Rain Jackets</label>
+        </div>
+    </div>
 
-            <div id="contact info">
-                <div class="box">
-                    <input type="text" name="first name">
-                    <label>First Name</label>
-                </div>
-                <div class="box">
-                    <input type="text" name="last name">
-                    <label>Last Name</label>
-                </div>
-                <div class="box">
-                    <input type="text" name="email">
-                    <label>Email</label>
-                </div>
-                <button class="submit">Submit</button>
-            </div>   
-        </form>
+    <div id="contact-info">
+        <div class="box">
+            <input type="text" name="first name">
+            <label>First Name</label>
+        </div>
+        <div class="box">
+            <input type="text" name="last name">
+            <label>Last Name</label>
+        </div>
+        <div class="box">
+            <input type="text" name="email">
+            <label>Email</label>
+        </div>
+        <button class="submit">Submit</button>
+    </div>   
+</form>

@@ -1,60 +1,41 @@
 <html>
     <head>
-        <title>Homepage</title>
+        <title>Submission</title>
         <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="./style/master.css">
         <link rel="stylesheet" type="text/css" href="./style/home.css">
 
-        <style>
-            input[type=checkbox]
-            {
-                transform:scale(1.5);
-            }/*
-            input[type=number]::-webkit-inner-spin-button,
-            input[type=number]::-webkit-outer-spin-button {
-                opacity: 1;
-            }*/
-        </style>
+        <script src="script/localStorage.js" type="text/javascript"></script>
     </head>
     <body>
-         <% include ./navbar.ejs %>
+        
+        <% include ./navbar.ejs %>
         
         <div class="box center">
             <img src="./resources/logo-transparent.png">
-            <div id="not-enough">
-                 <% include ./goback.ejs %>
-            </div>
-            <div id="pointsubmission"> 
-                <% include ./prizeSelection.ejs %>
-            </div>
 
-            <div id="already-submitted">
-                <% include ./already-submitted.ejs %>
-            </div>
+            <% include notEnough.ejs %>
+            <% include prizeSelection.ejs %>
+            <% include alreadySubmitted.ejs %>
         </div>
 
-
-        <script src="script/localStorage.js" type="text/javascript"></script>
         <script>
-        
+            // Show goback, prizeSelection, or already-submitted based
+            // on point total and submission status
+            
             let points = getPoints()
-            let submitted = didUserSubmit()
-            if (submitted) {
-                let submittedDiv = document.getElementById("alreadySubmitted")
-                submittedDiv.style.display = "none"
-            }
-            else{
-                if (points < 150)
-                {
-                    let fail = document.getElementById("not-enough")
-                    fail.style.display = "block"
 
-                    let congrats = document.getElementById("congrats")
-                    congrats.style.display = "none"
+            if (didUserSubmit()) {
+                // User already has submitted points this semester
+                document.getElementById("already-submitted").style.display = "initial"
 
-                    let silver = document.getElementById("silver")
-                    silver.style.display = "none"
-                }
+            } else if (points < 150) {
+                // User doesn't have enough points to select a prize
+                document.getElementById("not-enough").style.display = "initial"
+
+            } else {
+                // User has enough points to select a prize
+                document.getElementById("prize-selection").style.display = "initial"
 
                 if (points < 250)
                 {
@@ -68,33 +49,27 @@
                     platinum.style.display = "none"
                 }
             }
-        
 
         </script>
 
         <script>
+            form = document.querySelector('form')
+            form.addEventListener('submit', (event) => {
+                // Stop page from reloading (default)
+                event.preventDefault()
+                
+                // Read the data from local storage
+                tasks = getTaskData()
 
-        
+                // Read the data from the above form
 
+                // Concatenate all data into one object
 
-
-        form = document.querySelector('form')
-        form.addEventListener('submit', (event) => {
-            // Stop page from reloading (default)
-            event.preventDefault()
-            
-            // Read the data from local storage
-            tasks = getTaskData()
-
-            // Read the data from the above form
-
-            // Concatenate all data into one object
-
-            // POST data to the server
-            
-            // Update the local storage that user submitted
-            userSubmitted()
-        })    
+                // POST data to the server
+                
+                // Update the local storage that user submitted
+                userSubmitted()
+            })
 
         </script>
 

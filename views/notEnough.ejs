@@ -1,0 +1,12 @@
+ <div id="not-enough" style="display: none">
+    Sorry, but based on the activity you have entered, you have not built up enough points to be considered for any prizes and are unable to submit a form at this time.
+    <button class="submit" id="goback"> Take Me Back </button>
+ </div>
+
+<script>
+    goback = document.querySelector('#goback')
+    goback.addEventListener('click', (event) => {
+        event.preventDefault()
+        window.location.href = "home"
+    })
+</script>
