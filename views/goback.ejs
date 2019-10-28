@@ -1,29 +1,13 @@
-
- <html>
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <head>
-        <title>Homepage</title>
-        <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
-        <link rel="stylesheet" type="text/css" href="./style/master.css">
-        <link rel="stylesheet" type="text/css" href="./style/goback.css">
-    </head>
-
-    <body>
-     <% include ./navbar.ejs %>
-
-        <div>
-
-            <form id="main"  class="box center" method="POST">
-                <img src="./resources/logo-transparent.png">
-
-                <div id="not-enough">
-                   Sorry, but based on the activity you have entered, you have not built up enough points to be considered for any prizes and are unable to submit a form at this time.
+ 
+ 
+ 
+ <div id="not-enough">
+    Sorry, but based on the activity you have entered, you have not built up enough points to be considered for any prizes and are unable to submit a form at this time.
                   
-                </div>
+ </div>
 
     <button class="submit" id="goback"> Take Me Back </button>
                 
-    </body>
 
     <script>
 
@@ -33,4 +17,3 @@
             window.location.href = "home"
         })
     </script>
-</html>

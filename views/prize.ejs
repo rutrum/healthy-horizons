@@ -17,6 +17,7 @@
         </style>
     </head>
     <body>
+<<<<<<< HEAD
         <% include ./navbar.ejs %>
 
         <div id="point-submission">
@@ -123,15 +124,41 @@
                 <button>Submit</button>
 
             </form>
+=======
+         <% include ./navbar.ejs %>
+        
+        <div class="box center">
+            <img src="./resources/logo-transparent.png">
+            <div id="not-enough">
+                 <% include ./goback.ejs %>
+            </div>
+            <div id="pointsubmission"> 
+                <% include ./prizeSelection.ejs %>
+            </div>
+
+            <div id="already-submitted">
+
+            </div>
+        </div>
+
+>>>>>>> 359b61fb120e5d74658b95a0f6253dac73c3309b
 
         <script src="script/localStorage.js" type="text/javascript"></script>
         <script>
         
             let points = getPoints()
+<<<<<<< HEAD
             let submitted = didUserSubmit()
             if (submitted) {
                 let submittedDiv = document.getElementById("alreadySubmitted")
                 submittedDiv.style.display = "none"
+=======
+
+            if (points < 250)
+            {
+                let gold = document.getElementById("gold")
+                gold.style.display = "none";
+>>>>>>> 359b61fb120e5d74658b95a0f6253dac73c3309b
             }
             else{
                 if (points < 150)
