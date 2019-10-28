@@ -9,14 +9,14 @@
     </head>
     <body>
         
-        <% include ./navbar.ejs %>
+        <% include navbar.ejs %>
         
         <div class="box center">
             <img src="./resources/logo-transparent.png">
 
-            <% include notEnough.ejs %>
-            <% include prizeSelection.ejs %>
-            <% include alreadySubmitted.ejs %>
+            <% include prizePartials/notEnough.ejs %>
+            <% include prizePartials/prizeSelection.ejs %>
+            <% include prizePartials/alreadySubmitted.ejs %>
         </div>
 
         <script>
