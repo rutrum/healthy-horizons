@@ -32,6 +32,9 @@
                 <div style="display: none" id="not-enough">
                     Sorry, but based on the activity you have entered, you have not built up enough points to be considered for any prizes. Are you sure you would like to submit your form?
                 </div>
+                <div id="illegal-resubmit"> 
+                    <p>You have already submitted points within the last 24 hours. Please try again later.</p>
+                </div>
 
             <div id="silver">
                 <h3>Silver (150 Points)</h3>
@@ -109,35 +112,48 @@
         <script>
         
             let points = getPoints()
+            
+            let lastLoginDate = new Date('October, 14  03:24:00')
+            let currentDate = Date.now()
+          
+            if (currentDate < (lastLoginDate+86400000)) {
 
-            if (points < 150)
-            {
                 let fail = document.getElementById("not-enough")
-                fail.style.display = "block";
+                fail.style.display = "none";
 
-                let congrats = document.getElementById("congrats")
-                congrats.style.display = "none";
-
-                let silver = document.getElementById("silver")
-                silver.style.display = "none";
+                let resubmit = document.getElementById("illegal-resubmit")
+                resubmit.style.display = "block";
             }
+            else{
+                if (points < 150)
+                {
+                    let fail = document.getElementById("not-enough")
+                    fail.style.display = "block";
 
-            if (points < 250)
-            {
-                let gold = document.getElementById("gold")
-                gold.style.display = "none";
-            }
+                    let congrats = document.getElementById("congrats")
+                    congrats.style.display = "none";
 
-            if (points < 350)
-            {
-                let platinum = document.getElementById("platinum")
-                platinum.style.display = "none";
+                    let silver = document.getElementById("silver")
+                    silver.style.display = "none";
+                }
+
+                if (points < 250)
+                {
+                    let gold = document.getElementById("gold")
+                    gold.style.display = "none";
+                }
+
+                if (points < 350)
+                {
+                    let platinum = document.getElementById("platinum")
+                    platinum.style.display = "none";
+                }
             }
-           
 
         </script>
 
         <script>
+
         
         form = document.querySelector('form')
         form.addEventListener('submit', (event) => {
