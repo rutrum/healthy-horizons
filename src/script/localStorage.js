@@ -6,6 +6,9 @@ function getTaskData() {
 
     if (tasks == null) {
         // No previous data.  Initialize new form data.
+
+        window.localStorage.setItem("isSubmitted", false)
+        
         tasks = {
             meditationClass: 0,
             fruits: 0,
@@ -45,4 +48,14 @@ function getPoints() {
 // Saves points to local storage
 function savePoints(points) {
     window.localStorage.setItem("totalPoints", points)
+}
+
+// Returns points from local storage
+function didUserSubmit() {
+    return window.localStorage.getItem("isSubmitted")
+}
+
+// Saves points to local storage
+function userSubmitted() {
+    window.localStorage.setItem("isSubmitted", true)
 }
