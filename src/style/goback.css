@@ -1,28 +1,4 @@
-#point-submission img {
-    width: 100%;
-    padding-bottom: 10px;
-}
 
-#point-submission {
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-}
-
-.objective {
-    display: flex;
-    align-items: baseline;
-    width: 100%;
-}
-.objective > input {
-    text-align: start;
-    width: 10%;
-}
-
-.objective > label {
-    width: 85%;
-    padding-left: 10px;
-}
 
 button {
     width: 100%;
@@ -36,6 +12,26 @@ button {
     margin-top: 8px;
     cursor: pointer;
     margin: 20px 0 0 0;
+}
+
+.center {
+    margin: 0 auto;
+}
+
+.box{
+    margin: 30px;
+    padding: 30px;
+    max-width: 600px;
+
+    box-shadow: 0 2px 20px grey;
+    border: solid var(--secondary-clr) 2px;
+    background-color: white;
+    border-radius: 10px;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .submit {
@@ -96,4 +92,13 @@ button {
     #points{
         order: 2;
     }
+}
+
+#main {
+    margin: 100px auto;
+    width: 80%;
+}
+
+ul {
+    list-style-type: square;
 }

@@ -34,7 +34,7 @@ nav {
 }
 
 .navButton:hover {
-    background-color: var(--terciary-clr);
+    background-color: rgba(14, 26, 113, 0.6);
     transition-duration: .3s;
 }
 
