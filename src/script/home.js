@@ -49,7 +49,7 @@ function saveData() {
     }
 
     // Save data object to local storage
-    window.localStorage.setItem("formData", JSON.stringify(data))
+    saveTaskData(data)
 
     let pointVals = {
         meditationClass: 1,
