@@ -1,0 +1,104 @@
+
+
+button {
+    width: 100%;
+    height: 40px;
+    background-color: var(--secondary-clr);
+    border: solid var(--secondary-clr) 0;
+    color: whitesmoke;
+    font-weight: 600;
+    letter-spacing: 1px;
+    border-radius: 5px;
+    margin-top: 8px;
+    cursor: pointer;
+    margin: 20px 0 0 0;
+}
+
+.center {
+    margin: 0 auto;
+}
+
+.box{
+    margin: 30px;
+    padding: 30px;
+    max-width: 600px;
+
+    box-shadow: 0 2px 20px grey;
+    border: solid var(--secondary-clr) 2px;
+    background-color: white;
+    border-radius: 10px;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.submit {
+    background-color: var(--main-clr);
+}
+
+@media screen and (max-width: 480px) 
+{
+    #point-submission{
+        flex-direction: column;
+    }
+    #week-selection{
+        order: 0;
+    }
+    #stats{
+        order: 1;
+    }
+    #points{
+        order: 2;
+    }
+    .box {
+        width: 100%;
+    }
+}
+@media screen and (min-width: 1201px)
+{
+    #stats{
+        position: -webkit-sticky; /* Safari */
+        position: sticky;
+        top: 120px;
+    }
+    #week-selection{
+        position: -webkit-sticky; /* Safari */
+        position: sticky;
+        top: 120px;
+    }
+    #stats {
+        order:2;
+    }
+    #points {
+        order:1;
+    }
+    
+}
+
+@media screen and (max-width: 1200px) 
+{
+    #point-submission{
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    #week-selection{
+        order: 0;
+    }
+    #stats{
+        order: 1;
+    }
+    #points{
+        order: 2;
+    }
+}
+
+#main {
+    margin: 100px auto;
+    width: 80%;
+}
+
+ul {
+    list-style-type: square;
+}

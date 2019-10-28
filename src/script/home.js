@@ -1,6 +1,8 @@
 // Get data from local storage
 let data = getTaskData()
 
+let points = getPoints()
+
 // Insert data into input fields on form
 const pointsForm = document.querySelector('#points')
 for (let objective in data) {
@@ -24,7 +26,10 @@ pointsForm.addEventListener('submit', (event) => {
     event.preventDefault()
 
     // Sends user to prize page
-    window.location.href = "./prize"
+    if (points < 150)
+        window.location.href = "./goback"
+    else 
+       window.location.href = "./prize"
 })
 
 // This function runs every second and serves two purposes:
