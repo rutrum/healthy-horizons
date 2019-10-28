@@ -26,10 +26,8 @@ pointsForm.addEventListener('submit', (event) => {
     event.preventDefault()
 
     // Sends user to prize page
-    if (points < 150)
-        window.location.href = "./goback"
-    else 
-       window.location.href = "./prize"
+        window.location.href = "./prize"
+
 })
 
 // This function runs every second and serves two purposes:
