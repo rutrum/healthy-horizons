@@ -14,7 +14,7 @@ app.set('view engine', 'ejs')
 
 // Allows us to parse POST request data
 var bodyParser = require('body-parser')
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 // On use of any request
 router.use(function(req, res, next) {
@@ -31,6 +31,31 @@ router.get('/favicon.ico', (req, res) => {
     res.sendFile(path.join(__dirname + '/resources/favicon.ico'))
 })
 
+router.get('/home', (req, res) => {
+
+    tasks = [
+        {
+            point: 1,
+            names: ["eat fruit", "eat veggies"]
+        },
+        {
+            point: 10,
+            names: ["go the gym", "read the newspaper", "do your homework"]
+        },
+        {
+            point: 5,
+            names: ["ride a bike to work", "do PALOTOIES"]
+        },
+        {
+            point: 100,
+            names: ["wash dave's car"]
+        }
+    ]
+
+    res.render("home", {tasks: tasks})
+    console.log("rendered home")
+})
+
 router.get('/:name', (req, res) => {
     res.render(req.params.name)
 })
@@ -40,23 +65,10 @@ router.get('/', (req, res) => {
 })
 
 router.post('/prize', (req, res) => {
-    cred = req.body
+    submission = req.body
+    console.log(submission)
 
-    console.log(cred)
-
-    // Generate a pretty string that represents the data
-
-    // Save the data to a unique file (by name/email)
-
-    res.render("index")
-    // db.isUser(cred.email, cred.password, (isUser) => {
-    //     console.log("isUser ", isUser)
-    //     if (isUser) {
-    //         res.sendFile(path.join(__dirname + "/home.html"))
-    //     } else {
-    //         res.sendFile(path.join(__dirname + "/login.html"))
-    //     }
-    // })
+    res.status(200).end()
 })
 
 // router.get('/:name', (req, res) => {

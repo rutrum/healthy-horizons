@@ -59,3 +59,11 @@ function didUserSubmit() {
 function userSubmitted() {
     window.localStorage.setItem("isSubmitted", true)
 }
+
+function savePrizeSelection(prizes) {
+    window.localStorage.setItem("prizeSelection", prizes)
+}
+
+function getPrizeSelection() {
+    return JSON.parse(window.localStorage.getItem("prizeSelection"))
+}

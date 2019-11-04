@@ -73,17 +73,74 @@
 
     <div id="contact-info">
         <div class="box">
-            <input type="text" name="first name">
+            <input id="firstName" type="text" name="first name">
             <label>First Name</label>
         </div>
         <div class="box">
-            <input type="text" name="last name">
+            <input id="lastName" type="text" name="last name">
             <label>Last Name</label>
         </div>
         <div class="box">
-            <input type="text" name="email">
+            <input id="email" type="text" name="email">
             <label>Email</label>
         </div>
         <button class="submit">Submit</button>
     </div>   
 </form>
+
+<script>
+    form = document.querySelector('form')
+    form.addEventListener('submit', async (event) => {
+        // Stop page from reloading (default)
+        event.preventDefault()
+        
+        // Read the data from local storage
+        tasks = getTaskData()
+
+        // Read the data from the above form
+        prizeData = {
+            silver: getRadioResult("silver"),
+            gold: getRadioResult("gold"),
+            platinum: getRadioResult("platinum"),
+            firstName: document.querySelector("#firstName").value,
+            lastName: document.querySelector("#lastName").value,
+            email: document.querySelector("#email").value,
+        }
+
+        // Save prize data to localStorage
+        savePrizeSelection(prizeData)
+
+        // Concatenate all data
+        all = {
+            tasks: tasks,
+            prize: prizeData
+        }
+
+        // POST data to the server
+        const response = await fetch("/prize", {
+            method: "POST",
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(all)
+        })
+
+        if (response.ok) {
+            // Successful response: update submission and refresh page
+            // userSubmitted()
+            location.reload()
+        } else {
+            // Could not send response
+            // Tell user to check connection and try again
+        }
+    })
+
+    function getRadioResult(id) {
+        buttons = document.querySelectorAll("input[name=" + id + "]")
+        for (let i = 0; i < buttons.length; i++) {
+            if (buttons[i].checked) {
+                return buttons[i].value
+            }
+        }
+        return null
+    }
+
+</script>
