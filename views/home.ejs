@@ -29,24 +29,11 @@
         </form>
 
         <form id="points" class="box" method="POST">
-
-            <% tasks.forEach((pointLevel) => { %>
-                <% if (pointLevel["point"] == 1) { %> 
-                    <h3>Earn 1 Point Each</h3>
-                <% } else { %>
-                    <h3>Earn <%= pointLevel["point"] %> Points Each</h3>
-                <% } %>
-                <% pointLevel["names"].forEach(function(task) { %>
-                    <div class="objective">
-                        <input type="number" min="0" placeholder="0" name="points">
-                        <label><%= task %></label>
-                    </div>
-                <% }); %>
-            <% }) %>
-
             <img src="./resources/sun.png">
 
             <h2>Point Submission for Fall 2019</h2>
+
+            <p style= "padding-top:30px">Please enter the number of times you have completed eaach given task in the boxes below. </p> 
 
             <h3>Earn 1 Point Each</h3>
 
