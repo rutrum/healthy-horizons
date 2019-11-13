@@ -125,42 +125,5 @@
     </div>
     <script src="script/localStorage.js" type="text/javascript"></script>
     <script src="script/home.js" type="text/javascript"></script>
-    <script> 
-let points2 = getPoints()
-let status1 = "none"
-
-let pointsLeft = 0
-    if (points2 <150) {
-        pointsLeft = 150-points2
-        status1 = "silver"
-        let beyondPlat = document.getElementById("beyondPlat")
-            beyondPlat.style.display = "none"
-    }
-    if (points2 >=150 && points2<250) {
-        let beyondPlat = document.getElementById("beyondPlat")
-            beyondPlat.style.display = "none"
-       pointsLeft = 250-points2
-       status1 = "gold"
-    }
-    if (points2 >=250 && points2<350) {
-
-        let beyondPlat = document.getElementById("beyondPlat")
-            beyondPlat.style.display = "none"
-        
-        pointsLeft=350-points2
-        status1 = "platinum"
-    }
-    if (points2 >350) {
-        pointsLeft=1000
-        let almostSilver = document.getElementById("withinPlat")
-            almostSilver.style.display = "none"
-
-    }
-
-   document.querySelector("#pointsLeft").textContent = pointsLeft
-   document.querySelector("#status1").textContent = status1
-
-
-</script>
 </body>
 </html>
