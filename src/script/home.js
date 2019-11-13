@@ -112,12 +112,11 @@ function saveData() {
             pointsLeft=350-points2
             status1 = "platinum"
         }
-        if (points2 >350) {
-            
-            let almostSilver = document.getElementById("withinPlat")
-            almostSilver.style.display = "none"
-
+        if (points2 > 350 || points2 == 350) {
+            let withinPlat = document.getElementById("withinPlat")
+            withinPlat.style.display ="none"
         }
+
 
         document.querySelector("#pointsLeft").textContent = pointsLeft
         document.querySelector("#status1").textContent = status1
