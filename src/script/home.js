@@ -55,7 +55,7 @@ function saveData() {
         meditationClass: 1,
         fruits: 1,
         noSugaryDrinks: 1,
-        fitnessClass: 1,         
+        fitnessClass: 1,
         homeLunch: 1,
         parkFar: 1,
         sleep: 1,
@@ -87,6 +87,39 @@ function saveData() {
     document.querySelector("#point-total").textContent = total
 
     savePoints(total)
+
+    let points2 = getPoints()
+        let status1 = "none"
+
+        let pointsLeft = 0
+        if (points2 <150) {
+            pointsLeft = 150-points2
+            status1 = "silver"
+            let beyondPlat = document.getElementById("beyondPlat")
+            beyondPlat.style.display = "none"
+        }
+        if (points2 >=150 && points2<250) {
+            let beyondPlat = document.getElementById("beyondPlat")
+            beyondPlat.style.display = "none"
+            pointsLeft = 250-points2
+            status1 = "gold"
+        }
+        if (points2 >=250 && points2<350) {
+
+            let beyondPlat = document.getElementById("beyondPlat")
+            beyondPlat.style.display = "none"
+            
+            pointsLeft=350-points2
+            status1 = "platinum"
+        }
+        if (points2 > 350 || points2 == 350) {
+            let withinPlat = document.getElementById("withinPlat")
+            withinPlat.style.display ="none"
+        }
+
+
+        document.querySelector("#pointsLeft").textContent = pointsLeft
+        document.querySelector("#status1").textContent = status1
 }
 
 saveData()
