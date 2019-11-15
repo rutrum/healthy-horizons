@@ -107,6 +107,7 @@
             email: document.querySelector("#email").value,
         }
 
+        
         // Save prize data to localStorage
         savePrizeSelection(prizeData)
 
@@ -125,7 +126,7 @@
 
         if (response.ok) {
             // Successful response: update submission and refresh page
-            // userSubmitted()
+            userSubmitted()
             location.reload()
         } else {
             // Could not send response

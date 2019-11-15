@@ -2,6 +2,7 @@ var express = require('express')
 var app = express()
 var ip = require('ip')
 var path = require('path')
+var fs = require('fs')
 
 // var DBHandler = require('./db_handler')
 // var db = new DBHandler()
@@ -68,6 +69,10 @@ router.post('/prize', (req, res) => {
     submission = req.body
     console.log(submission)
 
+    fs.writeFile('user_data/'+submission.prize.lastName+'.txt', JSON.stringify(submission), function (err) {
+        if (err) throw err;
+        console.log('Updated!');
+      });
     res.status(200).end()
 })
 
