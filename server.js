@@ -19,7 +19,8 @@ app.use(bodyParser.json());
 
 // On use of any request
 router.use(function(req, res, next) {
-    console.log("\nNew " + req.method + " request.")
+    var ip = req.headers['x-real-ip'] || req.connection.remoteAddress;
+    console.log("\nNew " + req.method + " request from " + ip)
     console.log(req.originalUrl)
     next()
 })
