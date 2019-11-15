@@ -84,6 +84,10 @@ h3 {
 
 /* OTHER CLASSES */
 
+ul {
+    list-style-type: square;
+}
+
 .center {
     margin: 0 auto;
 }
