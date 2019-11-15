@@ -89,37 +89,42 @@ function saveData() {
     savePoints(total)
 
     let points2 = getPoints()
-        let status1 = "none"
+    let status1 = "none"
 
-        let pointsLeft = 0
-        if (points2 <150) {
-            pointsLeft = 150-points2
-            status1 = "silver"
-            let beyondPlat = document.getElementById("beyondPlat")
-            beyondPlat.style.display = "none"
-        }
-        if (points2 >=150 && points2<250) {
-            let beyondPlat = document.getElementById("beyondPlat")
-            beyondPlat.style.display = "none"
-            pointsLeft = 250-points2
-            status1 = "gold"
-        }
-        if (points2 >=250 && points2<350) {
+    let pointsLeft = 0
+    if (points2 < 350) {
+        withinPlat.style.display = "initial"
+    }
 
-            let beyondPlat = document.getElementById("beyondPlat")
-            beyondPlat.style.display = "none"
-            
-            pointsLeft=350-points2
-            status1 = "platinum"
-        }
-        if (points2 > 350 || points2 == 350) {
-            let withinPlat = document.getElementById("withinPlat")
-            withinPlat.style.display ="none"
-        }
+    if (points2 <150) {
+        pointsLeft = 150-points2
+        status1 = "silver"
+        let beyondPlat = document.getElementById("beyondPlat")
+        beyondPlat.style.display = "none"
+    }
+    if (points2 >=150 && points2<250) {
+        let beyondPlat = document.getElementById("beyondPlat")
+        beyondPlat.style.display = "none"
+        pointsLeft = 250-points2
+        status1 = "gold"
+    }
+    if (points2 >=250 && points2<350) {
+
+        let beyondPlat = document.getElementById("beyondPlat")
+        beyondPlat.style.display = "none"
+        
+        pointsLeft=350-points2
+        status1 = "platinum"
+    }
+    if (points2 >= 350) {
+        let withinPlat = document.getElementById("withinPlat")
+        beyondPlat.style.display = "initial"
+        withinPlat.style.display = "none"
+    }
 
 
-        document.querySelector("#pointsLeft").textContent = pointsLeft
-        document.querySelector("#status1").textContent = status1
+    document.querySelector("#pointsLeft").textContent = pointsLeft
+    document.querySelector("#status1").textContent = status1
 }
 
 saveData()
