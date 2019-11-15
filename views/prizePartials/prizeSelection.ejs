@@ -1,10 +1,34 @@
+<style>
+    .text-field {
+        padding: 10px;
+        display: flex;
+        justify-content: center;
+    }
+
+    /* .text-field * {
+        width: 20%;
+    } */
+
+    .text-field input {
+        flex-grow: 2;
+        padding-right: 20px;
+    }
+
+    .text-field label {
+        width: 20%;
+        flex-grow: 1;
+        text-align: right;
+        padding-right: 10px;
+    }
+</style>
+
 <form id="prize-selection" method="POST" style="display:none">
 
     <h2>Congratulations for your hard work this semester!</h2> 
-    <p>Please select a prize that corresponds with your level of achievement.</p>
+    <p>Please select your prize!  You can receive one item from each tier level.</p>
 
     <div id="silver">
-        <h3 style="text-align: center">Silver (150 Points)</h3>
+        <h3>Silver (150 Points)</h3>
         <div class="objective">
             <input type="radio" name="silver" value="fingerlessGloves">
             <label>Fingerless Gloves</label>
@@ -32,7 +56,7 @@
     </div>
 
     <div id="gold">
-        <h3 style="text-align: center">Gold (250 Points)</h3>
+        <h3>Gold (250 Points)</h3>
         <div class="objective">
             <input type="radio" name="gold" value="lantern">
             <label>Camp/Car LED Lantern</label>
@@ -56,7 +80,7 @@
     </div>
 
     <div id="platinum">
-        <h3 style="text-align: center">Platinum (350 Points)</h3>
+        <h3>Platinum (350 Points)</h3>
         <div class="objective">
             <input type="radio" name="platinum" value="picnic">
             <label> Waterproof Picnic Throw</label>
@@ -72,19 +96,21 @@
     </div>
 
     <div id="contact-info">
-        <div class="box">
-            <input id="firstName" type="text" name="first name">
+        <h3>Contact Info</h3>
+        <p>Please fill out this contact information so we know who is submitted their points!  We will use your email if for some reason we need to contact you.</p>
+        <div class="text-field">
             <label>First Name</label>
+            <input required id="firstName" type="text" name="first name">
         </div>
-        <div class="box">
-            <input id="lastName" type="text" name="last name">
+        <div class="text-field">
             <label>Last Name</label>
+            <input required id="lastName" type="text" name="last name">
         </div>
-        <div class="box">
-            <input id="email" type="text" name="email">
+        <div class="text-field">
             <label>Email</label>
+            <input required id="email" type="text" name="email">
         </div>
-        <button class="submit">Submit</button>
+        <button class="submit">Final Semester Point Submit</button>
     </div>   
 </form>
 
