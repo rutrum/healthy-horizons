@@ -107,7 +107,7 @@
             <input required id="lastName" type="text" name="last name">
         </div>
         <div class="text-field">
-            <label>Email</label>
+            <label>Butler Email</label>
             <input required id="email" type="text" name="email">
         </div>
         <button class="submit">Final Semester Point Submit</button>
@@ -140,7 +140,8 @@
         // Concatenate all data
         all = {
             tasks: tasks,
-            prize: prizeData
+            prize: prizeData,
+            points: getPoints()
         }
 
         // POST data to the server
@@ -164,7 +165,8 @@
         buttons = document.querySelectorAll("input[name=" + id + "]")
         for (let i = 0; i < buttons.length; i++) {
             if (buttons[i].checked) {
-                return buttons[i].value
+                console.log(buttons[i])
+                return buttons[i].nextElementSibling.textContent
             }
         }
         return null
