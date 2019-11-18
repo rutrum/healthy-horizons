@@ -26,7 +26,7 @@ pointsForm.addEventListener('submit', (event) => {
     event.preventDefault()
 
     // Sends user to prize page
-        window.location.href = "./prize"
+    window.location.href = "./final"
 
 })
 

@@ -33,30 +33,30 @@ router.get('/favicon.ico', (req, res) => {
     res.sendFile(path.join(__dirname + '/resources/favicon.ico'))
 })
 
-router.get('/home', (req, res) => {
+// router.get('/home', (req, res) => {
 
-    tasks = [
-        {
-            point: 1,
-            names: ["eat fruit", "eat veggies"]
-        },
-        {
-            point: 10,
-            names: ["go the gym", "read the newspaper", "do your homework"]
-        },
-        {
-            point: 5,
-            names: ["ride a bike to work", "do PALOTOIES"]
-        },
-        {
-            point: 100,
-            names: ["wash dave's car"]
-        }
-    ]
+//     tasks = [
+//         {
+//             point: 1,
+//             names: ["eat fruit", "eat veggies"]
+//         },
+//         {
+//             point: 10,
+//             names: ["go the gym", "read the newspaper", "do your homework"]
+//         },
+//         {
+//             point: 5,
+//             names: ["ride a bike to work", "do PALOTOIES"]
+//         },
+//         {
+//             point: 100,
+//             names: ["wash dave's car"]
+//         }
+//     ]
 
-    res.render("home", {tasks: tasks})
-    console.log("rendered home")
-})
+//     res.render("home", {tasks: tasks})
+//     console.log("rendered home")
+// })
 
 router.get('/:name', (req, res) => {
     res.render(req.params.name)
@@ -70,10 +70,30 @@ router.post('/prize', (req, res) => {
     submission = req.body
     console.log(submission)
 
-    fs.writeFile('user_data/'+submission.prize.lastName+'.txt', JSON.stringify(submission), function (err) {
+    prize = submission.prize
+    tasks = submission.tasks
+
+    the_data = "Name: " + prize.firstName + " " + prize.lastName + "\n"
+    the_data += "Email: " + prize .email + "\n"
+    the_data += "Total points: " + submission.points + "\n"
+    the_data += "Silver prize: " + prize.silver + "\n"
+    the_data += "Gold prize: " + prize.gold + "\n"
+    the_data += "Platinum prize: " + prize.platinum + "\n"
+    the_data += "\n"
+    for (let key in tasks) {
+        if (tasks.hasOwnProperty(key)) {
+            the_data += key + ": " + tasks[key] + "\n"
+        }
+    }
+
+    let d = new Date();
+
+    let filename = "user_data/" + d.getTime() + "_" + prize.firstName + "_" + prize.lastName + ".txt"
+
+    fs.writeFile(filename, the_data, function (err) {
         if (err) throw err;
         console.log('Updated!');
-      });
+    });
     res.status(200).end()
 })
 

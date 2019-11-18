@@ -61,7 +61,7 @@ function userSubmitted() {
 }
 
 function savePrizeSelection(prizes) {
-    window.localStorage.setItem("prizeSelection", prizes)
+    window.localStorage.setItem("prizeSelection", JSON.stringify(prizes))
 }
 
 function getPrizeSelection() {
