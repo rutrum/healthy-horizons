@@ -73,6 +73,9 @@ router.post('/prize', (req, res) => {
     prize = submission.prize
     tasks = submission.tasks
 
+    if (prize.gold == null) { prize.gold = "N/A" }
+    if (prize.platinum == null) { prize.platinum = "N/A" }
+
     the_data = "Name: " + prize.firstName + " " + prize.lastName + "\n"
     the_data += "Email: " + prize .email + "\n"
     the_data += "Total points: " + submission.points + "\n"

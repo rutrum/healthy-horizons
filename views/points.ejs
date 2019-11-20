@@ -22,16 +22,16 @@
     <div id="point-submission">
 
         <form class="box skinny" id="stats">
-            <h2>Stats</h2>
-            <h3>Total Points: <span id="point-total"> thinking...</span></h3>
 
-             <div id=withinPlat> You have <span id="pointsLeft"> </span> points left until <span id="status1"> </span> status. 
-             </div>
-             <div id=beyondPlat> You have hit the highest status. Congrats! </div>
+            <h3>Total Earned Points: <span id="point-total">thinking...</span></h3>
+            <p id="currentLevel">You are at <span id="levelValue"></span> status.</p>
+            <div id=withinPlat>You have <span id="pointsLeft"></span> points left until <span id="status1"></span> status.
+            </div>
+            <div id=beyondPlat> You have hit the highest status. Congrats! </div>
 
         </form>
 
-        <form id="points" class="box" method="POST">
+        <form id="points" class="box" method="POST" onkeydown="return event.key != 'Enter';">
             <img src="./resources/sun.png">
 
             <h2>Point Submission for Fall 2019</h2>
@@ -124,6 +124,10 @@
                 <input type="number" min="0" max="1" placeholder="0" name="annualPhysical">
                 <label> Complete annual physical with your Primary Care Provider</label>
             </div>
+
+
+            <h3 style="padding-top: 60px">Ready to Submit?</h3>
+            <p>When you click the button below, you will go to the next step to pick your prizes for the semester.  Don't worry, you can come back to this page and make adjustments if you have to.</p>
 
             <button class="submit">Choose Your Prizes</button>
         </form>

@@ -62,7 +62,7 @@ function saveData() {
         upstairsBathroom: 1,
         seatbelt: 1,
         medications: 5,
-        snackForOffice: 0,
+        snackForOffice: 5,
         increaseSteps: 5,
         exercise: 5,
         lunchAndLearn: 25,
@@ -97,19 +97,26 @@ function saveData() {
     }
 
     if (points2 <150) {
+        let currentLevel = document.querySelector("#currentLevel")
+        currentLevel.style.display = "none"
         pointsLeft = 150-points2
         status1 = "silver"
         let beyondPlat = document.getElementById("beyondPlat")
         beyondPlat.style.display = "none"
     }
     if (points2 >=150 && points2<250) {
+        let currentLevel = document.querySelector("#currentLevel")
+        currentLevel.style.display = "initial"
+        document.querySelector("#levelValue").textContent = "Silver"
         let beyondPlat = document.getElementById("beyondPlat")
         beyondPlat.style.display = "none"
         pointsLeft = 250-points2
         status1 = "gold"
     }
     if (points2 >=250 && points2<350) {
-
+        let currentLevel = document.querySelector("#currentLevel")
+        currentLevel.style.display = "initial"
+        document.querySelector("#levelValue").textContent = "Gold"
         let beyondPlat = document.getElementById("beyondPlat")
         beyondPlat.style.display = "none"
         
@@ -117,6 +124,9 @@ function saveData() {
         status1 = "platinum"
     }
     if (points2 >= 350) {
+        let currentLevel = document.querySelector("#currentLevel")
+        currentLevel.style.display = "initial"
+        document.querySelector("#levelValue").textContent = "Platinum"
         let withinPlat = document.getElementById("withinPlat")
         beyondPlat.style.display = "initial"
         withinPlat.style.display = "none"
