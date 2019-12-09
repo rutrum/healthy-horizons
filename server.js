@@ -78,6 +78,8 @@ router.post('/prize', (req, res) => {
 
     the_data = "Name: " + prize.firstName + " " + prize.lastName + "\n"
     the_data += "Email: " + prize .email + "\n"
+    the_data += getDateString() + "\n"
+    the_data += "\n"
     the_data += "Total points: " + submission.points + "\n"
     the_data += "Silver prize: " + prize.silver + "\n"
     the_data += "Gold prize: " + prize.gold + "\n"
@@ -91,7 +93,7 @@ router.post('/prize', (req, res) => {
 
     let d = new Date();
 
-    let filename = "user_data/" + d.getTime() + "_" + prize.firstName + "_" + prize.lastName + ".txt"
+    let filename = "user_data/" + prize.firstName + "_" + prize.lastName + "_" + d.getTime() + ".txt"
 
     fs.writeFile(filename, the_data, function (err) {
         if (err) throw err;
@@ -99,6 +101,11 @@ router.post('/prize', (req, res) => {
     });
     res.status(200).end()
 })
+
+function getDateString() {
+    let d = new Date()
+    return d.toString()
+}
 
 // router.get('/:name', (req, res) => {
 //     res.sendFile(path.join(__dirname + "/" + req.params.name))

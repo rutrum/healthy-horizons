@@ -85,6 +85,7 @@ h2 {
 
 h3 {
     padding: 10px;
+    padding-top: 30px;
     text-align: center;
 }
 
@@ -144,4 +145,11 @@ button {
 
 img {
     padding-bottom: 12px;
+}
+
+.reminder {
+    font-style: italic;
+    color: #7a0000;
+    font-size: 11pt;
+    margin-top: -15px;
 }
