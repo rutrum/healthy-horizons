@@ -6,14 +6,22 @@ This is an EPICS project for Healthy Horizons at Butler University. The purpose 
 
 For technical details, visit the [wiki](https://github.com/rutrum/healthy-horizons/wiki).  It will share details about languages used, how the project is structured, and how the client-server model works in web development.
 
-## Technologies and File Structure
+## How to Get Started with Development
 
-This is a node.js website using the express framework.  Files related to serving the website are located in the root directory.  HTML files are in the root of the `src` directory.  Scripts and stylesheets are in the `src/script` and `src/style` directories respectively.  All other website data is stored in `src/resources`.
+You should download (possibly) four things.
+* [Git](https://git-scm.com/downloads) (to manage the files in this project)
+* [VSCode](https://code.visualstudio.com/download) or your favorite text editor. Do not use Notepad++, please.
+* [Node and NPM](https://nodejs.org/en/) (get the LTS version)
+* A terminal to run certain commands.  If you are on MacOS or Linux, use the terminal provided to you.  On windows, I recommend [Cmder](https://cmder.net/)
+
+You should also download the git repository that you are reading from now.  Go to a place you like to store things, and open a terminal from there.  Then type this in the terminal:
+```
+git clone https://github.com/rutrum/healthy-horizons.git
+```
+This will download the repository into a folder called `healthy-horizons`.
 
 ## How to Start Server
 
-Clone the repository, and be sure to install node package manager (npm) on your machine.
+Run `npm i` in the project folder.  This will install all the project dependencies.  Then run `node server.js` to start the server.
 
-Run `npm i` in the project folder.  This will install all the project dependencies.  Then run `node app.js` to start the server.
-
-Additionally, you can install `nodemon` which will allow the server to auto refresh the page on saved changes.  To do this, install it using `npm i nodemon -g` and then run the server using `nodemon app.js`.
+Additionally, you can install `nodemon` which will allow the server to auto refresh the page on saved changes.  To do this, install it using `npm i nodemon -g` and then run the server using `nodemon server.js`.
