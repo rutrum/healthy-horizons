@@ -25,3 +25,9 @@ This will download the repository into a folder called `healthy-horizons`.
 Run `npm i` in the project folder.  This will install all the project dependencies.  Then run `node server.js` to start the server.
 
 Additionally, you can install `nodemon` which will allow the server to auto refresh the page on saved changes.  To do this, install it using `npm i nodemon -g` and then run the server using `nodemon server.js`.
+
+## Running mySQL Server
+
+Try following [this article](https://medium.com/@backslash112/start-a-remote-mysql-server-with-docker-quickly-9fdff22d23fd) to spin up one in a docker container.
+
+Suggested container name: `myhealthysql`.
