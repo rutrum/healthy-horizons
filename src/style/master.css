@@ -153,3 +153,18 @@ img {
     font-size: 11pt;
     margin-top: -15px;
 }
+
+
+/* Remove increment/decrement buttons from number input */
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance:textfield;
+}
