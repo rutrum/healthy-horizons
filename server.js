@@ -35,8 +35,26 @@ router.get('/favicon.ico', (req, res) => {
 
 router.get("/points", (req, res) => {
     // db.all_users((users) => {
-        users = [{name: "Richard"}, {name: "Rick"}, {name: "Dick"}]
-        res.render("points", {users: users})
+    users = [{name: "Richard"}, {name: "Rick"}, {name: "Dick"}]
+    tasks = [
+        {
+            point: 1,
+            names: ["eat fruit", "eat veggies"]
+        },
+        {
+            point: 10,
+            names: ["go the gym", "read the newspaper", "do your homework"]
+        },
+        {
+            point: 5,
+            names: ["ride a bike to work", "do PALOTOIES"]
+        },
+        {
+            point: 100,
+            names: ["wash dave's car"]
+        }
+    ]
+    res.render("points", {users: users, tasks: tasks})
     // })
 })
 
