@@ -5,6 +5,7 @@
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="./style/master.css">
     <link rel="stylesheet" type="text/css" href="./style/home.css">
+    <link rel="stylesheet" type="text/css" href="./style/progressbar.css">
 </head>
 
 <body>
@@ -38,8 +39,13 @@
 
             <p> In the boxes below, please enter the number of times you have completed each task this semester. You can come back to this page and update your point totals.</p>
             <p>
+
                 The submit button will calculate your points and let you pick out the prizes you are eligible for.  Then you will do a final submission that will send your points and prize selections to Healthy Horizons.
             </p>
+
+            <% users.forEach((user, i) => { %> 
+                <p>Hello user <%= user.first + " " + user.last %> number <%= i %> </p>
+            <% }) %> 
 
             <h3>Earn 1 Point Each</h3>
             <p class="reminder">Enter the number of the times each task was completed.</p>
