@@ -34,10 +34,10 @@ router.get('/favicon.ico', (req, res) => {
 })
 
 router.get("/points", (req, res) => {
-    db.all_users((users) => {
+    // db.all_users((users) => {
         users = [{name: "Richard"}, {name: "Rick"}, {name: "Dick"}]
         res.render("points", {users: users})
-    })
+    // })
 })
 
 router.get('/home', (req, res) => {
