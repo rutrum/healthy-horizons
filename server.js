@@ -4,8 +4,8 @@ var ip = require('ip')
 var path = require('path')
 var fs = require('fs')
 
-// var DBHandler = require('./db_handler')
-// var db = new DBHandler()
+var database = require('./mysql_connection')
+var db = new database.db ()
 
 var port = process.env.PORT || 8080
 
@@ -33,30 +33,37 @@ router.get('/favicon.ico', (req, res) => {
     res.sendFile(path.join(__dirname + '/resources/favicon.ico'))
 })
 
-// router.get('/home', (req, res) => {
+router.get("/points", (req, res) => {
+    db.all_users((users) => {
+        users = [{name: "Richard"}, {name: "Rick"}, {name: "Dick"}]
+        res.render("points", {users: users})
+    })
+})
 
-//     tasks = [
-//         {
-//             point: 1,
-//             names: ["eat fruit", "eat veggies"]
-//         },
-//         {
-//             point: 10,
-//             names: ["go the gym", "read the newspaper", "do your homework"]
-//         },
-//         {
-//             point: 5,
-//             names: ["ride a bike to work", "do PALOTOIES"]
-//         },
-//         {
-//             point: 100,
-//             names: ["wash dave's car"]
-//         }
-//     ]
+router.get('/home', (req, res) => {
 
-//     res.render("home", {tasks: tasks})
-//     console.log("rendered home")
-// })
+    tasks = [
+        {
+            point: 1,
+            names: ["eat fruit", "eat veggies"]
+        },
+        {
+            point: 10,
+            names: ["go the gym", "read the newspaper", "do your homework"]
+        },
+        {
+            point: 5,
+            names: ["ride a bike to work", "do PALOTOIES"]
+        },
+        {
+            point: 100,
+            names: ["wash dave's car"]
+        }
+    ]
+
+    res.render("home", {tasks: tasks})
+    console.log("rendered home")
+})
 
 router.get('/:name', (req, res) => {
     res.render(req.params.name)
