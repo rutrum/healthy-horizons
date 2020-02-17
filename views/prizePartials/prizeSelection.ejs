@@ -27,6 +27,20 @@
     <h2>Congratulations for your hard work this semester!</h2> 
     <p>Great job on being healthy!  Please select your prize!  You can receive one item from each tier level.</p>
 
+    <% tiers.forEach((tier) => { %>
+        <h3><%= tier.name %> (<%= tier.point %> Points)</h3>
+        <% tier.prizes.forEach((prize) => { %>
+            <div class="objective">
+                <input type="radio" name="silver" value=<%= prize %>>
+                <label><%= prize %></label>
+            </div>
+        <% }) %>
+    <% }) %>
+
+
+
+
+
     <div id="silver">
         <h3>Silver (150 Points)</h3>
         <div class="objective">
