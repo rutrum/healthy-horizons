@@ -95,13 +95,10 @@ var mysql = require("mysql");
 
 exports.db = class database {
     constructor() {
-        this.connection = mysql.createConnection({
-            host     : 'localhost',
-            user     : 'root',
-            password : 'healthy.team',
-            database : 'healthydb'
-        })
+        let creds = require("./db_credentials.json")
+        this.connection = mysql.createConnection(creds)
         this.connection.connect()
+        console.log("Connected to database!")
     }
 
     destroy() {

@@ -5,7 +5,7 @@ var path = require('path')
 var fs = require('fs')
 
 var database = require('./mysql_connection')
-//var db = new database.db ()
+var db = new database.db ()
 
 var port = process.env.PORT || 8080
 
