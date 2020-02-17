@@ -58,6 +58,30 @@ router.get("/points", (req, res) => {
     // })
 })
 
+router.get('/prizes', (req, res) => {
+
+    tiers = [
+        {
+            name : 'Silver',
+            point : 150,
+            prizes: ['Finglerless Gloves','Pill Dispenser']
+        },
+        {
+            name: 'Gold',
+            point : 250,
+            prizes: ['Camp/Car LED Lantern','Reusable Utensils & Bag']
+        },
+        {
+            name: 'Platinum',
+            point : 350,
+            prizes: ['Waterproof Picnic Throw','Bluetooth Earbuds']
+        }
+    ]
+
+    res.render("prizes", {tiers: tiers})
+    console.log("rendered prizes")
+})
+
 router.get('/home', (req, res) => {
 
     tasks = [

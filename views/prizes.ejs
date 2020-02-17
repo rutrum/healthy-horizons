@@ -16,6 +16,22 @@
 <body>
     <% include navbar.ejs %>
         
+    
+    <div class = 'box center'>
+        <img src="./resources/sun.png">
+        <h2>List of Potential Prizes</h2> 
+        <p>A healthy lifestyle isn't the only benefit of the Healthy Horizons initiative—there are also many prizes you can earn based on the amount of points you earn throughout the semester! Below are the potential prizes you can win organized by the point levels:</p>
+        <ul>
+        <% tiers.forEach((tier) => { %>
+            <h3><%= tier.name %> (<%= tier.point %> Points)</h3>
+                <% tier.prizes.forEach((prize) => { %>
+                    <li><%= prize %></li>
+                <% }) %>
+        <% }) %>
+        </ul>
+    </div>
+    
+    
     <div class="box center">
         <img src="./resources/sun.png">
         <h2>List of Potential Prizes</h2> 
