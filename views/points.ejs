@@ -24,9 +24,10 @@
 
         <form class="box skinny" id="stats">
 
+            <div id="progress-bar"></div>
+
             <h3>Total Earned Points: <span id="point-total">thinking...</span></h3>
             <p id="currentLevel">You are at <span id="levelValue"></span> status.</p>
-            <img src="./resources/download.png" alt="jello"> 
             <div id=withinPlat>You have <span id="pointsLeft"></span> points left until <span id="status1"></span> status.
             </div>
             <div id=beyondPlat> You have hit the highest status. Congrats! </div>
@@ -43,10 +44,6 @@
 
                 The submit button will calculate your points and let you pick out the prizes you are eligible for.  Then you will do a final submission that will send your points and prize selections to Healthy Horizons.
             </p>
-
-            <% users.forEach((user, i) => { %> 
-                <p>Hello user <%= user.first + " " + user.last %> number <%= i %> </p>
-            <% }) %> 
 
             <h3>Earn 1 Point Each</h3>
             <p class="reminder">Enter the number of the times each task was completed.</p>

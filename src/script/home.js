@@ -89,6 +89,10 @@ function saveData() {
     savePoints(total)
 
     let points2 = getPoints()
+
+ // determine length of progress bar
+     
+
     let status1 = "none"
 
     let pointsLeft = 0
@@ -131,10 +135,41 @@ function saveData() {
         beyondPlat.style.display = "initial"
         withinPlat.style.display = "none"
     }
-
-
+    var progressbar = document.getElementById("progress-bar")
+   if (points2 < 151) {
+       percent = (points2) /150 *100
+    percent_string = "" + percent + "%" 
+    console.log(percent_string) 
+    progressbar.style.width = percent_string 
+   }
+   else if (points2 > 150, points2 < 251 ){
+    percent = (points2 -150)
+    percent_string = "" + percent + "%" 
+    console.log(percent_string) 
+    progressbar.style.width = percent_string 
+   }
+   else if (points2 > 250 ){
+    percent = (points2 -250)
+    percent_string = "" + percent + "%" 
+    console.log(percent_string) 
+    progressbar.style.width = percent_string 
+   }
+    var progressbar = document.getElementById("progress-bar") 
+        if (points2 < 150){
+            progressbar.style.background = "black"
+        }
+   else if (points2 => 150, points2 < 250) {
+    progressbar.style.background = "gray"
+    }   
+   else if (points2 => 250, points2 < 350) {
+     progressbar.style.background = "gold"
+    }   
+    else if (points2 => 350 ) {
+        progressbar.style.background = "rgb(175,238,238"
+    }   
     document.querySelector("#pointsLeft").textContent = pointsLeft
     document.querySelector("#status1").textContent = status1
 }
-
+   
+        
 saveData()
