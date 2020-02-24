@@ -165,4 +165,35 @@ exports.db = class database {
         let q = "SELECT * FROM usertask WHERE user_id = ?;"
         this.query_db_with_params(q, [user_id], callback)
     }
+
+
+    /// Prizes and tiers related functions
+
+    all_tiers(callback) {
+        let q = "SELECT * FROM tier ORDER BY points ASC"
+        this.query_db(q, callback)
+    }
+
+    all_prizes(callback) {
+        let q = "SELECT * FROM prize"
+        this.query_db(q, callback)
+    }
+
+    all_prizes_and_tiers(callback) {
+        this.all_tiers(tiers => {
+            this.all_prizes(prizes => {
+                let result = []
+                tiers.forEach(tier => {
+                    let prize_names = prizes.filter(prize => prize.tier_id == tier.id).map(prize => prize.description)
+                    result.push({
+                        name: tier.name.replace(/^\w/, c => c.toUpperCase()),
+                        point: tier.points,
+                        prizes: prize_names
+                    })
+                })
+                console.log(JSON.stringify({result: result}))
+                callback(result)
+            })
+        })
+    }
 }

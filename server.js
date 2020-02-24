@@ -5,7 +5,7 @@ var path = require('path')
 var fs = require('fs')
 
 var database = require('./mysql_connection')
-var db = new database.db ()
+var db = new database.db()
 
 var port = process.env.PORT || 8080
 
@@ -78,8 +78,11 @@ router.get('/prizes', (req, res) => {
         }
     ]
 
-    res.render("prizes", {tiers: tiers})
-    console.log("rendered prizes")
+    db.all_prizes_and_tiers(result => {
+        res.render("prizes", {tiers: result})
+        console.log("rendered prizes")
+    })
+
 })
 
 router.get('/home', (req, res) => {
@@ -170,6 +173,10 @@ router.get('/script/:name', (req, res) => {
 
 router.get('/resources/:name', (req, res) => {
     res.sendFile(path.join(__dirname + "/resources/" + req.params.name))
+})
+
+router.get('/test/test', (req, res) => {
+    db.all_prizes_and_tiers((result) => {console.log(JSON.stringify(result))})
 })
 
 // router.post('/home.html', (req, res) => {
