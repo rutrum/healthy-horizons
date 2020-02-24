@@ -4,8 +4,8 @@ var ip = require('ip')
 var path = require('path')
 var fs = require('fs')
 
-// var DBHandler = require('./db_handler')
-// var db = new DBHandler()
+var database = require('./mysql_connection')
+var db = new database.db()
 
 var port = process.env.PORT || 8080
 
@@ -33,30 +33,81 @@ router.get('/favicon.ico', (req, res) => {
     res.sendFile(path.join(__dirname + '/resources/favicon.ico'))
 })
 
-// router.get('/home', (req, res) => {
+router.get("/points", (req, res) => {
+    // db.all_users((users) => {
+    tasks = [
+        {
+            point: 1,
+            names: ["eat fruit", "eat veggies"]
+        },
+        {
+            point: 10,
+            names: ["go the gym", "read the newspaper", "do your homework"]
+        },
+        {
+            point: 5,
+            names: ["ride a bike to work", "do PALOTOIES"]
+        },
+        {
+            point: 100,
+            names: ["wash dave's car"]
+        }
+    ]
+    res.render("points", {tasks: tasks})
+    // })
+})
 
-//     tasks = [
-//         {
-//             point: 1,
-//             names: ["eat fruit", "eat veggies"]
-//         },
-//         {
-//             point: 10,
-//             names: ["go the gym", "read the newspaper", "do your homework"]
-//         },
-//         {
-//             point: 5,
-//             names: ["ride a bike to work", "do PALOTOIES"]
-//         },
-//         {
-//             point: 100,
-//             names: ["wash dave's car"]
-//         }
-//     ]
+router.get('/prizes', (req, res) => {
 
-//     res.render("home", {tasks: tasks})
-//     console.log("rendered home")
-// })
+    tiers = [
+        {
+            name : 'Silver',
+            point : 150,
+            prizes: ['Finglerless Gloves','Pill Dispenser']
+        },
+        {
+            name: 'Gold',
+            point : 250,
+            prizes: ['Camp/Car LED Lantern','Reusable Utensils & Bag']
+        },
+        {
+            name: 'Platinum',
+            point : 350,
+            prizes: ['Waterproof Picnic Throw','Bluetooth Earbuds']
+        }
+    ]
+
+    db.all_prizes_and_tiers(result => {
+        res.render("prizes", {tiers: result})
+        console.log("rendered prizes")
+    })
+
+})
+
+router.get('/home', (req, res) => {
+
+    tasks = [
+        {
+            point: 1,
+            names: ["eat fruit", "eat veggies"]
+        },
+        {
+            point: 10,
+            names: ["go the gym", "read the newspaper", "do your homework"]
+        },
+        {
+            point: 5,
+            names: ["ride a bike to work", "do PALOTOIES"]
+        },
+        {
+            point: 100,
+            names: ["wash dave's car"]
+        }
+    ]
+
+    res.render("home", {tasks: tasks})
+    console.log("rendered home")
+})
 
 router.get('/:name', (req, res) => {
     res.render(req.params.name)
@@ -121,6 +172,10 @@ router.get('/script/:name', (req, res) => {
 
 router.get('/resources/:name', (req, res) => {
     res.sendFile(path.join(__dirname + "/resources/" + req.params.name))
+})
+
+router.get('/test/test', (req, res) => {
+    db.all_prizes_and_tiers((result) => {console.log(JSON.stringify(result))})
 })
 
 // router.post('/home.html', (req, res) => {

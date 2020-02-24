@@ -3,3 +3,4 @@ npm-debug.log
 .DS_Store
 package-lock.json
 user_data/
+db_credentials.json

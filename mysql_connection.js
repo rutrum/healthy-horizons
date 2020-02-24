@@ -22,86 +22,83 @@ var mysql = require("mysql");
 
 // connection.end();
 
-function getTask(taskId){
-  connection.query('SELECT * FROM tasks WHERE id = '+taskId, function (error, results, fields) {
-    if (error) throw error;
-    console.log('The solution is: ', results);
-  });
-};
+// function getTask(taskId){
+//   connection.query('SELECT * FROM tasks WHERE id = '+taskId, function (error, results, fields) {
+//     if (error) throw error;
+//     console.log('The solution is: ', results);
+//   });
+// };
 
-//not returning a usable number yet it is printable
-function getSizeofTasks(){
-  connection.query('SELECT COUNT(id) FROM tasks;', function (error, results, fields) {
-    if (error) throw error;
-    console.log(results[0]["COUNT(id)"]);
-    return results[0]["COUNT(*)"];
-  });
-};
+// //not returning a usable number yet it is printable
+// function getSizeofTasks(){
+//   connection.query('SELECT COUNT(id) FROM tasks;', function (error, results, fields) {
+//     if (error) throw error;
+//     console.log(results[0]["COUNT(id)"]);
+//     return results[0]["COUNT(*)"];
+//   });
+// };
 
-function getUserTasksByUser(f_name,l_name){
-  connection.query('SELECT * FROM usertasks WHERE users_id = '+
-                    '(SELECT id FROM users WHERE '+
-                    'f_name = '+f_name+' AND '+
-                    'l_name = '+l_name+')', 
-    function (error, results, fields) {
-    if (error) throw error;
-    console.log('The solution is: ', results);
-  });
-};
+// function getUserTasksByUser(f_name,l_name){
+//   connection.query('SELECT * FROM usertasks WHERE users_id = '+
+//                     '(SELECT id FROM users WHERE '+
+//                     'f_name = '+f_name+' AND '+
+//                     'l_name = '+l_name+')', 
+//     function (error, results, fields) {
+//     if (error) throw error;
+//     console.log('The solution is: ', results);
+//   });
+// };
 
-//trouble returning getSizeofTasks() as a usable variable to insert blank entries for a new user (response is undefined)
-function insertAllTasksNewUser(users_id,date){
-  sizeofTasks = getSizeofTasks();
-  console.log(sizeofTasks);
-  for (i=1;i<=sizeofTasks;i++){
-    connection.query("INSERT INTO `mydb`.`usertasks` (`users_id`, `tasks_id`, `date`, `frequency`)"+
-                      ' VALUES( '+users_id+
-                      ', '+i+
-                      ', "2019-11-18"'+
-                      ', 0)',  
-      function (error, results, fields) {
-      if (error) throw error;
-      console.log('The solution is: ', results);
-    });  
-  };
-};
+// //trouble returning getSizeofTasks() as a usable variable to insert blank entries for a new user (response is undefined)
+// function insertAllTasksNewUser(users_id,date){
+//   sizeofTasks = getSizeofTasks();
+//   console.log(sizeofTasks);
+//   for (i=1;i<=sizeofTasks;i++){
+//     connection.query("INSERT INTO `mydb`.`usertasks` (`users_id`, `tasks_id`, `date`, `frequency`)"+
+//                       ' VALUES( '+users_id+
+//                       ', '+i+
+//                       ', "2019-11-18"'+
+//                       ', 0)',  
+//       function (error, results, fields) {
+//       if (error) throw error;
+//       console.log('The solution is: ', results);
+//     });  
+//   };
+// };
 
-//cannot return usable datatype right now. same as getSizeofTasks() i believe
-function getSizeofUsers(){
-  connection.query('SELECT COUNT(*) FROM users;', function (error, results, fields) {
-    if (error) throw error;
-    console.log(results[0]["COUNT(*)"]);
-    return results[0]["COUNT(*)"];
-  });
-};
+// //cannot return usable datatype right now. same as getSizeofTasks() i believe
+// function getSizeofUsers(){
+//   connection.query('SELECT COUNT(*) FROM users;', function (error, results, fields) {
+//     if (error) throw error;
+//     console.log(results[0]["COUNT(*)"]);
+//     return results[0]["COUNT(*)"];
+//   });
+// };
 
-function updateUserTasks(users_id,tasks_id,date,frequency){
-  connection.query("UPDATE `mydb`.`usertasks` SET `date`="+date+
-                                    ", `frequency`="+frequency+
-                                    " WHERE `users_id`= "+users_id+
-                                    " AND `tasks_id`= "+tasks_id, 
-  function (error, results, fields) {
-    if (error) throw error;
-    console.log('The solution is: ', results);
-  });
-};
+// function updateUserTasks(users_id,tasks_id,date,frequency){
+//   connection.query("UPDATE `mydb`.`usertasks` SET `date`="+date+
+//                                     ", `frequency`="+frequency+
+//                                     " WHERE `users_id`= "+users_id+
+//                                     " AND `tasks_id`= "+tasks_id, 
+//   function (error, results, fields) {
+//     if (error) throw error;
+//     console.log('The solution is: ', results);
+//   });
+// };
 
-function getUserTasks(){
-  connection.query('SELECT * FROM usertasks', function (error, results, fields) {
-    if (error) throw error;
-    console.log('The solution is: ', results);
-  });
-};
+// function getUserTasks(){
+//   connection.query('SELECT * FROM usertasks', function (error, results, fields) {
+//     if (error) throw error;
+//     console.log('The solution is: ', results);
+//   });
+// };
 
-class HealthyDB {
+exports.db = class database {
     constructor() {
-        this.connection = mysql.createConnection({
-            host     : 'localhost',
-            user     : 'root',
-            password : 'healthy.team',
-            database : 'healthydb'
-        })
+        let creds = require("./db_credentials.json")
+        this.connection = mysql.createConnection(creds)
         this.connection.connect()
+        console.log("Connected to database!")
     }
 
     destroy() {
@@ -168,11 +165,35 @@ class HealthyDB {
         let q = "SELECT * FROM usertask WHERE user_id = ?;"
         this.query_db_with_params(q, [user_id], callback)
     }
+
+
+    /// Prizes and tiers related functions
+
+    all_tiers(callback) {
+        let q = "SELECT * FROM tier ORDER BY points ASC"
+        this.query_db(q, callback)
+    }
+
+    all_prizes(callback) {
+        let q = "SELECT * FROM prize"
+        this.query_db(q, callback)
+    }
+
+    all_prizes_and_tiers(callback) {
+        this.all_tiers(tiers => {
+            this.all_prizes(prizes => {
+                let result = []
+                tiers.forEach(tier => {
+                    let prize_names = prizes.filter(prize => prize.tier_id == tier.id).map(prize => prize.description)
+                    result.push({
+                        name: tier.name.replace(/^\w/, c => c.toUpperCase()),
+                        point: tier.points,
+                        prizes: prize_names
+                    })
+                })
+                console.log(JSON.stringify({result: result}))
+                callback(result)
+            })
+        })
+    }
 }
-
-let db = new HealthyDB()
-db.user(4, (results) => {
-    console.log(results)
-})
-
-db.destroy()

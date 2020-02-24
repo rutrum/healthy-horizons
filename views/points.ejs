@@ -44,12 +44,24 @@
 
                 The submit button will calculate your points and let you pick out the prizes you are eligible for.  Then you will do a final submission that will send your points and prize selections to Healthy Horizons.
             </p>
+            
+            <% tasks.forEach((pointVal) => { %>
+                <h3>Earn <%= pointVal.point %> Point Each</h3>
+                <p class="reminder">Enter the number of times each task was completed</p>
+                <% pointVal.names.forEach((name) => { %>
+                    <div class="objective">
+                        <input type="number" max="999" min="0" placeholder="0" name=<%= name %>>
+                        <label><%= name %></label>
+                    </div>
+                <% }) %>
+            <% }) %>
+
 
             <h3>Earn 1 Point Each</h3>
             <p class="reminder">Enter the number of the times each task was completed.</p>
 
             <div class="objective">
-                <input type="number" min="0" placeholder="0" name="meditationClass">
+                <input type="number" max="999" min="0" placeholder="0" name="meditationClass">
                 <label>Participate in Center for Faith and Vocation guided meditation class</label>
             </div>
             <div class="objective">
