@@ -35,7 +35,6 @@ router.get('/favicon.ico', (req, res) => {
 
 router.get("/points", (req, res) => {
     // db.all_users((users) => {
-    users = [{name: "Richard"}, {name: "Rick"}, {name: "Dick"}]
     tasks = [
         {
             point: 1,
@@ -54,7 +53,7 @@ router.get("/points", (req, res) => {
             names: ["wash dave's car"]
         }
     ]
-    res.render("points", {users: users, tasks: tasks})
+    res.render("points", {tasks: tasks})
     // })
 })
 
