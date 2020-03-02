@@ -167,6 +167,11 @@ function saveData() {
     else if (points2 => 350 ) {
         progressbar.style.background = "rgb(175,238,238"
     }   
+    let boxes = document.querySelectorAll(".box")
+    boxes.forEach((box) => {
+        box.style.borderColor = progressbar.style.background
+    })
+       
     document.querySelector("#pointsLeft").textContent = pointsLeft
     document.querySelector("#status1").textContent = status1
 }
