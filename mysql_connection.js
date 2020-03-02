@@ -73,6 +73,12 @@ exports.db = class database {
         this.query_db_with_params(q, [user_id], callback)
     }
 
+    // Given a user_id, week_num, update the database
+    // with the contents of data.
+    update_usertasks(user_id, week_num, data) {
+
+    }
+
 
     /// Prizes and tiers related functions
 

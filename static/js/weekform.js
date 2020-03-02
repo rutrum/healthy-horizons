@@ -68,7 +68,7 @@ function hide_form() {
 }
 
 // Posts the data given to /api/usertasks/:user_id/:week_num
-function post_form_data(userid, week_num, data) {
+function post_form_data(user_id, week_num, data) {
 
 }
 
