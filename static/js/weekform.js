@@ -12,7 +12,10 @@ function read_form() {
 // Fetches from the /api/task_points route.  Returns that JSON
 // object.
 function fetch_task_points() {
-
+    fetch('/api/task_points')
+        .then((task_points) => {
+            return JSON.parse(task_points)
+        })
 }
 
 // Using read_form() and fetch_task_points() calculate
@@ -34,7 +37,10 @@ function write_form(input_values) {
 // Given the week number and a user id, get all the
 // usertasks for each that user on that week.
 function fetch_usertasks(user_id, week_num) {
-
+    fetch('/api/usertasks/'+user_id+'/'+week_num)
+        .then((usertasks) => {
+            return JSON.parse(usertasks)
+        })
 }
 
 // Modifies the display property of #week-form

@@ -1,7 +1,10 @@
 // Fetches tier data from /api/tiers
 // and returns the data.
 function fetch_tiers() {
-
+    fetch('/api/tiers')
+        .then((tiers) => {
+            return JSON.parse(tiers)
+        })
 }
 
 // Given a number of points and tier data that looks
