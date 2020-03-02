@@ -25,6 +25,9 @@ router.use(function(req, res, next) {
     next()
 })
 
+// Set static directory
+router.use(express.static('static'))
+
 // All file are served from the /src directory
 __dirname = __dirname + "/src"
 
@@ -84,31 +87,6 @@ router.get('/prizes', (req, res) => {
 
 })
 
-router.get('/home', (req, res) => {
-
-    tasks = [
-        {
-            point: 1,
-            names: ["eat fruit", "eat veggies"]
-        },
-        {
-            point: 10,
-            names: ["go the gym", "read the newspaper", "do your homework"]
-        },
-        {
-            point: 5,
-            names: ["ride a bike to work", "do PALOTOIES"]
-        },
-        {
-            point: 100,
-            names: ["wash dave's car"]
-        }
-    ]
-
-    res.render("home", {tasks: tasks})
-    console.log("rendered home")
-})
-
 router.get('/:name', (req, res) => {
     res.render(req.params.name)
 })
@@ -153,14 +131,56 @@ router.post('/prize', (req, res) => {
     res.status(200).end()
 })
 
+//  __ _ _ __ (_)
+// / _` | '_ \| |
+//| (_| | |_) | |
+// \__,_| .__/|_|
+//      |_|     
+
+router.get('/api/tasks', (req, res) => {
+    db.all_tasks((results) => {
+        res.send(JSON.stringify(results))
+    })
+})
+
+// Returns array of the following form as json:
+// [ { name: "bronze", points: 250 },
+//   { name: "silver", points, 350 },
+//   ... ]
+router.get("/api/tiers", (req, res) => {
+
+})
+
+// Returns an object of the following form as json:
+// { vegetables: 1, water: 1, readbook: 5, pitchinforlunch: 5 }
+// Keys should be task names and values should be how many points
+// it is worth.
+router.get("/api/task_points", (req, res) => {
+
+})
+
+// Returns all user tasks for the user of the given id
+// in the given week.  Return value should be like
+// { vegetables: 0, water: 2, readbook: 0, pitchinforlunch: 1 }
+router.get("api/user_tasks/:user_id/:week_num", (req, res) => {
+
+})
+
+// Updates all user tasks for the user of the given id
+// in the given week.  Posted value should be like
+// { vegetables: 0, water: 2, readbook: 0, pitchinforlunch: 1 }
+// May also need to insert rows if new, or ignore rows that
+// are 0 valued.
+router.post("api/user_tasks/:user_id/:week_num", (req, res) => {
+
+})
+
+// Other stuff
+
 function getDateString() {
     let d = new Date()
     return d.toString()
 }
-
-// router.get('/:name', (req, res) => {
-//     res.sendFile(path.join(__dirname + "/" + req.params.name))
-// })
 
 router.get('/style/:name', (req, res) => {
     res.sendFile(path.join(__dirname + "/style/" + req.params.name))
@@ -177,15 +197,6 @@ router.get('/resources/:name', (req, res) => {
 router.get('/test/test', (req, res) => {
     db.all_prizes_and_tiers((result) => {console.log(JSON.stringify(result))})
 })
-
-// router.post('/home.html', (req, res) => {
-//     // Point form submission
-//     // Do something with the data
-//     console.log(req.body)
-
-//     // Send them back the homepage for now
-//     res.sendFile(path.join(__dirname + "/home.html"))
-// })
 
 // Attach routes at root
 app.use('/', router)
