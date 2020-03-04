@@ -93,13 +93,17 @@ function unhide_form() {
 // 4. Make the page visible to the user
 // This should be done using the functions defined above.
 function show_week_form(user_id, week_num) {
-
+    input_values = fetch_user_tasks(user_id, week_num)
+    write_form(input_values)
+    aggregate_form_points()
+    unhide_form()
 }
 
 // Store the value from #total-form-points into 
 // #total-points-week-<week_num>
 function copy_form_points(week_num) {
-
+    week_points = document.querySelector('#total-form-points')
+    document.querySelector('#total-points-week-'+week_num).value = week_points
 }
 
 // Modifies the display property of #week-form
@@ -110,7 +114,12 @@ function hide_form() {
 
 // Posts the data given to /api/usertasks/:user_id/:week_num
 function post_form_data(user_id, week_num, data) {
-
+    const response = await fetch("/api/usertasks/:"+user_id+"/:"+week_num, {
+        method: "POST",
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(data)
+    })
+    return response
 }
 
 // This function is called when the user presses the save
@@ -121,5 +130,10 @@ function post_form_data(user_id, week_num, data) {
 // 4. Hide the form
 // This should be done using the functions defined above.
 function save_changes() {
-
+    data = read_form()
+    week_num = document.querySelector('#week-num')
+    user_id = 0
+    post_form_data(user_id, week_num, data)
+    copy_form_points(week_num)
+    hide_form()
 }
