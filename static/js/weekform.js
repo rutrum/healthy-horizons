@@ -6,7 +6,22 @@
 // { vegetables: 0, water: 2, readbook: 0, pitchinforlunch: 1 }
 // That is, check boxes should be read as 0 or 1.
 function read_form() {
-
+    form = document.querySelector('#week-form')
+    tasktags = form.querySelectorAll('.task')
+    inputbox = tasktags.querySelector('input')
+    var valueDict = {}
+    inputbox.forEach((box) => {
+        if (box.type == 'number') {
+            valueDict[box.name] = box.value
+        } else if (box.type == 'checkbox') {
+            if (box.checked) {
+                valueDict[box.name] = 1
+            } else {
+                valueDict[box.name] = 0
+            }
+        }
+    })
+    return valueDict
 }
 
 // Fetches from the /api/task_points route.  Returns that JSON
@@ -22,7 +37,14 @@ function fetch_task_points() {
 // the total number of points and display the result
 // into #total-form-points
 function aggregate_form_points() {
-
+    form = read_form()
+    task_points = fetch_task_points()
+    let total = 0
+    form.forEach((task) => {
+        let task_value = form[task] * task_points[task]
+        total += task_value
+    })
+    document.querySelector('#total-form-points').textContent = total
 }
 
 // Given input like the following:
@@ -31,7 +53,20 @@ function aggregate_form_points() {
 // requires checking if input box is a checkbox, and checking
 // based on 0 or 1.
 function write_form(input_values) {
-
+    form = document.querySelector('#week-form')
+    tasktags = form.querySelectorAll('.task')
+    for (key in input_values) {
+        let inputbox = tasktags.querySelector("input[name='"+key+"']").value
+        if (inputbox.type == 'number') {
+            inputbox.value = input_values[key]
+        } else if (inputbox.type == 'checkbox') {
+            if (input_values[key] == 1) {
+                inputbox.checked = True
+            } else {
+                inputbox.checked = False
+            }
+        }
+    }
 }
 
 // Given the week number and a user id, get all the
