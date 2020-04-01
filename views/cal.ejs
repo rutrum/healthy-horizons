@@ -16,11 +16,11 @@
             text-align: center;
         }
         .rectangle {
-            background-color: orange;
+            background-color: rgb(168, 168, 173);
             text-align: center;
             margin: 5px;
-            width: 150px;
-            height: 80px;
+            width: 550px;
+            height: 100px;
         }
         #popup input {
             margin: 10px;
@@ -31,9 +31,9 @@
             margin-left: -200px;
             margin-top: -250px;
             top: 50%;
-            background-color: grey;
-            width: 400px;
-            height: 500px;
+            background-color: rgb(80, 132, 209);
+            width: 375px;
+            height: 400px;
             display: flex;
             justify-content: center;
             flex-direction: column;
@@ -62,61 +62,72 @@
 
 <body>
     <% include navbar.ejs %>
-    
-    <div style="margin:100px; display: flex; flex-direction: column">
+    <form class="box skinny" id="stats">
+
+        <h3>Total Earned Points: <span id="point-total">150</span></h3>
+        <p id="currentLevel">You are at <span id="levelValue"></span> silver status.</p>
+        <div id=withinPlat>You have <span id="pointsLeft"></span> 100 points left until <span id="status1"></span> gold status.
+        </div>
+        <div id=beyondPlat> You have not hit the highest status </div>
+
+    </form>
+    <div class="box">
+        <img src="./resources/sun.png"> 
+        <h2>Point Submission for Spring 2020</h2>
+    <div style="margin:5px; display: flex; flex-direction: column">
         <div style="display: flex; flex-direction: row">
-            <div class="square">Monday</div>
+            <!-- <div class="square">Monday</div>
             <div class="square">Tuesday</div>
             <div class="square">Wednesday</div>
             <div class="square">Thursday</div>
-            <div class="square">Friday</div>
+            <div class="square">Friday</div> -->
             <div class="rectangle">Week 1</div>
         </div> 
         <div style="display: flex; flex-direction: row">
-            <div class="square">Monday</div>
+            <!-- <div class="square">Monday</div>
             <div class="square">Tuesday</div>
             <div class="square">Wednesday</div>
             <div class="square">Thursday</div>
-            <div class="square">Friday</div>
+            <div class="square">Friday</div> -->
             <div class="rectangle">Week 2</div>
         </div> 
         <div style="display: flex; flex-direction: row">
-            <div class="square">Monday</div>
+            <!-- <div class="square">Monday</div>
             <div class="square">Tuesday</div>
             <div class="square">Wednesday</div>
             <div class="square">Thursday</div>
-            <div class="square">Friday</div>
+            <div class="square">Friday</div> -->
             <div class="rectangle">Week 3</div>
         </div> 
         <div style="display: flex; flex-direction: row">
-            <div class="square">Monday</div>
+            <!-- <div class="square">Monday</div>
             <div class="square">Tuesday</div>
             <div class="square">Wednesday</div>
             <div class="square">Thursday</div>
-            <div class="square">Friday</div>
+            <div class="square">Friday</div> -->
             <div class="rectangle">Week 4</div>
          </div> 
         <div style="display: flex; flex-direction: row">
-            <div class="square">Monday</div>
+            <!-- <div class="square">Monday</div>
             <div class="square">Tuesday</div>
             <div class="square">Wednesday</div>
             <div class="square">Thursday</div>
-            <div class="square">Friday</div>
+            <div class="square">Friday</div> -->
             <div class="rectangle">Week 5</div>
        </div> 
     </div> 
 
     <div id="popup">
-        <div><input type="checkbox"></input><input type="checkbox"></input><input type="checkbox"></input><input type="checkbox"></input><input type="checkbox"></input>Text<br /></div>
-        <div><input type="checkbox"></input><input type="checkbox"></input><input type="checkbox"></input><input type="checkbox"></input><input type="checkbox"></input>Text<br /></div>
-        <div><input type="checkbox"></input><input type="checkbox"></input><input type="checkbox"></input><input type="checkbox"></input><input type="checkbox"></input>Text<br /></div>
-        <div><input type="checkbox"></input><input type="checkbox"></input><input type="checkbox"></input><input type="checkbox"></input><input type="checkbox"></input>Text<br /></div>
-        <div><input type="checkbox"></input><input type="checkbox"></input><input type="checkbox"></input><input type="checkbox"></input><input type="checkbox"></input>Text<br /></div>
+        <div><input type="checkbox"></input><input type="checkbox"></input><input type="checkbox"></input><input type="checkbox"></input><input type="checkbox"></input>ran<br /></div>
+        <div><input type="checkbox"></input><input type="checkbox"></input><input type="checkbox"></input><input type="checkbox"></input><input type="checkbox"></input>stood up<br /></div>
+        <div><input type="checkbox"></input><input type="checkbox"></input><input type="checkbox"></input><input type="checkbox"></input><input type="checkbox"></input>ate an apple<br /></div>
+        <div><input type="checkbox"></input><input type="checkbox"></input><input type="checkbox"></input><input type="checkbox"></input><input type="checkbox"></input>take the stairs<br /></div>
+        <div><input type="checkbox"></input><input type="checkbox"></input><input type="checkbox"></input><input type="checkbox"></input><input type="checkbox"></input>make a website<br /></div>
         <div><button>Submit</button></div>
     </div>
 
     <script>
-    document.querySelectorAll(".square").forEach((div) => {
+    document.querySelectorAll(".rectangle").forEach((div) => {
         div.addEventListener('click', show_popup)
     })
     document.querySelector("button").addEventListener('click', hide_popup)
