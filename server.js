@@ -4,7 +4,7 @@ var ip = require('ip')
 var path = require('path')
 var fs = require('fs')
 
-var database = require('./mysql_connection')
+var database = require('./database')
 var db = new database.db()
 
 var port = process.env.PORT || 8080

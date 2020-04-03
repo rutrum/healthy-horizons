@@ -62,59 +62,12 @@
 
 <body>
     <% include navbar.ejs %>
-    <form class="box skinny" id="stats">
-
-        <h3>Total Earned Points: <span id="point-total">150</span></h3>
-        <p id="currentLevel">You are at <span id="levelValue"></span> silver status.</p>
-        <div id=withinPlat>You have <span id="pointsLeft"></span> 100 points left until <span id="status1"></span> gold status.
-        </div>
-        <div id=beyondPlat> You have not hit the highest status </div>
-
-    </form>
     <div class="box">
-        <img src="./resources/sun.png"> 
         <h2>Point Submission for Spring 2020</h2>
     <div style="margin:5px; display: flex; flex-direction: column">
-        <div style="display: flex; flex-direction: row">
-            <!-- <div class="square">Monday</div>
-            <div class="square">Tuesday</div>
-            <div class="square">Wednesday</div>
-            <div class="square">Thursday</div>
-            <div class="square">Friday</div> -->
-            <div class="rectangle">Week 1</div>
-        </div> 
-        <div style="display: flex; flex-direction: row">
-            <!-- <div class="square">Monday</div>
-            <div class="square">Tuesday</div>
-            <div class="square">Wednesday</div>
-            <div class="square">Thursday</div>
-            <div class="square">Friday</div> -->
-            <div class="rectangle">Week 2</div>
-        </div> 
-        <div style="display: flex; flex-direction: row">
-            <!-- <div class="square">Monday</div>
-            <div class="square">Tuesday</div>
-            <div class="square">Wednesday</div>
-            <div class="square">Thursday</div>
-            <div class="square">Friday</div> -->
-            <div class="rectangle">Week 3</div>
-        </div> 
-        <div style="display: flex; flex-direction: row">
-            <!-- <div class="square">Monday</div>
-            <div class="square">Tuesday</div>
-            <div class="square">Wednesday</div>
-            <div class="square">Thursday</div>
-            <div class="square">Friday</div> -->
-            <div class="rectangle">Week 4</div>
-         </div> 
-        <div style="display: flex; flex-direction: row">
-            <!-- <div class="square">Monday</div>
-            <div class="square">Tuesday</div>
-            <div class="square">Wednesday</div>
-            <div class="square">Thursday</div>
-            <div class="square">Friday</div> -->
-            <div class="rectangle">Week 5</div>
-       </div> 
+        <% for (let i = 0; i < 5; i++) { %>
+            <div class="rectangle">Week <%= i + 1 %></div>
+        <% } %>
     </div> 
 
     <div id="popup">
