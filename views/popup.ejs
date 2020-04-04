@@ -1,0 +1,15 @@
+<div id="popup">
+    <% tasks.forEach( task => { %>
+        <div class="task">
+            <% if (task.type == "daily") { %>
+                <input type="number" placeholder="0" data-id="<%= task.id %>"/>
+                <div class="task-description"><%= task.description %></div>
+            <% } else if (task.type == "weekly") { %>
+                <input type="checkbox" data-id="<%= task.id %>"/>
+                <div class="task-description"><%= task.description %></div>
+            <% } %>
+        </div>
+    <% }) %>
+    <div><button>Submit</button></div>
+</div>
+

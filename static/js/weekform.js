@@ -9,7 +9,7 @@ function read_form() {
     form = document.querySelector('#week-form')
     tasktags = form.querySelectorAll('.task')
     inputbox = tasktags.querySelector('input')
-    var valueDict = {}
+    let valueDict = {}
     inputbox.forEach((box) => {
         if (box.type == 'number') {
             valueDict[box.name] = box.value
@@ -28,7 +28,7 @@ function read_form() {
 // object.
 function fetch_task_points() {
     fetch('/api/task_points')
-        .then((task_points) => {
+        .then(task_points => {
             return JSON.parse(task_points)
         })
 }
@@ -71,8 +71,8 @@ function write_form(input_values) {
 
 // Given the week number and a user id, get all the
 // usertasks for each that user on that week.
-function fetch_usertasks(user_id, week_num) {
-    fetch('/api/usertasks/'+user_id+'/'+week_num)
+function fetch_usertasks(user_id, week_num, semester) {
+    fetch('/api/usertasks/'+user_id+'/'+week_num+'/'+semester)
         .then((usertasks) => {
             return JSON.parse(usertasks)
         })
@@ -92,8 +92,8 @@ function unhide_form() {
 // 3. Aggregate points from the form
 // 4. Make the page visible to the user
 // This should be done using the functions defined above.
-function show_week_form(user_id, week_num) {
-    input_values = fetch_user_tasks(user_id, week_num)
+function show_week_form(user_id, week_num, semester) {
+    input_values = fetch_user_tasks(user_id, week_num, semester)
     write_form(input_values)
     aggregate_form_points()
     unhide_form()
@@ -114,12 +114,12 @@ function hide_form() {
 
 // Posts the data given to /api/usertasks/:user_id/:week_num
 function post_form_data(user_id, week_num, data) {
-    const response = await fetch("/api/usertasks/:"+user_id+"/:"+week_num, {
+    fetch("/api/usertasks/:"+user_id+"/:"+week_num, {
         method: "POST",
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(data)
-    })
-    return response
+    }).then(result => { return result })
+    
 }
 
 // This function is called when the user presses the save

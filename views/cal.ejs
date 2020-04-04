@@ -5,52 +5,44 @@
     <title>CALENDAR</title>
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="./style/master.css">
+    <script src="./static/js/weekform.js"></script>
     
     <style>
-        .square {
-            background-color: red;
-            margin: 5px;
-            width: 100px;
-            height: 80px;
-            color: whitesmoke;
-            text-align: center;
-        }
-        .rectangle {
-            background-color: rgb(168, 168, 173);
-            text-align: center;
-            margin: 5px;
-            width: 550px;
-            height: 100px;
+        .week-summary {
+            width: 100%;
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            background-color: lightgrey;
+            margin: 10px;
         }
         #popup input {
             margin: 10px;
+            width: 20%;
         }
         #popup {
-            position: absolute;
-            left: 50%;
+            /*position: absolute;
+            top: 50%;
             margin-left: -200px;
             margin-top: -250px;
-            top: 50%;
+            left: 50%; */
             background-color: rgb(80, 132, 209);
-            width: 375px;
-            height: 400px;
+            width: 100%;
             display: flex;
             justify-content: center;
             flex-direction: column;
             padding: 20px;
-            display: none;
         }
         #popup div {
             width: 100%;
             color: white;
-            padding: 10px;
+        }
+        .task {
+            display: flex;
         }
     </style>
 
     <script>
-
-        
-
         function show_popup() {
             document.getElementById("popup").style.display = "block"
         }
@@ -64,28 +56,18 @@
     <% include navbar.ejs %>
     <div class="box">
         <h2>Point Submission for Spring 2020</h2>
-    <div style="margin:5px; display: flex; flex-direction: column">
-        <% for (let i = 0; i < 5; i++) { %>
-            <div class="rectangle">Week <%= i + 1 %></div>
-        <% } %>
-    </div> 
+        <div style="margin:5px; display: flex; flex-direction: column">
+            <% for (let i = 1; i < 6; i++) { %>
+                <div class="week-summary">
+                    <div><h2>Week <%= i %></h2></div>
+                    <div><h3>Total points: <span id="total-points-week-<%= i %> "></span></h3></div>
+                </div>
+            <% } %>
+        </div> 
 
-    <div id="popup">
-        <div><input type="checkbox"></input><input type="checkbox"></input><input type="checkbox"></input><input type="checkbox"></input><input type="checkbox"></input>ran<br /></div>
-        <div><input type="checkbox"></input><input type="checkbox"></input><input type="checkbox"></input><input type="checkbox"></input><input type="checkbox"></input>stood up<br /></div>
-        <div><input type="checkbox"></input><input type="checkbox"></input><input type="checkbox"></input><input type="checkbox"></input><input type="checkbox"></input>ate an apple<br /></div>
-        <div><input type="checkbox"></input><input type="checkbox"></input><input type="checkbox"></input><input type="checkbox"></input><input type="checkbox"></input>take the stairs<br /></div>
-        <div><input type="checkbox"></input><input type="checkbox"></input><input type="checkbox"></input><input type="checkbox"></input><input type="checkbox"></input>make a website<br /></div>
-        <div><button>Submit</button></div>
+        <%- include("popup", { tasks: tasks }) %>
     </div>
 
-    <script>
-    document.querySelectorAll(".rectangle").forEach((div) => {
-        div.addEventListener('click', show_popup)
-    })
-    document.querySelector("button").addEventListener('click', hide_popup)
-
-    </script>
 </body>
 
 
