@@ -6,45 +6,39 @@
 // { vegetables: 0, water: 2, readbook: 0, pitchinforlunch: 1 }
 // That is, check boxes should be read as 0 or 1.
 function read_form() {
-    form = document.querySelector('#week-form')
-    tasktags = form.querySelectorAll('.task')
-    inputbox = tasktags.querySelector('input')
-    let valueDict = {}
-    inputbox.forEach((box) => {
-        if (box.type == 'number') {
-            valueDict[box.name] = box.value
-        } else if (box.type == 'checkbox') {
-            if (box.checked) {
-                valueDict[box.name] = 1
+    form = document.querySelector('#popup')
+    inputs = [...form.querySelectorAll('input')]
+
+    let data = {}
+    inputs.forEach(input => {
+        let id = input.getAttribute("data-id")
+        if (input.type == 'number') {
+            data[id] = input.value == "" ? 0 : parseInt(input.value)
+        } else if (input.type == 'checkbox') {
+            if (input.checked) {
+                data[id] = 1
             } else {
-                valueDict[box.name] = 0
+                data[id] = 0
             }
         }
     })
-    return valueDict
+    return data
 }
 
-// Fetches from the /api/task_points route.  Returns that JSON
-// object.
-function fetch_task_points() {
-    fetch('/api/task_points')
-        .then(task_points => {
-            return JSON.parse(task_points)
-        })
-}
-
-// Using read_form() and fetch_task_points() calculate
+// Using read_form() calculate
 // the total number of points and display the result
 // into #total-form-points
 function aggregate_form_points() {
-    form = read_form()
-    task_points = fetch_task_points()
-    let total = 0
-    form.forEach((task) => {
-        let task_value = form[task] * task_points[task]
-        total += task_value
-    })
-    document.querySelector('#total-form-points').textContent = total
+    data = read_form()
+    fetch('/api/task_points')
+        .then(response => { return response.json() })
+        .then(task_points => {
+            let total = 0
+            for (let [id, freq] of Object.entries(data)) {
+                total += task_points[id] * freq
+            }
+            document.querySelector('#total-form-points').textContent = total
+        })
 }
 
 // Given input like the following:
@@ -52,36 +46,25 @@ function aggregate_form_points() {
 // populate #week-form with those new values.  This
 // requires checking if input box is a checkbox, and checking
 // based on 0 or 1.
-function write_form(input_values) {
-    form = document.querySelector('#week-form')
-    tasktags = form.querySelectorAll('.task')
-    for (key in input_values) {
-        let inputbox = tasktags.querySelector("input[name='"+key+"']").value
-        if (inputbox.type == 'number') {
-            inputbox.value = input_values[key]
-        } else if (inputbox.type == 'checkbox') {
-            if (input_values[key] == 1) {
-                inputbox.checked = True
-            } else {
-                inputbox.checked = False
-            }
+function write_form(usertasks, weeknum) {
+    form = document.querySelector('#popup')
+    form.querySelector("#week-num").textContent = weeknum
+    tasktags = [...form.querySelectorAll('.task')]
+    tasktags.forEach(task => {
+        let input = task.querySelector("input")
+        let id = input.getAttribute("data-id")
+        if (input.type == 'number') {
+            input.value = usertasks[id]
+        } else if (input.type == 'checkbox') {
+            input.checked = (usertasks[id] == 1)
         }
-    }
-}
-
-// Given the week number and a user id, get all the
-// usertasks for each that user on that week.
-function fetch_usertasks(user_id, week_num, semester) {
-    fetch('/api/usertasks/'+user_id+'/'+week_num+'/'+semester)
-        .then((usertasks) => {
-            return JSON.parse(usertasks)
-        })
+    })
 }
 
 // Modifies the display property of #week-form
 // to make visible to the user.
 function unhide_form() {
-
+    document.querySelector("#popup").style.display = "flex"
 }
 
 // Given the week number and user id, perform a variety of
@@ -93,33 +76,26 @@ function unhide_form() {
 // 4. Make the page visible to the user
 // This should be done using the functions defined above.
 function show_week_form(user_id, week_num, semester) {
-    input_values = fetch_user_tasks(user_id, week_num, semester)
-    write_form(input_values)
-    aggregate_form_points()
-    unhide_form()
+    fetch('/api/user_tasks/'+user_id+'/'+week_num+'/'+semester)
+        .then(response => { return response.json() })
+        .then(usertasks => {
+            write_form(usertasks, week_num)
+            aggregate_form_points()
+            unhide_form()
+        })
 }
 
 // Store the value from #total-form-points into 
 // #total-points-week-<week_num>
 function copy_form_points(week_num) {
-    week_points = document.querySelector('#total-form-points')
-    document.querySelector('#total-points-week-'+week_num).value = week_points
+    week_points = document.querySelector('#total-form-points').textContent
+    document.querySelector('#total-points-week-'+week_num).textContent = week_points
 }
 
 // Modifies the display property of #week-form
 // to make invisible to the user.
 function hide_form() {
-
-}
-
-// Posts the data given to /api/usertasks/:user_id/:week_num
-function post_form_data(user_id, week_num, data) {
-    fetch("/api/usertasks/:"+user_id+"/:"+week_num, {
-        method: "POST",
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(data)
-    }).then(result => { return result })
-    
+    document.querySelector("#popup").style.display = "none"
 }
 
 // This function is called when the user presses the save
@@ -131,9 +107,14 @@ function post_form_data(user_id, week_num, data) {
 // This should be done using the functions defined above.
 function save_changes() {
     data = read_form()
-    week_num = document.querySelector('#week-num')
-    user_id = 0
-    post_form_data(user_id, week_num, data)
-    copy_form_points(week_num)
-    hide_form()
+    week_num = document.querySelector('#week-num').textContent
+    fetch("/api/user_tasks/"+1+"/"+week_num+"/"+1, {
+        method: "POST",
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(data)
+    }).then(result => { 
+        copy_form_points(week_num)
+        aggregate_weekly_points()
+        hide_form()
+    })
 }

@@ -36,42 +36,21 @@ router.get('/favicon.ico', (req, res) => {
     res.sendFile(path.join(__dirname + '/resources/favicon.ico'))
 })
 
-router.get("/points", (req, res) => {
-    // db.all_users((users) => {
-    tasks = [
-        {
-            point: 1,
-            names: ["eat fruit", "eat veggies"]
-        },
-        {
-            point: 10,
-            names: ["go the gym", "read the newspaper", "do your homework"]
-        },
-        {
-            point: 5,
-            names: ["ride a bike to work", "do PALOTOIES"]
-        },
-        {
-            point: 100,
-            names: ["wash dave's car"]
-        }
-    ]
-    res.render("points", {tasks: tasks})
-    // })
-})
-
 router.get('/prizes', (req, res) => {
     db.all_prizes_and_tiers(result => {
         res.render("prizes", {tiers: result})
         console.log("rendered prizes")
     })
-
 })
 
 router.get('/calendar', (req, res) => {
-    db.all_tasks(result => {
-        console.log(result)
-        res.render("cal", {tasks: result})
+    db.all_tasks(tasks => {
+        db.weekly_points(1, 1, points => {
+            pointmap = {}
+            points.forEach((week) => { pointmap[week.week] = week.points })
+            console.log(pointmap)
+            res.render("cal", { tasks: tasks, points: pointmap })
+        })
     })
 })
 
@@ -150,8 +129,8 @@ router.get("/api/task_points", (req, res) => {
     db.all_tasks(results => {
         let data = {}
         results.forEach(result => {
-            let desc = result["description"]
-            data[desc] = result["points"]
+            let id = result["id"]
+            data[id] = result["points"]
         })
         console.log(data)
         res.send(JSON.stringify(data))
@@ -166,7 +145,12 @@ router.get("/api/user_tasks/:user_id/:week_num/:semester", (req, res) => {
     week_num = req.params.week_num
     semester = req.params.semester
     db.usertasks(user_id, week_num, semester, results => {
-        res.send(JSON.stringify(results))
+        console.log(results)
+        let points = {}
+        results.forEach(row => {
+            points[row["task_id"]] = row.frequency
+        })
+        res.send(JSON.stringify(points))
     })
 })
 
@@ -179,7 +163,8 @@ router.post("/api/user_tasks/:user_id/:week_num/:semester", (req, res) => {
     user_id = req.params.user_id
     week_num = req.params.week_num
     semester = req.params.semester
-    db.update_usertasks(user_id, week_num, semester, {1: 7, 3: 7}, (success) => {
+    data = req.body
+    db.update_usertasks(user_id, week_num, semester, data, (success) => {
         res.send("{ status: 200 }")
     })
 })

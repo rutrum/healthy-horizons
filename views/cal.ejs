@@ -5,7 +5,6 @@
     <title>CALENDAR</title>
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="./style/master.css">
-    <script src="./static/js/weekform.js"></script>
     
     <style>
         .week-summary {
@@ -16,29 +15,10 @@
             background-color: lightgrey;
             margin: 10px;
         }
-        #popup input {
-            margin: 10px;
-            width: 20%;
-        }
-        #popup {
-            /*position: absolute;
-            top: 50%;
-            margin-left: -200px;
-            margin-top: -250px;
-            left: 50%; */
-            background-color: rgb(80, 132, 209);
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            flex-direction: column;
-            padding: 20px;
-        }
-        #popup div {
-            width: 100%;
-            color: white;
-        }
-        .task {
-            display: flex;
+        .edit {
+            width: 40px;
+            height: 40px;
+            background-color: lightgreen;
         }
     </style>
 
@@ -56,11 +36,17 @@
     <% include navbar.ejs %>
     <div class="box">
         <h2>Point Submission for Spring 2020</h2>
+        <h3>Point Total: <span id="total-points"></span></h3>
         <div style="margin:5px; display: flex; flex-direction: column">
             <% for (let i = 1; i < 6; i++) { %>
                 <div class="week-summary">
-                    <div><h2>Week <%= i %></h2></div>
-                    <div><h3>Total points: <span id="total-points-week-<%= i %> "></span></h3></div>
+                    <div><h2>Week <span class="week-num"><%= i %></span></h2></div>
+                    <div><h3>Total points: 
+                        <span class="total-points-week" id="total-points-week-<%= i %>">
+                            <%= points[i] == undefined ? 0 : points[i] %>
+                        </span>
+                    </h3></div>
+                    <div class="edit">edit</div>
                 </div>
             <% } %>
         </div> 
@@ -68,6 +54,8 @@
         <%- include("popup", { tasks: tasks }) %>
     </div>
 
+    <script src="./static/js/weekform.js"></script>
+    <script src="./static/js/summary.js"></script>
 </body>
 
 

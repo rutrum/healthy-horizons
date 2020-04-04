@@ -1,5 +1,34 @@
+<style>
+    #popup input {
+        margin: 10px;
+        width: 20%;
+    }
+    #popup {
+        /*position: absolute;
+        top: 50%;
+        margin-left: -200px;
+        margin-top: -250px;
+        left: 50%; */
+        background-color: rgb(80, 132, 209);
+        width: 100%;
+        display: none;
+        justify-content: center;
+        flex-direction: column;
+        padding: 20px;
+    }
+    #popup div {
+        width: 100%;
+        color: white;
+    }
+    .task {
+        display: flex;
+    }
+</style>
+
 <div id="popup">
+    <h2>Week <span id="week-num"></span> Points: <span id="total-form-points"></span></h2>
     <% tasks.forEach( task => { %>
+        <% if (task.type == "semester") return %>
         <div class="task">
             <% if (task.type == "daily") { %>
                 <input type="number" placeholder="0" data-id="<%= task.id %>"/>
@@ -10,6 +39,5 @@
             <% } %>
         </div>
     <% }) %>
-    <div><button>Submit</button></div>
+    <div><button id="submit-form">Submit</button></div>
 </div>
-

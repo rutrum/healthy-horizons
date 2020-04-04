@@ -114,4 +114,16 @@ exports.db = class database {
             })
         })
     }
+
+    /// Points for a given user
+
+    total_points(user_id, semester, callback) {
+        let q = "SELECT SUM(frequency * points) FROM usertask INNER JOIN task ON task_id = task.id WHERE user_id = ? AND semester_id = ?"
+        this.query_db(q, [user_id, semester], callback)
+    }
+
+    weekly_points(user_id, semester, callback) {
+        let q = "SELECT week, SUM(frequency * points) AS points FROM usertask INNER JOIN task ON task_id = task.id WHERE user_id = ? AND semester_id = ? GROUP BY week"
+        this.query_db(q, [user_id, semester], callback)
+    }
 }
