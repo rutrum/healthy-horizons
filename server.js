@@ -61,30 +61,18 @@ router.get("/points", (req, res) => {
 })
 
 router.get('/prizes', (req, res) => {
-
-    tiers = [
-        {
-            name : 'Silver',
-            point : 150,
-            prizes: ['Finglerless Gloves','Pill Dispenser']
-        },
-        {
-            name: 'Gold',
-            point : 250,
-            prizes: ['Camp/Car LED Lantern','Reusable Utensils & Bag']
-        },
-        {
-            name: 'Platinum',
-            point : 350,
-            prizes: ['Waterproof Picnic Throw','Bluetooth Earbuds']
-        }
-    ]
-
     db.all_prizes_and_tiers(result => {
         res.render("prizes", {tiers: result})
         console.log("rendered prizes")
     })
 
+})
+
+router.get('/calendar', (req, res) => {
+    db.all_tasks(result => {
+        console.log(result)
+        res.render("cal", {tasks: result})
+    })
 })
 
 router.get('/:name', (req, res) => {
@@ -131,6 +119,7 @@ router.post('/prize', (req, res) => {
     res.status(200).end()
 })
 
+
 //  __ _ _ __ (_)
 // / _` | '_ \| |
 //| (_| | |_) | |
@@ -138,7 +127,7 @@ router.post('/prize', (req, res) => {
 //      |_|     
 
 router.get('/api/tasks', (req, res) => {
-    db.all_tasks((results) => {
+    db.all_tasks(results => {
         res.send(JSON.stringify(results))
     })
 })
@@ -148,7 +137,9 @@ router.get('/api/tasks', (req, res) => {
 //   { name: "silver", points, 350 },
 //   ... ]
 router.get("/api/tiers", (req, res) => {
-
+    db.all_tiers(results => {
+        res.send(JSON.stringify(results))
+    })
 })
 
 // Returns an object of the following form as json:
@@ -156,14 +147,27 @@ router.get("/api/tiers", (req, res) => {
 // Keys should be task names and values should be how many points
 // it is worth.
 router.get("/api/task_points", (req, res) => {
-
+    db.all_tasks(results => {
+        let data = {}
+        results.forEach(result => {
+            let desc = result["description"]
+            data[desc] = result["points"]
+        })
+        console.log(data)
+        res.send(JSON.stringify(data))
+    })
 })
 
 // Returns all user tasks for the user of the given id
 // in the given week.  Return value should be like
 // { vegetables: 0, water: 2, readbook: 0, pitchinforlunch: 1 }
-router.get("api/user_tasks/:user_id/:week_num", (req, res) => {
-
+router.get("/api/user_tasks/:user_id/:week_num/:semester", (req, res) => {
+    user_id = req.params.user_id
+    week_num = req.params.week_num
+    semester = req.params.semester
+    db.usertasks(user_id, week_num, semester, results => {
+        res.send(JSON.stringify(results))
+    })
 })
 
 // Updates all user tasks for the user of the given id
@@ -171,8 +175,13 @@ router.get("api/user_tasks/:user_id/:week_num", (req, res) => {
 // { vegetables: 0, water: 2, readbook: 0, pitchinforlunch: 1 }
 // May also need to insert rows if new, or ignore rows that
 // are 0 valued.
-router.post("api/user_tasks/:user_id/:week_num", (req, res) => {
-
+router.post("/api/user_tasks/:user_id/:week_num/:semester", (req, res) => {
+    user_id = req.params.user_id
+    week_num = req.params.week_num
+    semester = req.params.semester
+    db.update_usertasks(user_id, week_num, semester, {1: 7, 3: 7}, (success) => {
+        res.send("{ status: 200 }")
+    })
 })
 
 // Other stuff
@@ -192,6 +201,10 @@ router.get('/script/:name', (req, res) => {
 
 router.get('/resources/:name', (req, res) => {
     res.sendFile(path.join(__dirname + "/resources/" + req.params.name))
+})
+
+router.get('/static/js/:name', (req, res) => {
+    res.sendFile(path.join(__dirname + "/../static/js/" + req.params.name))
 })
 
 router.get('/test/test', (req, res) => {
