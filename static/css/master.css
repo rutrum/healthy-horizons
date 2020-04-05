@@ -13,47 +13,12 @@ body {
     
     display: flex;
     align-items: flex-start;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
 button a {
     color: inherit
-}
-
-/* NAVIGATION BAR */
-
-nav {
-    background-color: var(--main-clr);
-    position: fixed;
-    width: 100%;
-    top: 0;
-    display: flex;
-    justify-content: center;
-}
-
-.navButton {
-    background-color: var(--secondary-clr);
-    margin: 0 10px;
-    z-index: 100;
-}
-
-.navButton:hover {
-    background-color: rgba(14, 26, 113, 0.6);
-    transition-duration: .3s;
-}
-
-.navButton > a {
-    display: inline-block;
-    padding: 15px;
-}
-
-nav a {
-    color: whitesmoke;
-}
-
-nav a:hover {
-    text-decoration: none;
-    color: whitesmoke;
 }
 
 
@@ -107,7 +72,7 @@ ul {
     box-shadow: 0 2px 20px grey;
     border: solid var(--secondary-clr) 2px;
     background-color: white;
-    border-radius: 10px;
+    border-radius: 5px;
     
     display: flex;
     flex-direction: column;

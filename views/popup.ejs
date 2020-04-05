@@ -1,37 +1,41 @@
 <style>
-    #popup input {
-        margin: 10px;
-        width: 20%;
-    }
     #popup {
-        /*position: absolute;
-        top: 50%;
-        margin-left: -200px;
-        margin-top: -250px;
-        left: 50%; */
+        color: white;
+        position: absolute;
+        top: 10%;
+        left: 10%;
         background-color: rgb(80, 132, 209);
-        width: 100%;
         display: none;
         justify-content: center;
         flex-direction: column;
-        padding: 20px;
+        width: 60%;
+        min-width: 400px;
     }
-    #popup div {
+    #form-header {
+        text-align: center;
+        font-size: 40px;
         width: 100%;
-        color: white;
+        background-color: rgb(50, 82, 159);
+    }
+    #popup input {
+        margin: 0 10px;
+        width: 20%;
+        border: 0;
+        padding: 5px;
     }
     .task {
         display: flex;
+        padding: 10px;
     }
 </style>
 
 <div id="popup">
-    <h2>Week <span id="week-num"></span> Points: <span id="total-form-points"></span></h2>
+    <div id="form-header">Week <span id="week-num"></span> Points: <span id="total-form-points"></span></div>
     <% tasks.forEach( task => { %>
         <% if (task.type == "semester") return %>
         <div class="task">
             <% if (task.type == "daily") { %>
-                <input type="number" placeholder="0" data-id="<%= task.id %>"/>
+                <input type="number" min="0" max="7" value="0" data-id="<%= task.id %>"/>
                 <div class="task-description"><%= task.description %></div>
             <% } else if (task.type == "weekly") { %>
                 <input type="checkbox" data-id="<%= task.id %>"/>

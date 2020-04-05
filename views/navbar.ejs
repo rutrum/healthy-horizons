@@ -1,10 +1,46 @@
+<style>
+    nav {
+        background-color: var(--main-clr);
+        position: fixed;
+        width: 100%;
+        top: 0;
+        display: flex;
+        justify-content: center;
+    }
+
+    .navButton {
+        background-color: var(--secondary-clr);
+        margin: 0 10px;
+        z-index: 100;
+    }
+
+    .navButton:hover {
+        background-color: rgba(14, 26, 113, 0.6);
+        transition-duration: .3s;
+    }
+
+    .navButton > a {
+        display: inline-block;
+        padding: 15px;
+    }
+
+    nav a {
+        color: whitesmoke;
+    }
+
+    nav a:hover {
+        text-decoration: none;
+        color: whitesmoke;
+    }
+</style>
+
 <nav style="z-index: 20">
     <div class="navButton"> 
         <a href="/">About</a>
     </div>
 
     <div class="navButton"> 
-        <a href="./points">Points</a>
+        <a href="./calendar">Calendar</a>
     </div>
 
     <div class="navButton"> 

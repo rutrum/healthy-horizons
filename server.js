@@ -13,6 +13,15 @@ var router = express.Router()
 
 app.set('view engine', 'ejs')
 
+// Adds automatic SASS preprocessing
+var sassMiddleware = require('node-sass-middleware');
+app.use('/css', sassMiddleware({
+    src: path.join(__dirname, '/sass'),
+    dest: path.join(__dirname, '/static/css'),
+    debug: true,
+    outputStyle: 'expanded',
+}))
+
 // Allows us to parse POST request data
 var bodyParser = require('body-parser')
 app.use(bodyParser.json());
@@ -27,14 +36,6 @@ router.use(function(req, res, next) {
 
 // Set static directory
 router.use(express.static('static'))
-
-// All file are served from the /src directory
-__dirname = __dirname + "/src"
-
-// Redirect favicon to the resources file
-router.get('/favicon.ico', (req, res) => {
-    res.sendFile(path.join(__dirname + '/resources/favicon.ico'))
-})
 
 router.get('/prizes', (req, res) => {
     db.all_prizes_and_tiers(result => {
@@ -52,10 +53,6 @@ router.get('/calendar', (req, res) => {
             res.render("cal", { tasks: tasks, points: pointmap })
         })
     })
-})
-
-router.get('/:name', (req, res) => {
-    res.render(req.params.name)
 })
 
 router.get('/', (req, res) => {
@@ -175,26 +172,6 @@ function getDateString() {
     let d = new Date()
     return d.toString()
 }
-
-router.get('/style/:name', (req, res) => {
-    res.sendFile(path.join(__dirname + "/style/" + req.params.name))
-})
-
-router.get('/script/:name', (req, res) => {
-    res.sendFile(path.join(__dirname + "/script/" + req.params.name))
-})
-
-router.get('/resources/:name', (req, res) => {
-    res.sendFile(path.join(__dirname + "/resources/" + req.params.name))
-})
-
-router.get('/static/js/:name', (req, res) => {
-    res.sendFile(path.join(__dirname + "/../static/js/" + req.params.name))
-})
-
-router.get('/test/test', (req, res) => {
-    db.all_prizes_and_tiers((result) => {console.log(JSON.stringify(result))})
-})
 
 // Attach routes at root
 app.use('/', router)
