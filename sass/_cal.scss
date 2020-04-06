@@ -12,8 +12,6 @@
 }
 #week-list {
     padding: 20px;
-    width: 100%;
-    max-width: 600px;
     display: flex;
     flex-direction: column;
 }
@@ -26,6 +24,12 @@
     justify-content: space-between;
     align-items: center;
     background-color: lightgrey;
+    cursor: pointer;
+    transition-duration: 0.2s;
+
+    &:hover {
+        transform: scale(1.05);
+    }
 }
 .week-num {
     background-color: lightgreen;

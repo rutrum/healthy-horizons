@@ -1,36 +1,7 @@
-<style>
-    #popup {
-        color: white;
-        position: absolute;
-        top: 10%;
-        left: 10%;
-        background-color: rgb(80, 132, 209);
-        display: none;
-        justify-content: center;
-        flex-direction: column;
-        width: 60%;
-        min-width: 400px;
-    }
-    #form-header {
-        text-align: center;
-        font-size: 40px;
-        width: 100%;
-        background-color: rgb(50, 82, 159);
-    }
-    #popup input {
-        margin: 0 10px;
-        width: 20%;
-        border: 0;
-        padding: 5px;
-    }
-    .task {
-        display: flex;
-        padding: 10px;
-    }
-</style>
-
-<div id="popup">
-    <div id="form-header">Week <span id="week-num"></span> Points: <span id="total-form-points"></span></div>
+<div id="week-form">
+    <div id="form-header">
+        Week <span id="week-num"></span> Points: <span id="total-form-points"></span>
+    </div>
     <% tasks.forEach( task => { %>
         <% if (task.type == "semester") return %>
         <div class="task">

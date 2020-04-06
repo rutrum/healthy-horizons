@@ -19,11 +19,11 @@ function add_event_listeners() {
     let weeks = [...document.querySelectorAll(".week-summary")]
     weeks.forEach(week => {
         let num = week.querySelector(".week-num").textContent
-        week.querySelector(".edit").addEventListener("click", () => show_week_form(1, num, 1))
+        week.addEventListener("click", () => show_week_form(1, num, 1))
     })
 
     // Update points on input field change
-    let inputs = [...document.querySelectorAll("#popup input")]
+    let inputs = [...document.querySelectorAll("#week-form input")]
     inputs.forEach(input => {
         input.addEventListener("change", aggregate_form_points)
     })

@@ -6,7 +6,7 @@
 // { vegetables: 0, water: 2, readbook: 0, pitchinforlunch: 1 }
 // That is, check boxes should be read as 0 or 1.
 function read_form() {
-    form = document.querySelector('#popup')
+    form = document.querySelector('#week-form')
     inputs = [...form.querySelectorAll('input')]
 
     let data = {}
@@ -47,7 +47,7 @@ function aggregate_form_points() {
 // requires checking if input box is a checkbox, and checking
 // based on 0 or 1.
 function write_form(usertasks, weeknum) {
-    form = document.querySelector('#popup')
+    form = document.querySelector('#week-form')
     form.querySelector("#week-num").textContent = weeknum
     tasktags = [...form.querySelectorAll('.task')]
     tasktags.forEach(task => {
@@ -64,7 +64,7 @@ function write_form(usertasks, weeknum) {
 // Modifies the display property of #week-form
 // to make visible to the user.
 function unhide_form() {
-    document.querySelector("#popup").style.display = "flex"
+    document.querySelector("#week-form").style.display = "flex"
 }
 
 // Given the week number and user id, perform a variety of
@@ -95,7 +95,7 @@ function copy_form_points(week_num) {
 // Modifies the display property of #week-form
 // to make invisible to the user.
 function hide_form() {
-    document.querySelector("#popup").style.display = "none"
+    document.querySelector("#week-form").style.display = "none"
 }
 
 // This function is called when the user presses the save

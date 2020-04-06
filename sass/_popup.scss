@@ -1,4 +1,3 @@
-
 #week-form {
     color: white;
     background-color: rgb(80, 132, 209);
@@ -6,29 +5,21 @@
     height: 80vh;
     opacity: 2;
     overflow: scroll;
-}
-#popup {
-    position: fixed;
-    display: none;
-    justify-content: center;
-    align-items: center;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: rgba(255,255,255,0.5);
+    flex-direction: column;
+
+    input {
+        margin: 0 10px;
+        width: 20%;
+        border: 0;
+        padding: 5px;
+    }
 }
 #form-header {
     text-align: center;
     font-size: 40px;
     width: 100%;
+    height: 60px;
     background-color: rgb(50, 82, 159);
-}
-#popup input {
-    margin: 0 10px;
-    width: 20%;
-    border: 0;
-    padding: 5px;
 }
 .task {
     display: flex;
