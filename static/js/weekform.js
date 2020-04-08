@@ -54,7 +54,7 @@ function write_form(usertasks, weeknum) {
         let input = task.querySelector("input")
         let id = input.getAttribute("data-id")
         if (input.type == 'number') {
-            input.value = usertasks[id]
+            input.value = usertasks[id] == "" ? 0 : usertasks[id]
         } else if (input.type == 'checkbox') {
             input.checked = (usertasks[id] == 1)
         }
