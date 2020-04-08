@@ -4,7 +4,7 @@ var ip = require('ip')
 var path = require('path')
 var fs = require('fs')
 
-var database = require('./mysql_connection')
+var database = require('./database')
 var db = new database.db()
 
 var port = process.env.PORT || 8080
@@ -12,6 +12,15 @@ var port = process.env.PORT || 8080
 var router = express.Router()
 
 app.set('view engine', 'ejs')
+
+// Adds automatic SASS preprocessing
+var sassMiddleware = require('node-sass-middleware');
+app.use('/css', sassMiddleware({
+    src: path.join(__dirname, '/sass'),
+    dest: path.join(__dirname, '/static/css'),
+    debug: true,
+    outputStyle: 'expanded',
+}))
 
 // Allows us to parse POST request data
 var bodyParser = require('body-parser')
@@ -28,67 +37,22 @@ router.use(function(req, res, next) {
 // Set static directory
 router.use(express.static('static'))
 
-// All file are served from the /src directory
-__dirname = __dirname + "/src"
-
-// Redirect favicon to the resources file
-router.get('/favicon.ico', (req, res) => {
-    res.sendFile(path.join(__dirname + '/resources/favicon.ico'))
-})
-
-router.get("/points", (req, res) => {
-    // db.all_users((users) => {
-    tasks = [
-        {
-            point: 1,
-            names: ["eat fruit", "eat veggies"]
-        },
-        {
-            point: 10,
-            names: ["go the gym", "read the newspaper", "do your homework"]
-        },
-        {
-            point: 5,
-            names: ["ride a bike to work", "do PALOTOIES"]
-        },
-        {
-            point: 100,
-            names: ["wash dave's car"]
-        }
-    ]
-    res.render("points", {tasks: tasks})
-    // })
-})
-
 router.get('/prizes', (req, res) => {
-
-    tiers = [
-        {
-            name : 'Silver',
-            point : 150,
-            prizes: ['Finglerless Gloves','Pill Dispenser']
-        },
-        {
-            name: 'Gold',
-            point : 250,
-            prizes: ['Camp/Car LED Lantern','Reusable Utensils & Bag']
-        },
-        {
-            name: 'Platinum',
-            point : 350,
-            prizes: ['Waterproof Picnic Throw','Bluetooth Earbuds']
-        }
-    ]
-
     db.all_prizes_and_tiers(result => {
         res.render("prizes", {tiers: result})
         console.log("rendered prizes")
     })
-
 })
 
-router.get('/:name', (req, res) => {
-    res.render(req.params.name)
+router.get('/calendar', (req, res) => {
+    db.all_tasks(tasks => {
+        db.weekly_points(1, 1, points => {
+            pointmap = {}
+            points.forEach((week) => { pointmap[week.week] = week.points })
+            console.log(pointmap)
+            res.render("cal", { tasks: tasks, points: pointmap })
+        })
+    })
 })
 
 router.get('/', (req, res) => {
@@ -131,6 +95,7 @@ router.post('/prize', (req, res) => {
     res.status(200).end()
 })
 
+
 //  __ _ _ __ (_)
 // / _` | '_ \| |
 //| (_| | |_) | |
@@ -138,7 +103,7 @@ router.post('/prize', (req, res) => {
 //      |_|     
 
 router.get('/api/tasks', (req, res) => {
-    db.all_tasks((results) => {
+    db.all_tasks(results => {
         res.send(JSON.stringify(results))
     })
 })
@@ -148,7 +113,9 @@ router.get('/api/tasks', (req, res) => {
 //   { name: "silver", points, 350 },
 //   ... ]
 router.get("/api/tiers", (req, res) => {
-
+    db.all_tiers(results => {
+        res.send(JSON.stringify(results))
+    })
 })
 
 // Returns an object of the following form as json:
@@ -156,14 +123,32 @@ router.get("/api/tiers", (req, res) => {
 // Keys should be task names and values should be how many points
 // it is worth.
 router.get("/api/task_points", (req, res) => {
-
+    db.all_tasks(results => {
+        let data = {}
+        results.forEach(result => {
+            let id = result["id"]
+            data[id] = result["points"]
+        })
+        console.log(data)
+        res.send(JSON.stringify(data))
+    })
 })
 
 // Returns all user tasks for the user of the given id
 // in the given week.  Return value should be like
 // { vegetables: 0, water: 2, readbook: 0, pitchinforlunch: 1 }
-router.get("api/user_tasks/:user_id/:week_num", (req, res) => {
-
+router.get("/api/user_tasks/:user_id/:week_num/:semester", (req, res) => {
+    user_id = req.params.user_id
+    week_num = req.params.week_num
+    semester = req.params.semester
+    db.usertasks(user_id, week_num, semester, results => {
+        console.log(results)
+        let points = {}
+        results.forEach(row => {
+            points[row["task_id"]] = row.frequency
+        })
+        res.send(JSON.stringify(points))
+    })
 })
 
 // Updates all user tasks for the user of the given id
@@ -171,8 +156,14 @@ router.get("api/user_tasks/:user_id/:week_num", (req, res) => {
 // { vegetables: 0, water: 2, readbook: 0, pitchinforlunch: 1 }
 // May also need to insert rows if new, or ignore rows that
 // are 0 valued.
-router.post("api/user_tasks/:user_id/:week_num", (req, res) => {
-
+router.post("/api/user_tasks/:user_id/:week_num/:semester", (req, res) => {
+    user_id = req.params.user_id
+    week_num = req.params.week_num
+    semester = req.params.semester
+    data = req.body
+    db.update_usertasks(user_id, week_num, semester, data, (success) => {
+        res.send("{ status: 200 }")
+    })
 })
 
 // Other stuff
@@ -181,22 +172,6 @@ function getDateString() {
     let d = new Date()
     return d.toString()
 }
-
-router.get('/style/:name', (req, res) => {
-    res.sendFile(path.join(__dirname + "/style/" + req.params.name))
-})
-
-router.get('/script/:name', (req, res) => {
-    res.sendFile(path.join(__dirname + "/script/" + req.params.name))
-})
-
-router.get('/resources/:name', (req, res) => {
-    res.sendFile(path.join(__dirname + "/resources/" + req.params.name))
-})
-
-router.get('/test/test', (req, res) => {
-    db.all_prizes_and_tiers((result) => {console.log(JSON.stringify(result))})
-})
 
 // Attach routes at root
 app.use('/', router)

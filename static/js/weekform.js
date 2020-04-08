@@ -6,20 +6,39 @@
 // { vegetables: 0, water: 2, readbook: 0, pitchinforlunch: 1 }
 // That is, check boxes should be read as 0 or 1.
 function read_form() {
+    form = document.querySelector('#week-form')
+    inputs = [...form.querySelectorAll('input')]
 
+    let data = {}
+    inputs.forEach(input => {
+        let id = input.getAttribute("data-id")
+        if (input.type == 'number') {
+            data[id] = input.value == "" ? 0 : parseInt(input.value)
+        } else if (input.type == 'checkbox') {
+            if (input.checked) {
+                data[id] = 1
+            } else {
+                data[id] = 0
+            }
+        }
+    })
+    return data
 }
 
-// Fetches from the /api/task_points route.  Returns that JSON
-// object.
-function fetch_task_points() {
-
-}
-
-// Using read_form() and fetch_task_points() calculate
+// Using read_form() calculate
 // the total number of points and display the result
 // into #total-form-points
 function aggregate_form_points() {
-
+    data = read_form()
+    fetch('/api/task_points')
+        .then(response => { return response.json() })
+        .then(task_points => {
+            let total = 0
+            for (let [id, freq] of Object.entries(data)) {
+                total += task_points[id] * freq
+            }
+            document.querySelector('#total-form-points').textContent = total
+        })
 }
 
 // Given input like the following:
@@ -27,20 +46,25 @@ function aggregate_form_points() {
 // populate #week-form with those new values.  This
 // requires checking if input box is a checkbox, and checking
 // based on 0 or 1.
-function write_form(input_values) {
-
-}
-
-// Given the week number and a user id, get all the
-// usertasks for each that user on that week.
-function fetch_usertasks(user_id, week_num) {
-
+function write_form(usertasks, weeknum) {
+    form = document.querySelector('#week-form')
+    form.querySelector("#week-num").textContent = weeknum
+    tasktags = [...form.querySelectorAll('.task')]
+    tasktags.forEach(task => {
+        let input = task.querySelector("input")
+        let id = input.getAttribute("data-id")
+        if (input.type == 'number') {
+            input.value = usertasks[id]
+        } else if (input.type == 'checkbox') {
+            input.checked = (usertasks[id] == 1)
+        }
+    })
 }
 
 // Modifies the display property of #week-form
 // to make visible to the user.
 function unhide_form() {
-
+    document.querySelector("#week-form").style.display = "flex"
 }
 
 // Given the week number and user id, perform a variety of
@@ -51,25 +75,27 @@ function unhide_form() {
 // 3. Aggregate points from the form
 // 4. Make the page visible to the user
 // This should be done using the functions defined above.
-function show_week_form(user_id, week_num) {
-
+function show_week_form(user_id, week_num, semester) {
+    fetch('/api/user_tasks/'+user_id+'/'+week_num+'/'+semester)
+        .then(response => { return response.json() })
+        .then(usertasks => {
+            write_form(usertasks, week_num)
+            aggregate_form_points()
+            unhide_form()
+        })
 }
 
 // Store the value from #total-form-points into 
 // #total-points-week-<week_num>
 function copy_form_points(week_num) {
-
+    week_points = document.querySelector('#total-form-points').textContent
+    document.querySelector('#total-points-week-'+week_num).textContent = week_points
 }
 
 // Modifies the display property of #week-form
 // to make invisible to the user.
 function hide_form() {
-
-}
-
-// Posts the data given to /api/usertasks/:user_id/:week_num
-function post_form_data(user_id, week_num, data) {
-
+    document.querySelector("#week-form").style.display = "none"
 }
 
 // This function is called when the user presses the save
@@ -80,5 +106,15 @@ function post_form_data(user_id, week_num, data) {
 // 4. Hide the form
 // This should be done using the functions defined above.
 function save_changes() {
-
+    data = read_form()
+    week_num = document.querySelector('#week-num').textContent
+    fetch("/api/user_tasks/"+1+"/"+week_num+"/"+1, {
+        method: "POST",
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(data)
+    }).then(result => { 
+        copy_form_points(week_num)
+        aggregate_weekly_points()
+        hide_form()
+    })
 }

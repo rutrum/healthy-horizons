@@ -1,61 +1,21 @@
-/* This is for storing variables...like colors! */
-:root {
-    --main-clr: #1287da;
-    --secondary-clr:#92c3ff;
-    --terciary-clr: #a0bccc;
-}
+$color-primary: #1287da;
+$color-secondary: #92c3ff;
+
+@import 'nav', 'popup', 'cal';
 
 body {
     margin: 0;
     margin-top: 50px;
     padding: 0;
     background-color: whitesmoke;
+
+    font-family: "Open Sans", sans-serif;
     
     display: flex;
     align-items: flex-start;
-    justify-content: center;
+    flex-direction: row;
+    align-items: stretch;
 }
-
-button a {
-    color: inherit
-}
-
-/* NAVIGATION BAR */
-
-nav {
-    background-color: var(--main-clr);
-    position: fixed;
-    width: 100%;
-    top: 0;
-    display: flex;
-    justify-content: center;
-}
-
-.navButton {
-    background-color: var(--secondary-clr);
-    margin: 0 10px;
-    z-index: 100;
-}
-
-.navButton:hover {
-    background-color: rgba(14, 26, 113, 0.6);
-    transition-duration: .3s;
-}
-
-.navButton > a {
-    display: inline-block;
-    padding: 15px;
-}
-
-nav a {
-    color: whitesmoke;
-}
-
-nav a:hover {
-    text-decoration: none;
-    color: whitesmoke;
-}
-
 
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
     color: #eeecec;
@@ -105,9 +65,9 @@ ul {
     max-width: 600px;
 
     box-shadow: 0 2px 20px grey;
-    border: solid var(--secondary-clr) 2px;
+    border: solid $color-secondary 2px;
     background-color: white;
-    border-radius: 10px;
+    border-radius: 5px;
     
     display: flex;
     flex-direction: column;
@@ -132,8 +92,8 @@ ul {
 button {
     width: 100%;
     height: 40px;
-    background-color: var(--secondary-clr);
-    border: solid var(--secondary-clr) 0;
+    background-color: $color-secondary;
+    border: solid $color-secondary 0;
     color: whitesmoke;
     font-weight: 600;
     letter-spacing: 1px;
@@ -141,19 +101,11 @@ button {
     margin-top: 8px;
     cursor: pointer;
     margin: 20px 0 0 0;
+    
+    a {
+        color: inherit
+    }
 }
-
-img {
-    padding-bottom: 12px;
-}
-
-.reminder {
-    font-style: italic;
-    color: #7a0000;
-    font-size: 11pt;
-    margin-top: -15px;
-}
-
 
 /* Remove increment/decrement buttons from number input */
 

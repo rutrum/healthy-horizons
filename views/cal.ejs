@@ -2,128 +2,35 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <html>
 <head>
-    <title>CALENDAR</title>
+    <title>Calendar</title>
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="./style/master.css">
-    
-    <style>
-        .square {
-            background-color: red;
-            margin: 5px;
-            width: 100px;
-            height: 80px;
-            color: whitesmoke;
-            text-align: center;
-        }
-        .rectangle {
-            background-color: orange;
-            text-align: center;
-            margin: 5px;
-            width: 150px;
-            height: 80px;
-        }
-        #popup input {
-            margin: 10px;
-        }
-        #popup {
-            position: absolute;
-            left: 50%;
-            margin-left: -200px;
-            margin-top: -250px;
-            top: 50%;
-            background-color: grey;
-            width: 400px;
-            height: 500px;
-            display: flex;
-            justify-content: center;
-            flex-direction: column;
-            padding: 20px;
-            display: none;
-        }
-        #popup div {
-            width: 100%;
-            color: white;
-            padding: 10px;
-        }
-    </style>
-
-    <script>
-
-        
-
-        function show_popup() {
-            document.getElementById("popup").style.display = "block"
-        }
-        function hide_popup() {
-            document.getElementById("popup").style.display = "none"
-        }
-    </script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/main.css">
 </head>
 
 <body>
     <% include navbar.ejs %>
-    
-    <div style="margin:100px; display: flex; flex-direction: column">
-        <div style="display: flex; flex-direction: row">
-            <div class="square">Monday</div>
-            <div class="square">Tuesday</div>
-            <div class="square">Wednesday</div>
-            <div class="square">Thursday</div>
-            <div class="square">Friday</div>
-            <div class="rectangle">Week 1</div>
-        </div> 
-        <div style="display: flex; flex-direction: row">
-            <div class="square">Monday</div>
-            <div class="square">Tuesday</div>
-            <div class="square">Wednesday</div>
-            <div class="square">Thursday</div>
-            <div class="square">Friday</div>
-            <div class="rectangle">Week 2</div>
-        </div> 
-        <div style="display: flex; flex-direction: row">
-            <div class="square">Monday</div>
-            <div class="square">Tuesday</div>
-            <div class="square">Wednesday</div>
-            <div class="square">Thursday</div>
-            <div class="square">Friday</div>
-            <div class="rectangle">Week 3</div>
-        </div> 
-        <div style="display: flex; flex-direction: row">
-            <div class="square">Monday</div>
-            <div class="square">Tuesday</div>
-            <div class="square">Wednesday</div>
-            <div class="square">Thursday</div>
-            <div class="square">Friday</div>
-            <div class="rectangle">Week 4</div>
-         </div> 
-        <div style="display: flex; flex-direction: row">
-            <div class="square">Monday</div>
-            <div class="square">Tuesday</div>
-            <div class="square">Wednesday</div>
-            <div class="square">Thursday</div>
-            <div class="square">Friday</div>
-            <div class="rectangle">Week 5</div>
-       </div> 
-    </div> 
-
-    <div id="popup">
-        <div><input type="checkbox"></input><input type="checkbox"></input><input type="checkbox"></input><input type="checkbox"></input><input type="checkbox"></input>Text<br /></div>
-        <div><input type="checkbox"></input><input type="checkbox"></input><input type="checkbox"></input><input type="checkbox"></input><input type="checkbox"></input>Text<br /></div>
-        <div><input type="checkbox"></input><input type="checkbox"></input><input type="checkbox"></input><input type="checkbox"></input><input type="checkbox"></input>Text<br /></div>
-        <div><input type="checkbox"></input><input type="checkbox"></input><input type="checkbox"></input><input type="checkbox"></input><input type="checkbox"></input>Text<br /></div>
-        <div><input type="checkbox"></input><input type="checkbox"></input><input type="checkbox"></input><input type="checkbox"></input><input type="checkbox"></input>Text<br /></div>
-        <div><button>Submit</button></div>
+    <div id="week-list">
+        <div id="calendar-header">
+            <div id="semester">Spring 2020</div>
+            <div>Point Total: <span id="total-points"></span></div>
+        </div>
+        <% for (let i = 1; i < 9; i++) { %>
+            <div class="week-summary">
+                <div class="week-num"><%= i %></div>
+                <div> 
+                    <span class="total-points-week" id="total-points-week-<%= i %>">
+                        <%= points[i] == undefined ? 0 : points[i] %>
+                    </span> points
+                </div>
+                <!--<div class="edit"><i class="fas fa-edit"></i></div>-->
+            </div>
+        <% } %>
     </div>
 
-    <script>
-    document.querySelectorAll(".square").forEach((div) => {
-        div.addEventListener('click', show_popup)
-    })
-    document.querySelector("button").addEventListener('click', hide_popup)
+    <%- include("popup", { tasks: tasks }) %>
 
-    </script>
+    <script src="js/weekform.js"></script>
+    <script src="js/summary.js"></script>
 </body>
-
-
 </html>
-
