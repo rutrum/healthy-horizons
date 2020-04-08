@@ -1,27 +1,32 @@
 #week-form {
-    color: white;
-    background-color: rgb(80, 132, 209);
     width: 600px;
-    height: 80vh;
-    opacity: 2;
+    height: calc(90vh - #{$nav-height});
+    max-height: 700px;
     overflow: scroll;
+    display: flex;
     flex-direction: column;
 
-    input {
-        margin: 0 10px;
-        width: 20%;
-        border: 0;
-        padding: 5px;
+    font-size: 14px;
+    color: black;
+    
+    #form-header {
+        text-align: center;
+        font-size: 40px;
+        width: 100%;
+        height: 60px;
+    }
+
+    .task {
+        display: flex;
+        padding: 10px;
+
+        input {
+            width: 20%;
+            max-width: 80px;
+            margin-right: 5px;
+            border: 0;
+            padding: 5px;
+        }
     }
 }
-#form-header {
-    text-align: center;
-    font-size: 40px;
-    width: 100%;
-    height: 60px;
-    background-color: rgb(50, 82, 159);
-}
-.task {
-    display: flex;
-    padding: 10px;
-}
+

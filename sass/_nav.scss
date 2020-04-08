@@ -1,34 +1,39 @@
 nav {
-    background-color: $color-primary;
+    background-color: $color-blue;
     position: fixed;
     width: 100%;
     top: 0;
     display: flex;
+    align-content: center;
     justify-content: center;
+    height: $nav-height;
 
     div {
-        background-color: $color-secondary;
+        background-color: $color-blue-light;
         margin: 0 10px;
         z-index: 100;
 
         a {
             display: inline-block;
-            padding: 15px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            padding: 0 15px;
+        }
+        &:hover {
+            background-color: $color-blue-dark;
+            transition-duration: .3s;
         }
     }
 
-    div:hover {
-        background-color: rgba(14, 26, 113, 0.6);
-        transition-duration: .3s;
-    }
 
 
     a {
         color: whitesmoke;
-    }
 
-    a:hover {
-        text-decoration: none;
-        color: whitesmoke;
+        &:hover {
+            text-decoration: none;
+            color: whitesmoke;
+        }
     }
 }

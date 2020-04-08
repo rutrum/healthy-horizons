@@ -10,10 +10,12 @@
 
 <body>
     <% include navbar.ejs %>
+    <%- include("popup", { tasks: tasks }) %>
     <div id="week-list">
+        <div id="progress-bar"></div>
         <div id="calendar-header">
+            <div><span id="total-points"></span> points</div>
             <div id="semester">Spring 2020</div>
-            <div>Point Total: <span id="total-points"></span></div>
         </div>
         <% for (let i = 1; i < 9; i++) { %>
             <div class="week-summary">
@@ -28,7 +30,6 @@
         <% } %>
     </div>
 
-    <%- include("popup", { tasks: tasks }) %>
 
     <script src="js/weekform.js"></script>
     <script src="js/summary.js"></script>
