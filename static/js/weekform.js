@@ -48,7 +48,9 @@ function aggregate_form_points() {
 // based on 0 or 1.
 function write_form(usertasks, weeknum) {
     form = document.querySelector('#week-form')
+
     form.querySelector("#week-num").textContent = weeknum
+
     tasktags = [...form.querySelectorAll('.task')]
     tasktags.forEach(task => {
         let input = task.querySelector("input")
@@ -63,8 +65,9 @@ function write_form(usertasks, weeknum) {
 
 // Modifies the display property of #week-form
 // to make visible to the user.
-function unhide_form() {
+function unhide_form(week_num) {
     document.querySelector("#week-form").style.display = "flex"
+    document.querySelector("#summary").style.display = "none"
 }
 
 // Given the week number and user id, perform a variety of
@@ -81,7 +84,12 @@ function show_week_form(user_id, week_num, semester) {
         .then(usertasks => {
             write_form(usertasks, week_num)
             aggregate_form_points()
-            unhide_form()
+            unhide_form(week_num)
+
+            let selected = document.querySelector(".week-selected")
+            if (selected != undefined) selected.classList.remove("week-selected")
+            document.querySelector(".week-summary[data-week=\"" + week_num + "\"]")
+                .classList.add("week-selected")
         })
 }
 
@@ -96,6 +104,7 @@ function copy_form_points(week_num) {
 // to make invisible to the user.
 function hide_form() {
     document.querySelector("#week-form").style.display = "none"
+    document.querySelector("#summary").style.display = "flex"
 }
 
 // This function is called when the user presses the save
@@ -107,7 +116,7 @@ function hide_form() {
 // This should be done using the functions defined above.
 function save_changes() {
     data = read_form()
-    week_num = document.querySelector('#week-num').textContent
+    week_num = document.querySelector('#form-week-num').textContent
     fetch("/api/user_tasks/"+1+"/"+week_num+"/"+1, {
         method: "POST",
         headers: {'Content-Type': 'application/json'},
@@ -116,5 +125,14 @@ function save_changes() {
         copy_form_points(week_num)
         aggregate_weekly_points()
         hide_form()
+
+        let selected = document.querySelector(".week-selected")
+        if (selected != undefined) selected.classList.remove("week-selected")
     })
+}
+
+function discard_changes() {
+    hide_form()
+    let selected = document.querySelector(".week-selected")
+    if (selected != undefined) selected.classList.remove("week-selected")
 }

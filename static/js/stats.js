@@ -44,6 +44,7 @@ function get_range(total_points, tiers) {
     })
     return upperbound - lowerbound
 }
+
 //Getting Lowerbound individually
 function get_lowerbound(total_points, tiers) {
     lowerbound = 0
@@ -88,4 +89,5 @@ function update_progress_bar() {
     let percent = ((total_points - lowerbound) / Range * 100)
     let percent_string = "" + percent + "%" 
     progressbar.style.width = percent_string 
+    console.log(percent_string)
 }

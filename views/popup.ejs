@@ -1,18 +1,23 @@
-<div id="week-form">
+<div class="box" id="week-form">
     <div id="form-header">
-        Week <span id="week-num"></span> Points: <span id="total-form-points"></span>
+        <div>Week <span id="week-num"></span></div> <div><span id="total-form-points"></span> pts</div>
     </div>
+    <div id="task-list">
     <% tasks.forEach( task => { %>
         <% if (task.type == "semester") return %>
-        <div class="task">
-            <% if (task.type == "daily") { %>
-                <input type="number" min="0" max="7" value="0" data-id="<%= task.id %>"/>
-                <div class="task-description"><%= task.description %></div>
-            <% } else if (task.type == "weekly") { %>
-                <input type="checkbox" data-id="<%= task.id %>"/>
-                <div class="task-description"><%= task.description %></div>
-            <% } %>
-        </div>
-    <% }) %>
-    <div><button id="submit-form">Submit</button></div>
+            <div class="task">
+                <% if (task.type == "daily") { %>
+                    <input type="number" min="0" max="7" value="0" data-id="<%= task.id %>"/>
+                    <div class="task-description"><%= task.description %></div>
+                <% } else if (task.type == "weekly") { %>
+                    <input type="checkbox" data-id="<%= task.id %>"/>
+                    <div class="task-description"><%= task.description %></div>
+                <% } %>
+            </div>
+        <% }) %>
+    </div>
+    <div class="button-list">
+        <button id="save-changes">Submit</button>
+        <button id="discard-changes">Discard</button>
+    </div>
 </div>

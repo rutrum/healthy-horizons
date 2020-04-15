@@ -40,12 +40,16 @@ nav a:hover {
 #week-form {
   width: 600px;
   height: calc(90vh - 60px);
-  max-height: 700px;
-  overflow: scroll;
-  display: flex;
+  max-height: 100%;
+  display: none;
   flex-direction: column;
+  justify-content: space-between;
   font-size: 14px;
   color: black;
+}
+
+#week-form #task-list {
+  overflow: scroll;
 }
 
 #week-form #form-header {
@@ -53,19 +57,42 @@ nav a:hover {
   font-size: 40px;
   width: 100%;
   height: 60px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 #week-form .task {
   display: flex;
-  padding: 10px;
+  padding: 5px;
 }
 
 #week-form .task input {
   width: 20%;
   max-width: 80px;
   margin-right: 5px;
-  border: 0;
+  border: 0px;
+  border-bottom: solid black 2px;
   padding: 5px;
+}
+
+#week-form .task .task-description {
+  align-self: center;
+}
+
+#week-form .button-list {
+  display: flex;
+}
+
+#week-form .button-list #save-changes {
+  width: auto;
+  flex-grow: 4;
+}
+
+#week-form .button-list #discard-changes {
+  width: auto;
+  flex-grow: 1;
+  background-color: lightgrey;
 }
 
 #calendar-header {
@@ -74,7 +101,7 @@ nav a:hover {
   margin-bottom: 20px;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   font-style: italic;
 }
@@ -87,33 +114,48 @@ nav a:hover {
   padding: 20px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  align-items: flex-end;
+  justify-content: center;
+  align-items: flex-start;
   min-width: 230px;
-  border-left: 2px solid;
-  border-image-slice: 1;
-  border-image-source: linear-gradient(transparent, #0057ba, transparent);
+  background: linear-gradient(90deg, #DDA0DD66, #92c3ff);
 }
 
 .week-summary {
   width: 100%;
-  margin: 5px 0;
+  margin: 3px 0;
   padding: 0 10px;
-  background: linear-gradient(to right, #1287da, lightgrey, lightgrey);
+  /*background: linear-gradient(to right, $color-blue, $color-grey, $color-grey);*/
   display: flex;
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
-  transition-duration: 0.2s;
+  opacity: 0.6;
 }
 
 .week-summary:hover {
-  width: 105%;
+  /*background: linear-gradient(to right, $color-blue-dark, $color-grey, $color-grey);*/
+  opacity: 1;
+}
+
+#week-summary-expanded {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  font-size: 25px;
+  align-items: center;
+  transition-duration: 0.2s;
+  transition-property: all;
+  display: none;
+}
+
+.week-selected {
+  font-weight: 600;
+  opacity: 1;
 }
 
 .week-num {
-  color: whitesmoke;
-  font-size: 30px;
+  /*color: whitesmoke;*/
+  font-size: 25px;
 }
 
 .edit {
@@ -124,14 +166,17 @@ nav a:hover {
   font-size: 25px;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
-  margin-top: 60px;
-  padding: 0;
+  padding: 60px 0 0 0;
   background-color: whitesmoke;
   font-family: "Open Sans", sans-serif;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   flex-direction: row;
   justify-content: center;
 }
@@ -176,49 +221,37 @@ ul {
   list-style-type: square;
 }
 
-.center {
-  margin: 0 auto;
-}
-
 .box {
   margin: 30px;
-  padding: 30px;
+  padding: 20px;
   max-width: 600px;
   box-shadow: 0 2px 20px grey;
-  border: solid #92c3ff 2px;
   background-color: white;
+  border: solid 5px;
+  border-image-slice: 1;
+  border-image-source: linear-gradient(90deg, #DDA0DD, #92c3ff);
   border-radius: 5px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
 }
 
 .box img {
   width: 100%;
 }
 
-.skinny {
-  width: 300px;
-}
-
-.sticky {
-  position: -webkit-sticky;
-  /* Safari */
-  position: sticky;
-  top: 120px;
-}
-
 button {
-  width: 80%;
+  width: 100%;
   height: 40px;
   background-color: #92c3ff;
   color: whitesmoke;
   font-weight: 600;
+  border: 0;
   letter-spacing: 1px;
-  border-radius: 5px;
   cursor: pointer;
   margin: 20px 0 0 0;
+  transition: 0.3s;
+}
+
+button:hover {
+  background-color: #1287da;
 }
 
 button a {

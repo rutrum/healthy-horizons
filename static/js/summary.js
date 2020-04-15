@@ -29,8 +29,11 @@ function add_event_listeners() {
     })
 
     // Save changes to database on submit button
-    document.querySelector("#submit-form")
+    document.querySelector("#save-changes")
         .addEventListener("click", save_changes)
+
+    document.querySelector("#discard-changes")
+        .addEventListener("click", discard_changes)
 }
 aggregate_weekly_points()
 add_event_listeners()
