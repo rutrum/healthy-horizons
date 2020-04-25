@@ -86,6 +86,16 @@ exports.db = class database {
 
     /// Prize and tier related functions
 
+    submitted_prizes(userid, semester, callback) {
+        let q = "SELECT prize_id FROM submission WHERE user_id = ? AND semester_id = ?"
+        this.query_db(q, [userid, semester], callback)
+    }
+
+    prize_lower_bound(callback) {
+        let q = "SELECT MIN(points) as points FROM tier"
+        this.query_db(q, [], callback)
+    }
+
     all_tiers(callback) {
         let q = "SELECT * FROM tier ORDER BY points ASC"
         this.query_db(q, [], callback)
@@ -115,15 +125,73 @@ exports.db = class database {
         })
     }
 
+    all_eligible_prizes_and_tiers(user_id, semester, callback) {
+        this.total_points(user_id, semester, points => {
+            let q = "SELECT * FROM tier WHERE points <= ? ORDER BY points ASC"
+            this.query_db(q, [points], tiers => {
+                console.log(tiers)
+                this.all_prizes(prizes => {
+                    let result = []
+                    tiers.forEach(tier => {
+                        let prize_names = prizes.filter(prize => prize.tier_id == tier.id).map(prize => { return { "name": prize.description, "id": prize.id }} )
+                        result.push({
+                            name: tier.name.replace(/^\w/, c => c.toUpperCase()),
+                            id: tier.id,
+                            point: tier.points,
+                            prizes: prize_names
+                        })
+                    })
+                    console.log(JSON.stringify({result: result}))
+                    callback(result)
+                })
+            })
+        })
+    }
+
+    // This function takes the series of rows and converts it into
+    // a data structure like so:
+    // [ { name: silver, points: 150, prizes: [ { name: gloves, id: 1 }, ... ] }, { name: gold, ... } ... ]
+    layer_prizes_and_tiers(rows) {
+        //let tiers = [...new Set(rows.map(row => { id: row.tier_id, name: row.name, points: row.points } ]
+        /*let tiers = []
+        tiers.map(tier => {
+             let prizes = rows.filter(row => row.tier_id = tier.id)
+                .map(row => { id: row.id, name: row.description })
+            return {
+                id: tier.id,
+                name: tier.name,
+                points: tier.points,
+                prizes: prizes
+            }
+        })*/
+    }
+
     /// Points for a given user
 
     total_points(user_id, semester, callback) {
-        let q = "SELECT SUM(frequency * points) FROM usertask INNER JOIN task ON task_id = task.id WHERE user_id = ? AND semester_id = ?"
-        this.query_db(q, [user_id, semester], callback)
+        let q = "SELECT SUM(frequency * points) AS total FROM usertask INNER JOIN task ON task_id = task.id WHERE user_id = ? AND semester_id = ?"
+        this.query_db(q, [user_id, semester], result => callback(result[0].total))
     }
 
     weekly_points(user_id, semester, callback) {
         let q = "SELECT week, SUM(frequency * points) AS points FROM usertask INNER JOIN task ON task_id = task.id WHERE user_id = ? AND semester_id = ? GROUP BY week"
         this.query_db(q, [user_id, semester], callback)
+    }
+
+    /// Submissions
+
+    // Submit prizes.  Prizes have keys of tiers and values of prizes
+    prize_submission(user_id, semester, prizes, callback) {
+        let q = ""
+        for (let [tier, prize] of Object.entries(prizes)) {
+            let oneq = mysql.format("INSERT INTO submission (user_id, semester_id, tier_id, prize_id) VALUES (?, ?, ?, ?) ON DUPLICATE KEY UPDATE prize_id = ?;", [user_id, semester, tier, prize, prize])
+            q += oneq
+        }
+        this.query_db(q, [], callback)
+    }
+
+    all_users_points(callback) {
+        let q = "SELECT user.id, SUM(frequency * points) AS points FROM user INNER JOIN usertask ON usertask.user_id = user.id INNER JOIN task ON usertask.task_id = task.id GROUP BY user.id"
+        this.query_db(q, [], callback)
     }
 }

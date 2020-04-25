@@ -10,29 +10,47 @@
 
 <body>
     <% include navbar.ejs %>
-    <div id="week-list" class="box">
-        <% for (let i = 1; i <= 14; i++) { %>
-            <div class="week-summary" style="order: <%= i * 10 %>" data-week="<%=i%>">
-                <div class="week-num"><%= i %></div>
-                <div> 
-                    <span class="total-points-week" id="total-points-week-<%= i %>">
-                        <%= points[i] == undefined ? 0 : points[i] %>
-                    </span> points
-                </div>
+    <div>
+        <div id="user-semester" class="box debug">
+            <div>
+                User
+                <input id="current-user" style="width: 100px" type="number"></input>
             </div>
-        <% } %>
+            <div>
+                Semester
+                <input id="current-semester" style="width: 100px" type="number"></input>
+            </div>
+        </div>
+        <div id="week-list" class="box">
+            <% for (let i = 1; i <= 14; i++) { %>
+                <div class="week-summary" data-week="<%=i%>">
+                    <div class="week-num"><%= i %></div>
+                    <div> 
+                        <span class="total-points-week" id="total-points-week-<%= i %>">
+                            0
+                            <!--<%= points[i] == undefined ? 0 : points[i] %>-->
+                        </span> points
+                    </div>
+                </div>
+            <% } %>
+        </div>
     </div>
-    <div class="box" id="summary" style="width: 600px"> 
+    <div id="summary" class="box" style="width: 600px"> 
         <p>Click on a week to get started!</p>
         <div id="progress-bar"></div>
+        <div id="progress-bar-msg"></div>
         <div id="calendar-header">
             <div><span id="total-points"></span> points</div>
             <div id="semester">Spring 2020</div>
         </div>
+        <a id="prize-selection" href="/prize-selection"><button>Select Prizes</button></a>
     </div>
-    <%- include("popup", { tasks: tasks }) %>
+    <%- include("week_form", { tasks: tasks }) %>
 
-    <script src="js/weekform.js"></script>
-    <script src="js/summary.js"></script>
+    <!-- load and save the fields in the input boxes -->
+    <script src="js/user_semester.js"></script>
+    <script src="js/week_form.js"></script>
+    <script src="js/stats.js"></script>
+    <script src="js/cal.js"></script>
 </body>
 </html>

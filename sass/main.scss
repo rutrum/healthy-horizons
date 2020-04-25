@@ -78,7 +78,18 @@ ul {
     border: solid 5px;
     border-image-slice: 1;
     border-image-source: linear-gradient(90deg, $color-purple, $color-blue-light);
-    border-radius: 5px;
+}
+
+.debug {
+    padding: 5px;
+    margin-bottom: -10px;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(90deg, darkred, firebrick);
+
+    * {
+        display: flex;
+        justify-content: space-between;
+    }
 }
 
 .box img {
@@ -125,6 +136,14 @@ input[type=number] {
     background-color: black;
     width: 100%;
     height: 25px;
-    border-radius: 8px;
     max-width: 100%;
+}
+
+#summary {
+    display: flex;
+    flex-direction: column;
+}
+
+#prize-selection {
+    display: none;
 }

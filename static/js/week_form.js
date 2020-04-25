@@ -63,13 +63,6 @@ function write_form(usertasks, weeknum) {
     })
 }
 
-// Modifies the display property of #week-form
-// to make visible to the user.
-function unhide_form(week_num) {
-    document.querySelector("#week-form").style.display = "flex"
-    document.querySelector("#summary").style.display = "none"
-}
-
 // Given the week number and user id, perform a variety of
 // tasks before unhiding #week-form from the user.  This 
 // function should
@@ -84,7 +77,7 @@ function show_week_form(user_id, week_num, semester) {
         .then(usertasks => {
             write_form(usertasks, week_num)
             aggregate_form_points()
-            unhide_form(week_num)
+            unhide_form()
 
             let selected = document.querySelector(".week-selected")
             if (selected != undefined) selected.classList.remove("week-selected")
@@ -98,6 +91,14 @@ function show_week_form(user_id, week_num, semester) {
 function copy_form_points(week_num) {
     week_points = document.querySelector('#total-form-points').textContent
     document.querySelector('#total-points-week-'+week_num).textContent = week_points
+}
+
+// Modifies the display property of #week-form
+// to make visible to the user.
+function unhide_form() {
+    document.querySelector("#summary").style.display = "none"
+    document.querySelector("#task-list").scrollTo(0, 0)
+    document.querySelector("#week-form").style.display = "flex"
 }
 
 // Modifies the display property of #week-form
@@ -116,14 +117,17 @@ function hide_form() {
 // This should be done using the functions defined above.
 function save_changes() {
     data = read_form()
-    week_num = document.querySelector('#form-week-num').textContent
-    fetch("/api/user_tasks/"+1+"/"+week_num+"/"+1, {
+    week_num = document.querySelector('#week-num').textContent
+    let userid = document.querySelector('#current-user').value
+    let semesterid = document.querySelector('#current-semester').value
+    fetch("/api/user_tasks/"+userid+"/"+week_num+"/"+semesterid, {
         method: "POST",
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(data)
     }).then(result => { 
         copy_form_points(week_num)
         aggregate_weekly_points()
+        update_progress_bar()
         hide_form()
 
         let selected = document.querySelector(".week-selected")

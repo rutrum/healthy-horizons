@@ -59,6 +59,26 @@ router.get('/', (req, res) => {
     res.render("index")
 })
 
+router.get('/prize-selection', (req, res) => {
+    db.all_eligible_prizes_and_tiers(1, 1, result => {
+        res.render("prize_selection", { tiers: result, total: 10 })
+    })
+})
+
+router.get('/admin', (req, res) => {
+    db.all_users_points(result => {
+        res.render("admin", { users: result })
+    })
+})
+
+router.post('/prize-selection/:userid/:semester/', (req, res) => {
+    console.log(req.body)
+    db.prize_submission(req.params.userid, req.params.semester, req.body, result => {
+        console.log(result)
+        res.status(200).end()
+    })
+})
+
 router.post('/prize', (req, res) => {
     submission = req.body
     console.log(submission)
@@ -101,6 +121,20 @@ router.post('/prize', (req, res) => {
 //| (_| | |_) | |
 // \__,_| .__/|_|
 //      |_|     
+
+router.get('/api/:userid/:semesterid', (req, res) => {
+    db.weekly_points(req.params.userid, req.params.semesterid, results => {
+        console.log(results)
+        res.send(JSON.stringify(results))
+    })
+})
+
+router.get('/api/weekpoints/:userid/:semesterid', (req, res) => {
+    db.weekly_points(req.params.userid, req.params.semesterid, results => {
+        console.log(results)
+        res.send(JSON.stringify(results))
+    })
+})
 
 router.get('/api/tasks', (req, res) => {
     db.all_tasks(results => {
@@ -157,14 +191,37 @@ router.get("/api/user_tasks/:user_id/:week_num/:semester", (req, res) => {
 // May also need to insert rows if new, or ignore rows that
 // are 0 valued.
 router.post("/api/user_tasks/:user_id/:week_num/:semester", (req, res) => {
-    user_id = req.params.user_id
-    week_num = req.params.week_num
-    semester = req.params.semester
+    let user_id = req.params.user_id
+    let week_num = req.params.week_num
+    let semester = req.params.semester
     data = req.body
     db.update_usertasks(user_id, week_num, semester, data, (success) => {
         res.send("{ status: 200 }")
     })
 })
+
+// Gets the subsmission prize ids for the given user and semester
+router.get("/api/submission_prizes/:user_id/:semester", (req, res) => {
+    let user_id = req.params.user_id
+    let semester = req.params.semester
+    db.submitted_prizes(user_id, semester, prizeids => {
+        res.send(JSON.stringify(prizeids))
+    })
+})
+
+router.get("/api/eligible_prizes/:user_id/:semester", (req, res) => {
+    let user_id = req.params.user_id
+    let semester = req.params.semester
+    db.all_eligible_prizes_and_tiers(user_id, semester, result => {
+        res.send(JSON.stringify(result))
+    })
+})
+
+router.get("/api/select_prizes_lower_bound", (req, res) => {
+    db.prize_lower_bound(result => res.send(JSON.stringify(result)))
+})
+
+// Gets the list of tiers and prizes eligible for the given user.
 
 // Other stuff
 

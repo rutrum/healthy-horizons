@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html>
+<head>
+    <title>Calendar</title>
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+    <% include navbar.ejs %>
+    <form id="prize-select" class="box" style="width: 600px"> 
+        <h2>Select your Prizes!</h2>
+        <p>You're able to earn prizes with all the points you've earned.  You can always come back and revisit this page to select different prizes.</p>
+        <div id="prize-list"></div>
+        <button type="submit" id="save-prizes">Save Prizes</button>
+    </form>
+    <script src="js/prize_selection.js"></script>
+</body>
+</html>
