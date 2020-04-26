@@ -7,6 +7,12 @@ function aggregate_weekly_points() {
     week_point_spans = [].slice.call(week_point_spans)
     let total = week_point_spans.reduce((acc, cur) => { return acc + parseInt(cur.textContent.trim()) }, 0)
     document.querySelector("#total-points").textContent = total
+
+    if (total == 0) {
+        document.querySelector("#welcome-msg").style.display = "block";
+    } else {
+        document.querySelector("#welcome-msg").style.display = "none";
+    }
     
     update_progress_bar()
 

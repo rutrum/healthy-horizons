@@ -191,7 +191,12 @@ exports.db = class database {
     }
 
     all_users_points(callback) {
-        let q = "SELECT user.id, SUM(frequency * points) AS points FROM user INNER JOIN usertask ON usertask.user_id = user.id INNER JOIN task ON usertask.task_id = task.id GROUP BY user.id"
+        let q = "SELECT user.*, SUM(frequency * points) AS points FROM user INNER JOIN usertask ON usertask.user_id = user.id INNER JOIN task ON usertask.task_id = task.id GROUP BY user.id"
         this.query_db(q, [], callback)
+    }
+
+    semester_submissions(semester, callback) {
+        let q = "SELECT * FROM submission INNER JOIN tier ON submission.tier_id = tier.id INNER JOIN prize ON prize.id = submission.prize_id WHERE semester_id = ?"
+        this.query_db(q, [semester], callback)
     }
 }

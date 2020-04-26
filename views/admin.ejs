@@ -10,13 +10,36 @@
 
 <body>
     <% include navbar.ejs %>
-    <table>
-        <% users.forEach(user => { %>
+    <div id="admin" class="box">
+        <table>
             <tr>
-                <td><%= user.id %></td>
-                <td><%= user.points %></td>
+                <th></th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Points</th>
+                <th>Prizes</th>
             </tr>
-        <% }) %>
-    </table>
+            <% users.forEach(user => { %>
+                <tr>
+                    <td><%= user.id %></td>
+                    <td><%= user.first + " " + user.last %></td>
+                    <td><%= user.email %></td>
+                    <td><%= user.points %></td>
+                    <td>
+                        <div class="prizes-col">
+                        <% if (prizes[user.id] != null) { %>
+                        <% prizes[user.id].forEach(prize => { %>
+                            <div>
+                                <span class="tier-name"><%= prize.tier.charAt(0).toUpperCase() + prize.tier.slice(1) %></span>
+                                <span class="prize-name"><%= prize.name %></span>
+                            </div>
+                        <% }) %>
+                        <% } %>
+                        </div>
+                    </td>
+                </tr>
+            <% }) %>
+        </table>
+    </div>
 </body>
 </html>

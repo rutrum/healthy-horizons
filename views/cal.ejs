@@ -16,7 +16,7 @@
                 User
                 <input id="current-user" style="width: 100px" type="number"></input>
             </div>
-            <div>
+            <div style="display:none">
                 Semester
                 <input id="current-semester" style="width: 100px" type="number"></input>
             </div>
@@ -36,8 +36,10 @@
         </div>
     </div>
     <div id="summary" class="box" style="width: 600px"> 
-        <p>Click on a week to get started!</p>
-        <div id="progress-bar"></div>
+        <p id="welcome-msg">Click on a week to get started!</p>
+        <div id="progress-container">
+            <div id="progress-bar"></div>
+        </div>
         <div id="progress-bar-msg"></div>
         <div id="calendar-header">
             <div><span id="total-points"></span> points</div>

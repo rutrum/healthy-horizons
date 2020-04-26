@@ -66,8 +66,17 @@ router.get('/prize-selection', (req, res) => {
 })
 
 router.get('/admin', (req, res) => {
-    db.all_users_points(result => {
-        res.render("admin", { users: result })
+    db.all_users_points(users => {
+        db.semester_submissions(1, subs => {
+            prizes = {}
+            subs.forEach(sub => {
+                if (prizes[sub.user_id] == null) {
+                    prizes[sub.user_id] = []
+                }
+                prizes[sub.user_id].push({ tier: sub.name, name: sub.description })
+            })
+            res.render("admin", { users: users, prizes: prizes })
+        })
     })
 })
 

@@ -1,0 +1,38 @@
+#admin {
+
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    table {
+
+
+        table-layout: fixed;
+
+        .prizes-col {
+            width: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            div {
+                display: flex;
+                justify-content: space-between;
+                width: 100%;
+            }
+        }
+
+        .tier-name {
+            font-weight: 600;
+        }
+
+        th, td {
+            padding: 20px 5px;
+            vertical-align: top;
+        }
+
+        td {
+            border-top: 1px solid $color-blue-light;
+        }
+    }
+}

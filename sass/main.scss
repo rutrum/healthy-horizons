@@ -10,7 +10,7 @@ $color-black: black;
 
 $nav-height: 60px;
 
-@import 'nav', 'popup', 'cal';
+@import 'nav', 'popup', 'cal', 'admin';
 
 * {
     box-sizing: border-box;
@@ -132,11 +132,27 @@ input[type=number] {
   -moz-appearance:textfield;
 }
 
+#progress-container {
+    background-color: lightgrey;
+    padding: 3px;
+    border-radius: 3px;
+    margin: 5px;
+}
+
 #progress-bar {
-    background-color: black;
-    width: 100%;
+    background-color: $color-blue-dark;
+    width: 0%;
     height: 25px;
+    border-radius: 3px;
     max-width: 100%;
+}
+
+#progress-bar-msg {
+    margin-bottom: 25px;
+}
+
+#welcome-msg {
+    display: none;
 }
 
 #summary {

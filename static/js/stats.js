@@ -20,11 +20,13 @@ function display_msg(total_points, upper, lower) {
 // displays a message to the user describing the status.
 function update_progress_bar() {
     let total_points = document.querySelector("#total-points").textContent
+    total_points = parseInt(total_points)
     fetch('/api/tiers')
         .then(response => response.json())
         .then((tiers) => {
-            let lower = tiers.reverse().find(tier => tier.points <= total_points)
             let upper = tiers.find(tier => tier.points > total_points)
+            let rev = tiers.slice(0).reverse()
+            let lower = rev.find(tier => tier.points <= total_points)
 
             let percent = 0
             if (lower == null) {
