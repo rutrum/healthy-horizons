@@ -76,6 +76,11 @@ nav a:hover {
   padding: 5px;
 }
 
+#week-form .task input[type="checkbox"] {
+  height: 20px;
+  align-self: center;
+}
+
 #week-form .task .task-description {
   align-self: center;
 }
@@ -225,11 +230,12 @@ body {
 }
 
 input[type="radio"] {
-  -ms-transform: scale(1.5);
+  -ms-transform: scale(1.2);
   /* IE 9 */
-  -webkit-transform: scale(1.5);
+  -webkit-transform: scale(1.2);
   /* Chrome, Safari, Opera */
-  transform: scale(1.5);
+  transform: scale(1.2);
+  margin-right: 10px;
 }
 
 /* HEADERS */
